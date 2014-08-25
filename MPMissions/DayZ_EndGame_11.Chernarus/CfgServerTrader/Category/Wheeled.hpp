@@ -144,11 +144,6 @@ class Category_2003 {
 		buy[] = {6,"ItemBriefcase100oz"};
 		sell[] = {3,"ItemBriefcase100oz"};
 	};
-	class UAZ_AGS30_TK_EP1 {
-		type = "trade_any_vehicle";
-		buy[] = {6,"ItemBriefcase100oz"};
-		sell[] = {3,"ItemBriefcase100oz"};
-	};
 	class Ural_ZU23_CDF {
 		type = "trade_any_vehicle";
 		buy[] = {6,"ItemBriefcase100oz"};
