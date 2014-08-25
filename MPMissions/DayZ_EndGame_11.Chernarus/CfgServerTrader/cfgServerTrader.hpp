@@ -86,4 +86,9 @@ class CfgTraderCategory {
 	#include "Category\Drugs.hpp"
 	#include "Category\Gems.hpp"
 	#include "Category\Misc.hpp"
+	#include "Category\EndgameVehicles.hpp"
+	#include "Category\Tanks.hpp"
+	#include "Category\Jets.hpp"
+	#include "Category\Choppers.hpp"
+	#include "Category\Wheeled.hpp"
 };

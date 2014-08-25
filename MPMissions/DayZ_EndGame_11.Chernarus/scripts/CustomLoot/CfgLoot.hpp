@@ -5,17 +5,7 @@ class CfgLoot {
 		,{"TrashJackDaniels",0.05}
 		,{"ItemSodaEmpty",0.25}
 		,{"ItemTrashToiletpaper",0.1}
-		,{"ItemTrashRazor",0.1},
-		,{"ARP_babywipes",0.2},
-		,{"ARP_eyedrops",0.2},
-		,{"ARP_lipbalm",0.2},
-		,{"ARP_bugspray",0.2},
-		,{"ARP_condom",0.2},
-		,{"ARP_newspaper",0.2},
-		,{"ARP_towel",0.2},
-		,{"ARP_canopener",0.2},
-		,{"ARP_cigarettes",0.2},
-		,{"ARP_basketball",0.2}
+		,{"ItemTrashRazor",0.1}
 	};
 	civilian[] = {
 		{"FoodCanUnlabeled",0.07}
