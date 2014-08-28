@@ -1,168 +1,112 @@
-class Category_4000 {
-	class ori_titanic {
+class Category_4002 {
+		class pook_PBR_Base {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class ori_bigRaft {
+		class pook_PBR_GUNBOAT {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class ori_scrapTank {
+		class pook_PBR_GUNBOAT_CDF_IND {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class ori_ScrapBuggy {
+		class pook_PBR_GUNBOAT_INS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class sigisolda1 {
+		class pook_PBR_GUNBOAT_GUE {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class sigisolda2 {
+		class pook_PBR_M2 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class sigisolda3 {
+		class pook_PATROL_BOAT_RUS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class sigisolda4 {
+		class pook_PATROL_BOAT_CIV {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class sigisolda5 {
+		class pook_RESEARCH_BOAT {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	};	
-		class 240GD {
+	};
+		class pook_PATROL_BOAT_INS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class 440cuda {
+	};
+		class pook_ASSAULT_BOAT {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class barcuda {
+	};
+		class pook_MINELAYER_RUS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class cd71hm {
+	};
+		class pook_MINELAYER_LG_RUS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class challenger {
+	};
+		class pook_ESCORT_RUS {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class civic {
+	};
+		class Fishing_Boat {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class cooter {
+	};
+		class pook_ASSAULT_SHIP_RU {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class cuda {
+	};
+		class pook_ASW_A10 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class fury {
+	};
+		class pook_ASW_A10_US_EP1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class hemicuda {
+	};
+		class pook_floatraft_8 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class mackr {
+	};
+		class pook_kayak1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class monaco {
+	};
+		class pook_tugboat1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class oldtruc2 {
+	};
+		class pook_freighter1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-	}
-		class oldtruc2a {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class oldtruck {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class oltruc3 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class roadrunner2 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class roadrunner {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class rosco {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class sahco {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class schoolbus {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class Jailbus {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class dbo_horse {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-		class Da_motorbike {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
-	
-}; 
+	};
+};

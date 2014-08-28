@@ -20,7 +20,7 @@ menu_Rocker4 = [
 ];
 // Friendly Vehicles
 menu_Profiteer4 = [
-	[["Bikes and ATV",608],["Buses and Vans",563],["Cargo Trucks",564],["Fuel Trucks",492],["Military Unarmed",491],["Trucks",495],["Used Cars",585],["Utility Vehicles",565],["Sport Cars",919],["Super Cars",920],["End Game test",4000]],
+	[["Bikes and ATV",608],["Buses and Vans",563],["Cargo Trucks",564],["Fuel Trucks",492],["Military Unarmed",491],["Trucks",495],["Used Cars",585],["Utility Vehicles",565],["Sport Cars",919],["Super Cars",920],["End Game Vehicles",4000]],
 	[],
 	"friendly"
 ];
@@ -50,19 +50,19 @@ menu_TK_GUE_Soldier_5_EP1 = [
 ];
 // Bandit Trader
 menu_GUE_Soldier_MG = [
-	[["Ammunition",577],["Clothing",575],["Helicopter Armed",512],["Military Armed",569],["Trucks Armed",534],["Weapons",627]["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003]],
+	[["Ammunition",577],["Clothing",575],["Helicopter Armed",512],["Military Armed",569],["Trucks Armed",534],["Weapons",627],["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003]],
 	[],
 	"hostile"
 ];
 // Aircraft Dealer
 menu_Worker2 = [
-	[["Airplanes",517],["Helicopter Unarmed",519]],
+	[["Airplanes",517],["Helicopter Unarmed",519],["End Game Aircraft",4001]],
 	[],
 	"neutral"
 ];
 // Vehicles Neutral
 menu_Worker3 = [
-	[["Bikes and ATV",587],["Buses and Vans",588],["Cargo Trucks",586],["Fuel Trucks",589],["Military Unarmed",598],["Trucks",590],["Used Cars",520],["Utility Vehicles",591],["Sport Cars",919],["Super Cars",920],["End Game test",4000]],
+	[["Bikes and ATV",587],["Buses and Vans",588],["Cargo Trucks",586],["Fuel Trucks",589],["Military Unarmed",598],["Trucks",590],["Used Cars",520],["Utility Vehicles",591],["Sport Cars",919],["Super Cars",920],["End Game Vehicles",4000]],
 	[],
 	"neutral"
 ];
@@ -74,7 +74,7 @@ menu_Woodlander1 = [
 ];
 // Friendly Vehicles 2
 menu_UN_CDF_Soldier_Pilot_EP1 = [
-	[["Bikes and ATV",536],["Buses and Vans",592],["Cargo Trucks",570],["Fuel Trucks",595],["Military Unarmed",599],["Trucks Unarmed",535],["Used Cars",600],["Utility Vehicles",568],["Sport Cars",919],["Super Cars",920],["End Game test",4000]],
+	[["Bikes and ATV",536],["Buses and Vans",592],["Cargo Trucks",570],["Fuel Trucks",595],["Military Unarmed",599],["Trucks Unarmed",535],["Used Cars",600],["Utility Vehicles",568],["Sport Cars",919],["Super Cars",920],["End Game Vehicles",4000]],
 	[],
 	"friendly"
 ];
@@ -110,7 +110,7 @@ menu_RU_Citizen1 = [
 ];
 // Boat Vendor
 menu_RU_Villager3 = [
-	[["Boats Armed",558],["Boats Unarmed",557]],
+	[["Boats Armed",558],["Boats Unarmed",557],["End Game Boats",4002]],
 	[],
 	"neutral"
 ];
@@ -152,7 +152,7 @@ menu_Doctor = [
 ];
 // Boat Trader 2
 menu_HouseWife1 = [
-	[["Boats Armed",673],["Boats Unarmed",672]],
+	[["Boats Armed",673],["Boats Unarmed",672],["End Game Boats",4002]],
 	[],
 	"neutral"
 ];
