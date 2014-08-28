@@ -1,0 +1,21 @@
+
+    make trader prices higher
+    remove silver and use only gold currency
+    AI military
+    Fully militarize
+    Add restriction to using Tanks/Jets/Choppers
+	trader city's actually in city's and at logical places
+    increase the zombie threat
+    remove vehicles that don't fit the apocalyptic feel
+    make locked items breakable/Pick-able
+    make it so you can break into locked cars
+	add new loot to loot tables and traders
+    completely new traders and trade locations
+    edit the existing chernarus map
+    new vehicles to dynamic spawns
+    add new locations to map
+    move scripts to client from mission file
+    add features to new items
+	
+	Redo/Balance loot tables loot tables (everything is rare :P)
+
