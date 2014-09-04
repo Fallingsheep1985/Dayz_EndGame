@@ -17,5 +17,9 @@
     move scripts to client from mission file
     add features to new items
 	
-	Redo/Balance loot tables loot tables (everything is rare :P)
+Redo/Balance loot tables loot tables (everything is rare :P)
+balance/change vehicle prices at traders
+lower high end vehicle spawns to 0 (chance of 1 still spawning)
+
+
 
