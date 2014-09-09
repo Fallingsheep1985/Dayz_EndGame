@@ -1,3 +1,4 @@
+private ["_targetBike"];
 if !("PartGeneric" in magazines player && "PartEngine" in magazines player) exitWith {cutText [format["You need Scrap Metal and Engine part to upgrade your Bike"], "PLAIN DOWN"];};
 if (dayz_combat == 1) then { 
     cutText [format["You are in Combat and cannot build a bike."], "PLAIN DOWN"];
@@ -7,7 +8,8 @@ if (dayz_combat == 1) then {
 	r_interrupt = false;
 	player removeMagazine "PartGeneric";
 	player removeMagazine "PartEngine";
-	deletevehicle cursortarget;
+	_targetBike = nearestObjects [player, ["Old_bike_TK_CIV_EP1"], 5];
+   deleteVehicle (_targetBike select 0);
 	_dis=10;
 	_sfx = "repair";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;

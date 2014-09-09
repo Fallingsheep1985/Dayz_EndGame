@@ -1,10 +1,12 @@
+private ["_targetBike"];
 if (dayz_combat == 1) then { 
     cutText [format["You are in Combat and cannot Re-Pack your Motorbike"], "PLAIN DOWN"];
 } else {
 	player removeAction s_player_deploybike4;
 	player playActionNow "Medic";
 	r_interrupt = false;
-	deletevehicle cursortarget;
+	_targetBike = nearestObjects [player, ["TT650_Civ"], 5];
+   deleteVehicle (_targetBike select 0);
 	_dis=10;
 	_sfx = "repair";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;

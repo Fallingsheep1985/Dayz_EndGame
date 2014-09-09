@@ -1,3 +1,4 @@
+private ["_targetBike"];
 if (dayz_combat == 1) then { 
     cutText [format["You are in Combat and cannot re-build your bike."], "PLAIN DOWN"];
 } else {
@@ -5,7 +6,8 @@ if (dayz_combat == 1) then {
 	player playActionNow "Medic";
 	r_interrupt = false;
 	player addWeapon "ItemToolbox";
-	deletevehicle cursortarget;
+	_targetBike = nearestObjects [player, ["Old_bike_TK_CIV_EP1"], 5];
+   deleteVehicle (_targetBike select 0);
 	_dis=10;
 	_sfx = "repair";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;

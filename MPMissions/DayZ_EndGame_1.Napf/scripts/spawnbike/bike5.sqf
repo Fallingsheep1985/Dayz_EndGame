@@ -1,3 +1,4 @@
+private ["_targetBike"];
 if !("PartGeneric" in magazines player && "PartVRotor" in magazines player) exitWith {cutText [format["You need Scrap Metal and a Main Rotor Assembly to upgrade your Motorbike"], "PLAIN DOWN"];};
 if (dayz_combat == 1) then { 
     cutText [format["You are in Combat and cannot build a Mozzie."], "PLAIN DOWN"];
@@ -7,7 +8,8 @@ if (dayz_combat == 1) then {
 	r_interrupt = false;
 	player removeMagazine "PartGeneric";
 	player removeMagazine "PartVRotor";
-	deletevehicle cursortarget;
+	_targetBike = nearestObjects [player, ["TT650_Civ"], 5];
+   deleteVehicle (_targetBike select 0);
 	_dis=10;
 	_sfx = "repair";
 	[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
