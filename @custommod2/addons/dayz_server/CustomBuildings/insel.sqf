@@ -78,7 +78,17 @@ if (true) then
   _vehicle_33 = _this;
   _this setDir 38.957485;
   _this setPos [16367.062, 18469.939, -2.6702881e-005];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
+};
+
+_vehicle_34 = objNull;
+if (true) then
+{
+  _this = createVehicle ["MV22_DZ", [16414.7,18430.9,-2.6702881e-005], [], 0, "CAN_COLLIDE"];
+  _vehicle_33 = _this;
+  _this setDir 38.957485;
+  _this setPos [16414.7,18430.9,-2.6702881e-005];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_37 = objNull;
@@ -114,7 +124,7 @@ if (true) then
   _vehicle_41 = _this;
   _this setDir -39.271877;
   _this setPos [16542.561, 18173.006, 15.315392];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_42 = objNull;
@@ -124,7 +134,7 @@ if (true) then
   _vehicle_42 = _this;
   _this setDir -146.07625;
   _this setPos [16540.551, 18174.557, 15.494563];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_43 = objNull;
@@ -134,7 +144,7 @@ if (true) then
   _vehicle_43 = _this;
   _this setDir -190.40851;
   _this setPos [16621.492, 18179.137, 15.448992];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_44 = objNull;
@@ -143,7 +153,7 @@ if (true) then
   _this = createVehicle ["M2StaticMG", [16613.508, 18233.551, 15.346526], [], 0, "CAN_COLLIDE"];
   _vehicle_44 = _this;
   _this setPos [16613.508, 18233.551, 15.346526];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_45 = objNull;
@@ -152,7 +162,7 @@ if (true) then
   _this = createVehicle ["M2StaticMG", [16656.961, 18210.316, 7.6494122], [], 0, "CAN_COLLIDE"];
   _vehicle_45 = _this;
   _this setPos [16656.961, 18210.316, 7.6494122];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_46 = objNull;
@@ -162,7 +172,7 @@ if (true) then
   _vehicle_46 = _this;
   _this setDir -41.42466;
   _this setPos [16542.166, 18225.391, 15.42415];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_66 = objNull;
@@ -172,7 +182,7 @@ if (true) then
   _vehicle_66 = _this;
   _this setDir -325.19742;
   _this setPos [16351.13, 18428.695, 0.00024795532];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_68 = objNull;
@@ -182,7 +192,7 @@ if (true) then
   _vehicle_68 = _this;
   _this setDir -140.15935;
   _this setPos [16406.867, 18473.133, -7.6293945e-006];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_69 = objNull;
@@ -192,7 +202,7 @@ if (true) then
   _vehicle_69 = _this;
   _this setDir -48.35762;
   _this setPos [16319.299, 18488.07, 3.8146973e-006];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_72 = objNull;
@@ -720,7 +730,7 @@ if (true) then
 _vehicle_148 = objNull;
 if (true) then
 {
-  _this = createVehicle ["Land_aif_strazni_vez", [16708.514, 18410.43, 0.00048828125], [], 0, "CAN_COLLIDE"];
+  _this = createVehicle ["Land_strazni_vez", [16708.514, 18410.43, 0.00048828125], [], 0, "CAN_COLLIDE"];
   _vehicle_148 = _this;
   _this setDir 46.963608;
   _this setPos [16708.514, 18410.43, 0.00048828125];
@@ -729,28 +739,10 @@ if (true) then
 _vehicle_149 = objNull;
 if (true) then
 {
-  _this = createVehicle ["Land_aif_hlaska", [16710.66, 18378.42, -0.46142313], [], 0, "CAN_COLLIDE"];
+  _this = createVehicle ["Land_hlaska", [16710.66, 18378.42, -0.46142313], [], 0, "CAN_COLLIDE"];
   _vehicle_149 = _this;
   _this setDir 141.8972;
   _this setPos [16710.66, 18378.42, -0.46142313];
-};
-
-_vehicle_150 = objNull;
-if (true) then
-{
-  _this = createVehicle ["Land_aif_billboard_typowy_mirek", [16641.555, 18264.141, 3.8146973e-005], [], 0, "CAN_COLLIDE"];
-  _vehicle_150 = _this;
-  _this setDir 234.59715;
-  _this setPos [16641.555, 18264.141, 3.8146973e-005];
-};
-
-_vehicle_151 = objNull;
-if (true) then
-{
-  _this = createVehicle ["Land_aif_billboard_waldbrand", [16580.424, 18211.078, -4.5776367e-005], [], 0, "CAN_COLLIDE"];
-  _vehicle_151 = _this;
-  _this setDir 131.82303;
-  _this setPos [16580.424, 18211.078, -4.5776367e-005];
 };
 
 _vehicle_152 = objNull;
@@ -1024,7 +1016,7 @@ if (true) then
   _vehicle_207 = _this;
   _this setDir 42.984531;
   _this setPos [16618.246, 18356.732, 0.00022888184];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_208 = objNull;
@@ -1034,7 +1026,7 @@ if (true) then
   _vehicle_208 = _this;
   _this setDir 43.898033;
   _this setPos [16604.127, 18366.021, -0.00023651123];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_209 = objNull;
@@ -1044,7 +1036,7 @@ if (true) then
   _vehicle_209 = _this;
   _this setDir 40.380585;
   _this setPos [16446.83, 18393.859, 6.8664551e-005];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 _vehicle_211 = objNull;
 if (true) then
@@ -1074,7 +1066,7 @@ if (true) then
   _this setDir 220.03625;
   _this setVehicleLock "LOCKED";
   _this setPos [16565.348, 18301.592, 0.00017547607];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_215 = objNull;
@@ -1084,7 +1076,7 @@ if (true) then
   _vehicle_215 = _this;
   _this setDir 129.3797;
   _this setPos [16597.879, 18232.939, 0.00012969971];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_218 = objNull;
@@ -1094,7 +1086,7 @@ if (true) then
   _vehicle_218 = _this;
   _this setDir 129.03534;
   _this setPos [16595.195, 18229.219, 0.0001335144];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_219 = objNull;
@@ -1104,7 +1096,7 @@ if (true) then
   _vehicle_219 = _this;
   _this setDir 128.28429;
   _this setPos [16592.35, 18226.277, 2.2888184e-005];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_220 = objNull;
@@ -1115,7 +1107,7 @@ if (true) then
   _this setDir -140.00681;
   _this setVehicleLock "LOCKED";
   _this setPos [16571.033, 18300.695, -0.15992869];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_221 = objNull;
@@ -1126,7 +1118,7 @@ if (true) then
   _this setDir -139.38895;
   _this setVehicleLock "LOCKED";
   _this setPos [16579.756, 18293.477, 0.0001449585];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_222 = objNull;
@@ -1137,7 +1129,7 @@ if (true) then
   _this setDir -136.89708;
   _this setVehicleLock "LOCKED";
   _this setPos [16575.867, 18297.078, -0.10089826];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_223 = objNull;
@@ -1321,7 +1313,7 @@ if (true) then
 _vehicle_244 = objNull;
 if (true) then
 {
-  _this = createVehicle ["Land_aif_hlaska", [16709.387, 18076.709, -0.6753993], [], 0, "CAN_COLLIDE"];
+  _this = createVehicle ["Land_hlaska", [16709.387, 18076.709, -0.6753993], [], 0, "CAN_COLLIDE"];
   _vehicle_244 = _this;
   _this setDir -219.08028;
   _this setPos [16709.387, 18076.709, -0.6753993];
@@ -1330,7 +1322,7 @@ if (true) then
 _vehicle_245 = objNull;
 if (true) then
 {
-  _this = createVehicle ["Land_aif_hlaska", [16866.629, 18496.922, -0.44464734], [], 0, "CAN_COLLIDE"];
+  _this = createVehicle ["Land_hlaska", [16866.629, 18496.922, -0.44464734], [], 0, "CAN_COLLIDE"];
   _vehicle_245 = _this;
   _this setDir 33.731918;
   _this setPos [16866.629, 18496.922, -0.44464734];
@@ -1339,7 +1331,7 @@ if (true) then
 _vehicle_246 = objNull;
 if (true) then
 {
-  _this = createVehicle ["Land_aif_hlaska", [16572.691, 18489.107, -0.45603597], [], 0, "CAN_COLLIDE"];
+  _this = createVehicle ["Land_hlaska", [16572.691, 18489.107, -0.45603597], [], 0, "CAN_COLLIDE"];
   _vehicle_246 = _this;
   _this setDir -23.258474;
   _this setPos [16572.691, 18489.107, -0.45603597];
@@ -1942,7 +1934,7 @@ if (true) then
   _vehicle_346 = _this;
   _this setDir 88.85569;
   _this setPos [16504.469, 18818.727, 2.4795532e-005];
-      _this setVariable ["MalSar",true];
+      _this setVariable ["MalSar",0];
 };
 
 _vehicle_348 = objNull;
@@ -1962,7 +1954,7 @@ if (true) then
   _vehicle_350 = _this;
   _this setDir -115.02006;
   _this setPos [16506.164, 18333.729, 11.577097];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 
 _vehicle_351 = objNull;
@@ -1971,7 +1963,7 @@ if (true) then
   _this = createVehicle ["BAF_L2A1_Tripod_D", [16413.844, 18350.432, 5.9093561], [], 0, "CAN_COLLIDE"];
   _vehicle_351 = _this;
   _this setPos [16413.844, 18350.432, 5.9093561];
-	  _this setVariable ["MalSar",true];
+	  _this setVariable ["MalSar",0];
   };
 
 _vehicle_352 = objNull;
@@ -1981,7 +1973,7 @@ if (true) then
   _vehicle_352 = _this;
   _this setDir 135.60306;
   _this setPos [16709.803, 18075.619, 6.9121194];
-    _this setVariable ["MalSar",true];
+    _this setVariable ["MalSar",0];
 };
 _vehicle_353 = objNull;
 if (true) then
@@ -1990,7 +1982,7 @@ if (true) then
   _vehicle_353 = _this;
   _this setDir -189.37328;
   _this setPos [16536.596, 18309.988, 11.276181];
-   _this setVariable ["MalSar",true];
+   _this setVariable ["MalSar",0];
 };
 
 _vehicle_355 = objNull;
@@ -2396,7 +2388,7 @@ if (true) then
   _vehicle_382 = _this;
   _this setDir 62.353951;
   _this setPos [16647.555, 18271.887, -0.00018310547];
-   _this setVariable ["MalSar",true];
+   _this setVariable ["MalSar",0];
 };
 
 _vehicle_383 = objNull;
@@ -2406,7 +2398,7 @@ if (true) then
   _vehicle_383 = _this;
   _this setDir 136.16997;
   _this setPos [16736.609, 18395.014, 8.9645386e-005];
-   _this setVariable ["MalSar",true];
+   _this setVariable ["MalSar",0];
 };
 
 _group_7 = createGroup _center_1;
@@ -2543,7 +2535,7 @@ if (true) then
   _vehicle_384 = _this;
   _this setDir -41.121861;
   _this setPos [16713.857, 18360.32, 4.0054321e-005];
-   _this setVariable ["MalSar",true];
+   _this setVariable ["MalSar",0];
 };
 
 _vehicle_385 = objNull;

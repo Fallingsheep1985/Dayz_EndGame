@@ -8,7 +8,7 @@ STEAM BETA 125548
 
 BEFORE USING THIS!!
 
-RUN THE MULTICHARACTER.SQL ON YOUR DB (ADDS SLOTS TO CHARACTER TABLE)
+RUN THE FULLDB.SQL ON YOUR DB 
 
 
 
@@ -26,6 +26,7 @@ ADMIN TOOLS MENU
 1. there is some delay when going from one trader to the next trader.
 2. Sometimes when on fresh server start player gets BE kick for setpos just rejoin.
 3. Ground fog / Wind Dust can cause low FPS and server lag
+4. there are a few RPT errors that may spam your RPT
 
 
 ////////////////////////////////////////////////////////////////

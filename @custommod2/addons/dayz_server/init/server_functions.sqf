@@ -960,7 +960,26 @@ server_logUnlockLockEvent = {
 		diag_log format["SAFE %5: ID:%1 UID:%2 BY %3(%4)", _objectID, _objectUID, (name _player), (getPlayerUID _player), _statusText];
 	};
 };
+//Sector FNG inland
+execVM "\z\addons\dayz_server\CustomBuildings\sectorfng\sectorfng_init.sqf";
 
+//BANK
+execVM "\z\addons\dayz_server\CustomBuildings\banks\nbank_novy_sobor.sqf";
+
+//Red Zone
+[] execVM "\z\addons\dayz_server\CustomBuildings\insel.sqf";
+
+//Blitz Island
+[] ExecVM "\z\addons\dayz_server\CustomBuildings\blitz-island.sqf";
+
+//Magden
+[] ExecVM "\z\addons\dayz_server\CustomBuildings\Magden.sqf";
+
+//Napf_small_base
+[] ExecVM "\z\addons\dayz_server\CustomBuildings\Napf_small_base.sqf";
+
+//Blitz Island
+[] ExecVM "\z\addons\dayz_server\CustomBuildings\neisland.sqf";
 
 
 //Enhanced Spawn Selection

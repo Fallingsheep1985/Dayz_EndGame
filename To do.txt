@@ -11,7 +11,7 @@
     make it so you can break into locked cars
 	add new loot to loot tables and traders
     completely new traders and trade locations
-    edit the existing chernarus map
+    edit the existing napf map
     new vehicles to dynamic spawns
     add new locations to map
     move scripts to client from mission file
