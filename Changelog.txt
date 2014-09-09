@@ -2,4 +2,6 @@
 
 FIXED - Brave Sir Robins spawn bike fix
 ADDED - overpoch weapons to loot spawns
+
+0.0.0.5
 ADDED - Brave Sir Robins Custom buildings
