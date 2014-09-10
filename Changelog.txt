@@ -5,3 +5,7 @@ ADDED - overpoch weapons to loot spawns
 
 0.0.0.5
 ADDED - Brave Sir Robins Custom buildings
+
+0.0.0.6
+MOVED - a lot off code from mission into client
+COMBINED - multichar.hpp into defines.hpp
