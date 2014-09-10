@@ -102,7 +102,7 @@ dayz_fullMoonNights = true;
 call compile preprocessFileLineNumbers "init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
 call compile preprocessFileLineNumbers "scripts\JAEM\variables.sqf";
 progressLoadingScreen 0.1;
-call compile preprocessFileLineNumbers "fixes\publicEH.sqf";	
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\init\publicEH.sqf";	
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;

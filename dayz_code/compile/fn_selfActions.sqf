@@ -4,7 +4,8 @@ scriptName "Functions\misc\fn_selfActions.sqf";
 	- Function
 	- [] call fnc_usec_selfActions;
 ************************************************************/
-private ["_isWreckBuilding","_temp_keys","_magazinesPlayer","_isPZombie","_vehicle","_inVehicle","_hasFuelE","_hasRawMeat","_hasKnife","_hasToolbox","_onLadder","_nearLight","_canPickLight","_canDo","_text","_isHarvested","_isVehicle","_isVehicletype","_isMan","_traderType","_ownerID","_isAnimal","_isDog","_isZombie","_isDestructable","_isTent","_isFuel","_isAlive","_Unlock","_lock","_buy","_dogHandle","_lieDown","_warn","_hastinitem","_allowedDistance","_menu","_menu1","_humanity_logic","_low_high","_cancel","_metals_trader","_traderMenu","_isWreck","_isRemovable","_isDisallowRepair","_rawmeat","_humanity","_speed","_dog","_hasbottleitem","_isAir","_isShip","_playersNear","_findNearestGens","_findNearestGen","_IsNearRunningGen","_cursorTarget","_isnewstorage","_itemsPlayer","_ownerKeyId","_typeOfCursorTarget","_hasKey","_oldOwner","_combi","_key_colors","_player_deleteBuild","_player_flipveh","_player_lockUnlock_crtl","_player_butcher","_player_studybody","_player_cook","_player_boil","_hasFuelBarrelE","_hasHotwireKit","_player_SurrenderedGear","_isSurrendered","_isModular","_isModularDoor","_ownerKeyName","_temp_keys_names","_hasAttached","_allowTow","_liftHeli","_found","_posL","_posC","_height","_liftHelis","_attached"];
+private ["_isWreckBuilding","_temp_keys","_magazinesPlayer","_isPZombie","_vehicle","_inVehicle","_hasFuelE","_hasRawMeat","_hasKnife","_hasToolbox","_onLadder","_nearLight","_canPickLight","_canDo","_text","_isHarvested","_isVehicle","_isVehicletype","_isMan","_traderType","_ownerID","_isAnimal","_isDog","_isZombie","_isDestructable","_isTent","_isFuel","_isAlive","_Unlock","_lock","_buy","_dogHandle","_lieDown","_warn","_hastinitem","_allowedDistance","_menu","_menu1","_humanity_logic","_low_high","_cancel","_metals_trader","_traderMenu","_isWreck","_isRemovable","_isDisallowRepair","_rawmeat","_humanity","_speed","_dog","_hasbottleitem","_isAir","_isShip","_playersNear","_findNearestGens","_findNearestGen","_IsNearRunningGen","_cursorTarget","_isnewstorage","_itemsPlayer","_ownerKeyId","_typeOfCursorTarget","_hasKey","_oldOwner","_combi","_key_colors","_player_deleteBuild","_player_flipveh","_player_lockUnlock_crtl","_player_butcher","_player_studybody","_player_cook","_player_boil","_hasFuelBarrelE","_hasHotwireKit","_player_SurrenderedGear","_isSurrendered","_isModular","_isModularDoor","_ownerKeyName","_temp_keys_names","_hasAttached","_allowTow","_liftHeli","_found","_posL","_posC","_height","_liftHelis","_attached","_hasNOSinstalled","_isaCar","_isNOSinstalled","_hasNOSitems","_playerUID"];
+
 
 if (DZE_ActionInProgress) exitWith {}; // Do not allow if any script is running.
 
@@ -14,6 +15,151 @@ _inVehicle = (_vehicle != player);
 
 _onLadder =		(getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState player) >> "onLadder")) == 1;
 _canDo = (!r_drag_sqf && !r_player_unconscious && !_onLadder);
+if(NOSScript)then{
+ 	//Nitro action
+	_hasNOSinstalled = _vehicle getVariable["nitroinstalled",0];
+	if (_inVehicle and _vehicle isKindOf "Car" and speed _vehicle >= 1) then {
+		if (_inVehicle and _hasNOSinstalled == 1) then {
+			if (isnil("NITRO_Cond")) then {NITRO_Cond = false;};
+			if (s_player_nitrobooston <0) then {	
+				if (NITRO_Cond) then {
+					s_player_nitrobooston = _vehicle addAction [("<t color=""#39C1F3"">" + ("Nitro Off") + "</t>"),"scripts\NOS\nitro.sqf", [_vehicle], 999, false,true,"","driver _target == _this"]; 
+				} else {
+					s_player_nitrobooston = _vehicle addAction [("<t color=""#39C1F3"">" + ("Nitro On") + "</t>"),"scripts\NOS\nitro.sqf", [_vehicle], 999, false,true,"","driver _target == _this"]; 
+				};	
+			};
+		} else {
+			 _vehicle removeAction s_player_nitrobooston;
+			s_player_nitrobooston = -1;
+		};
+  } else {
+		 _vehicle removeAction s_player_nitrobooston;
+		s_player_nitrobooston = -1;
+		if (_hasNOSinstalled == 1) then {
+			 _vehicle setVariable ["nitroinstalled", 1, true];
+		};
+	}; 
+};
+if(SirenScript)then{
+//Sirens
+_isCopcar = typeOf _vehicle in ["LadaLM","HMMWV_Ambulance","HMMWV_Ambulance_CZ_DES_EP1","S1203_ambulance_EP1","GAZ_Vodnik_MedEvac","policecar"];
+
+if (_inVehicle and _isCopcar and (driver _vehicle == player)) then {
+        dayz_addsirens = _vehicle;
+    if (s_player_sirens_on < 0) then {
+        s_player_sirens_on = dayz_addsirens addAction ["Sirens on","scripts\sirens\sirens_on.sqf",dayz_addsirens,2,false,true,"",""];
+        s_player_sirens_off = dayz_addsirens addAction ["Sirens off","scripts\sirens\sirens_off.sqf",dayz_addsirens,2,false,true,"",""];
+        };
+    } else {
+        dayz_addsirens removeAction s_player_sirens_on;
+        dayz_addsirens removeAction s_player_sirens_off;
+        s_player_sirens_on = -1;
+        s_player_sirens_off = -1;
+    };
+};
+
+if(DeployBikeScript)then{
+	//Deploy Bike
+	if((speed player <= 1) && cursorTarget isKindOf "CSJ_GyroC" && _canDo) then {
+	if (s_player_deploybike6 < 0) then {
+			s_player_deploybike6 = player addaction[("<t color=""#007ab7"">" + ("Re-Pack GyroCopter") +"</t>"),"scripts\spawnbike\bike6.sqf","",5,false,true,"", ""];
+		};
+	} else {
+		player removeAction s_player_deploybike6;
+		s_player_deploybike6 = -1;
+	};
+
+	if((speed player <= 1) && cursorTarget isKindOf "TT650_Civ" && _canDo) then {
+	if (s_player_deploybike5 < 0) then {
+			s_player_deploybike5 = player addaction[("<t color=""#007ab7"">" + ("Upgrade to GyroCopter") +"</t>"),"scripts\spawnbike\bike5.sqf","",5,false,true,"", ""];
+		};
+	} else {
+		player removeAction s_player_deploybike5;
+		s_player_deploybike5 = -1;
+	};
+
+	if((speed player <= 1) && cursorTarget isKindOf "TT650_Civ" && _canDo) then {
+	if (s_player_deploybike4 < 0) then {
+			s_player_deploybike4 = player addaction[("<t color=""#007ab7"">" + ("Re-Pack Motorcycle") +"</t>"),"scripts\spawnbike\bike4.sqf","",5,false,true,"", ""];
+		};
+	} else {
+		player removeAction s_player_deploybike4;
+		s_player_deploybike4 = -1;
+	};
+
+	if((speed player <= 1) && cursorTarget isKindOf "Old_bike_TK_CIV_EP1" && _canDo) then {
+	if (s_player_deploybike3 < 0) then {
+			s_player_deploybike3 = player addaction[("<t color=""#007ab7"">" + ("Upgrade to Motorcycle") +"</t>"),"scripts\spawnbike\bike3.sqf","",5,false,true,"", ""];
+		};
+	} else {
+		player removeAction s_player_deploybike3;
+		s_player_deploybike3 = -1;
+	};
+
+	if((speed player <= 1) && cursorTarget isKindOf "Old_bike_TK_CIV_EP1" && _canDo) then {
+	if (s_player_deploybike2 < 0) then {
+			s_player_deploybike2 = player addaction[("<t color=""#007ab7"">" + ("Re-Pack Bike") +"</t>"),"scripts\spawnbike\bike2.sqf","",5,false,true,"", ""];
+		};
+	} else {
+		player removeAction s_player_deploybike2;
+		s_player_deploybike2 = -1;
+	};
+};
+
+if(AnimatedSUVMV22)then{
+	//animated mv22/suv hatch
+	if (_inVehicle and (_vehicle isKindOf "MV22")) then {
+	   if (isEngineOn _vehicle) then {[_vehicle,0] call mv22_pack;};
+	   if (mv22_fold < 0) then {
+		 themv22 = _vehicle;
+		 if !(isEngineOn themv22) then {
+		   mv22_fold = themv22 addAction ["Fold","scripts\animate\mv22_fold.sqf","",5,false,true];
+		   mv22_unfold = themv22 addAction ["UnFold","scripts\animate\mv22_unfold.sqf","",5,false,true];
+		   mv22_open = themv22 addAction ["Open Ramp","scripts\animate\mv22_open.sqf","",5,false,true];
+		   mv22_close = themv22 addAction ["Close Ramp","scripts\animate\mv22_close.sqf","",5,false,true];
+		 };
+	   };
+	   if (isEngineOn themv22) then {
+		 themv22 removeAction mv22_fold;
+		 mv22_fold = -1;
+		 themv22 removeAction mv22_unfold;
+		 mv22_unfold = -1;
+		 themv22 removeAction mv22_open;
+		 mv22_open = -1;
+		 themv22 removeAction mv22_close;
+		 mv22_close = -1;
+	   };
+	} else {
+	   themv22 removeAction mv22_fold;
+	   mv22_fold = -1;
+	   themv22 removeAction mv22_unfold;
+	   mv22_unfold = -1;
+	   themv22 removeAction mv22_open;
+	   mv22_open = -1;
+	   themv22 removeAction mv22_close;
+	   mv22_close = -1;
+	};
+
+	if (_inVehicle and (_vehicle isKindOf "ArmoredSUV_Base_PMC")) then {
+	   if ((_vehicle animationPhase "HideGun_01") == 1) then {
+		 _unit = _vehicle turretUnit [0];
+		 if (!(isNull _unit)) then {
+		   _unit action ["moveToCargo",_vehicle,2];
+		   titleText ["\n\nYou must open the hatch first.","PLAIN DOWN"];titleFadeOut 4;
+		 };
+	   };
+	   if (suv_close < 0) then {
+		 thesuv = _vehicle;
+		 suv_close = thesuv addAction ["Close Hatch","scripts\animate\suv_close.sqf","",5,false,true];
+		 suv_open = thesuv addAction ["Open Hatch","scripts\animate\suv_open.sqf","",5,false,true];
+	   };
+	} else {
+	   thesuv removeAction suv_close;
+	   suv_close = -1;
+	   thesuv removeAction suv_open;
+	   suv_open = -1;
+	};
+};
 
 _nearLight = 	nearestObject [player,"LitObject"];
 _canPickLight = false;
@@ -159,17 +305,20 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 
 	_hasKnife = 	"ItemKnife" in _itemsPlayer;
 	_hasToolbox = 	"ItemToolbox" in _itemsPlayer;
+	_hasETool = "ItemEtool" in _itemsPlayer;
 
 	_isMan = _cursorTarget isKindOf "Man";
 	_traderType = _typeOfCursorTarget;
-	_ownerID = _cursorTarget getVariable ["CharacterID","0"];
+	_ownerID = _cursorTarget getVariable ["CharacterID","0"];	
+	
 	_isAnimal = _cursorTarget isKindOf "Animal";
 	_isDog =  (_cursorTarget isKindOf "DZ_Pastor" || _cursorTarget isKindOf "DZ_Fin");
 	_isZombie = _cursorTarget isKindOf "zZombie_base";
 	_isDestructable = _cursorTarget isKindOf "BuiltItems";
 	_isWreck = _typeOfCursorTarget in DZE_isWreck;
 	_isWreckBuilding = _typeOfCursorTarget in DZE_isWreckBuilding;
-	_isModular = _cursorTarget isKindOf "ModularItems";
+	//_isModular = _cursorTarget isKindOf "ModularItems";
+	 _isModular = (_cursorTarget isKindOf "ModularItems") or ((typeOf _cursorTarget) in Custom_Buildables);
 	_isModularDoor = _typeOfCursorTarget in ["Land_DZE_WoodDoor","Land_DZE_LargeWoodDoor","Land_DZE_GarageWoodDoor","CinderWallDoor_DZ","CinderWallDoorSmall_DZ"];
 
 	_isRemovable = _typeOfCursorTarget in DZE_isRemovable;
@@ -226,7 +375,7 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		};
 		
 		//Allow owners to delete modulars
-                if(_isModular && (dayz_characterID == _ownerID)) then {
+			   if(_isModular and (dayz_characterID == _ownerID)) then {
                         if(_hasToolbox && "ItemCrowbar" in _itemsPlayer) then {
                                 _player_deleteBuild = true;
                         };
@@ -241,9 +390,8 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		if(_isVehicle) then {
 			
 			//flip vehicle small vehicles by your self && all other vehicles with help nearby
-			if (!(canmove _cursorTarget) && (player distance _cursorTarget >= 2) && (count (crew _cursorTarget))== 0 && ((vectorUp _cursorTarget) select 2) < 0.5) then {
-				_playersNear = {isPlayer _x} count (player nearEntities ["CAManBase", 6]);
-				if(_isVehicletype || (_playersNear >= 2)) then {
+			if (!(canmove _cursorTarget) && (player distance _cursorTarget >= 0) && (count (crew _cursorTarget))== 0 && ((vectorUp _cursorTarget) select 2) < 0.5) then {
+				if(_isVehicle) then {
 					_player_flipveh = true;	
 				};
 			};
@@ -257,6 +405,7 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	
 	};
 
+
 	if(_player_deleteBuild) then {
 		if (s_player_deleteBuild < 0) then {
 			s_player_deleteBuild = player addAction [format[localize "str_actions_delete",_text], "\z\addons\dayz_code\actions\remove.sqf",_cursorTarget, 1, true, true, "", ""];
@@ -265,53 +414,7 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_player_deleteBuild;
 		s_player_deleteBuild = -1;
 	};
-	
-	if (DZE_HeliLift) then {
-		_liftHeli = objNull;
-		_found = false;
-	
-		_allowTow = false;
-		if ((count (crew _cursorTarget)) == 0) then {
-			{
-				if(!_allowTow) then {
-					_allowTow = _cursorTarget isKindOf _x;
-				};
-			} count DZE_HeliAllowToTow;
-		};
 
-		//diag_log format["CREW: %1 ALLOW: %2",(count (crew _cursorTarget)),_allowTow];
-
-		if (_allowTow) then {
-			_liftHelis = nearestObjects [player, DZE_HeliAllowTowFrom, 15];
-			{
-				if(!_found) then {
-					_posL = [_x] call FNC_getPos;
-					_posC = [_cursorTarget] call FNC_getPos;
-					_height = (_posL select 2) - (_posC select 2);
-					_hasAttached = _x getVariable["hasAttached",false];
-					if(_height < 15 && _height > 5 && (typeName _hasAttached != "OBJECT")) then {
-						if(((abs((_posL select 0) - (_posC select 0))) < 10) && ((abs((_posL select 1) - (_posC select 1))) < 10)) then {
-							_liftHeli = _x;
-							_found = true;
-						};
-					};
-				};
-			} count _liftHelis;
-		};
-
-		//diag_log format["HELI: %1 TARGET: %2",_found,_cursorTarget];
-
-		_attached = _cursorTarget getVariable["attached",false];
-		if(_found && _allowTow && _canDo && !locked _cursorTarget && !_isPZombie && (typeName _attached != "OBJECT")) then {
-			if (s_player_heli_lift < 0) then {
-				s_player_heli_lift = player addAction ["Attach to Heli", "\z\addons\dayz_code\actions\player_heliLift.sqf",[_liftHeli,_cursorTarget], -10, false, true, "",""];
-			};
-		} else {
-			player removeAction s_player_heli_lift;
-			s_player_heli_lift = -1;
-		};
-	};
-	
 	// Allow Owner to lock && unlock vehicle  
 	if(_player_lockUnlock_crtl) then {
 		if (s_player_lockUnlock_crtl < 0) then {
@@ -344,7 +447,22 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		{player removeAction _x} count s_player_lockunlock;s_player_lockunlock = [];
 		s_player_lockUnlock_crtl = -1;
 	};
+if(ArrestScript)then{
 
+_Build = canbuild;
+//--------------------------------------ARREST---------------------------------------------------------------- 
+		   if ((player getVariable"humanity") >= 5000 or (player getVariable"humanity") <= -5000 or (getPlayerUID player) in AdminList ) then {
+			if(_isMan && !_isZombie && _canDo && _isAlive && _Build) then {
+				if (s_player_arrest < 0) then {
+					s_player_arrest = player addaction ['<t color="#0074E8">' + "Investigation Menu" + '</t>', "Scripts\Investigation\investigation.sqf","",100,false,true,"", ""];
+					};
+			} else {
+				player removeAction s_player_arrest;
+				s_player_arrest = -1;
+				};
+		};
+//-------------------------------------------------------------------------------------------------------------
+};  
 	if(DZE_AllowForceSave) then {
 		//Allow player to force save
 		if((_isVehicle || _isTent) && !_isMan) then {
@@ -374,7 +492,7 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	//flip vehicle small vehicles by your self && all other vehicles with help nearby
 	if(_player_flipveh) then {
 		if (s_player_flipveh  < 0) then {
-			s_player_flipveh = player addAction [format[localize "str_actions_flipveh",_text], "\z\addons\dayz_code\actions\player_flipvehicle.sqf",_cursorTarget, 1, true, true, "", ""];		
+			s_player_flipveh = player addAction [format[localize "str_actions_flipveh",_text], "\z\addons\dayz_code\actions\flipvehicle.sqf",_cursorTarget, 1, true, true, "", ""];		
 		};
 	} else {
 		player removeAction s_player_flipveh;
@@ -447,7 +565,18 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_player_studybody;
 		s_player_studybody = -1;
 	};
-
+	
+//BURY BODIES
+if(BuryHumanScript)then{
+	if (!_isAlive && !_isZombie && !_isAnimal && _hasETool && _isMan && _canDo) then {
+        if (s_player_bury_human < 0) then {
+            s_player_bury_human = player addAction [format["Bury Body"], "scripts\BuryHuman\bury_human.sqf",cursorTarget, 3, true, true, "", ""];
+        }
+    } else {
+        player removeAction s_player_bury_human;
+        s_player_bury_human = -1;
+    };
+};
 	// logic vars
 	_player_cook = false;
 	_player_boil = false;
@@ -521,6 +650,17 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_player_packtent;
 		s_player_packtent = -1;
 	};
+if(BurnTentsScript)then{
+	//BURN TENT
+	if(_isTent and _hasMatches and _canDo and !_isMan) then {
+        if (s_player_igniteTent < 0) then {
+            s_player_igniteTent = player addAction [format["Ignite Tent"], "scripts\tent_ignite.sqf",cursorTarget, 1, true, true, "", ""];
+        };
+    } else {
+        player removeAction s_player_igniteTent;
+        s_player_igniteTent = -1;
+    };
+};
 
 	//Allow owner to unlock vault
 	if((_typeOfCursorTarget in DZE_LockableStorage) && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
@@ -711,8 +851,23 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		s_player_towing = -1;
 	};
 	*/
+if(TowingScript)then{
+//TOWING
+	call compile preprocessFileLineNumbers "scripts\Towing\init.sqf";
+};
 
 
+if(TentHealScript)then{
+    //Sleep
+	if(_isTent and _ownerID ==  dayz_characterID) then {
+		if ((s_player_sleep < 0) and (player distance _cursorTarget < 3)) then {
+			s_player_sleep = player addAction [localize "str_actions_self_sleep", "scripts\player_sleep.sqf",_cursorTarget, 0, false, true, "",""];
+		};
+	} else {
+		player removeAction s_player_sleep;
+		s_player_sleep = -1;
+	};
+}else{
     //Sleep
 	if(_isTent && _ownerID == dayz_characterID) then {
 		if ((s_player_sleep < 0) && (player distance _cursorTarget < 3)) then {
@@ -722,22 +877,27 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		player removeAction s_player_sleep;
 		s_player_sleep = -1;
 	};
-	
-	//Repairing Vehicles
-	if ((dayz_myCursorTarget != _cursorTarget) && _isVehicle && !_isMan && _hasToolbox && (damage _cursorTarget < 1) && !_isDisallowRepair) then {
-		if (s_player_repair_crtl < 0) then {
-			dayz_myCursorTarget = _cursorTarget;
-			_menu = dayz_myCursorTarget addAction [localize "STR_EPOCH_PLAYER_REPAIRV", "\z\addons\dayz_code\actions\repair_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
-			_menu1 = dayz_myCursorTarget addAction [localize "STR_EPOCH_PLAYER_SALVAGEV", "\z\addons\dayz_code\actions\salvage_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
-			s_player_repairActions set [count s_player_repairActions,_menu];
-			s_player_repairActions set [count s_player_repairActions,_menu1];
-			s_player_repair_crtl = 1;
-		} else {
-			{dayz_myCursorTarget removeAction _x} count s_player_repairActions;s_player_repairActions = [];
-			s_player_repair_crtl = -1;
-		};
-	};
+};	
 
+//Repairing Vehicles
+    if ((dayz_myCursorTarget != _cursorTarget) and _isVehicle and !_isMan and _hasToolbox and (damage _cursorTarget < 1) and !_isDisallowRepair) then {
+		_hasKey = _ownerID in _temp_keys;
+		_oldOwner = (_ownerID == dayz_playerUID);
+		if(!locked _cursorTarget) then {
+			if (s_player_repair_crtl < 0) then {
+				dayz_myCursorTarget = _cursorTarget;
+				_menu = dayz_myCursorTarget addAction ["Repair Vehicle", "\z\addons\dayz_code\actions\repair_vehicle.sqf",_cursorTarget, 0, true, false, "",""];
+				_menu1 = dayz_myCursorTarget addAction ["Salvage Vehicle", "scripts\salvage\salvage.sqf",_cursorTarget, 0, true, false, "",""];;
+				s_player_repairActions set [count s_player_repairActions,_menu];
+				s_player_repairActions set [count s_player_repairActions,_menu1];
+				s_player_repair_crtl = 1;
+			} else {
+				{dayz_myCursorTarget removeAction _x} forEach s_player_repairActions;s_player_repairActions = [];
+				s_player_repair_crtl = -1;
+			};
+		};
+    };
+	
 	// All Traders
 	if (_isMan && !_isPZombie && _traderType in serverTraders) then {
 		
@@ -773,6 +933,8 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 					s_player_parts set [count s_player_parts,_buy];
 				
 				} count (_traderMenu select 1);
+				//VASP
+				LastTraderMenu = (_traderMenu select 0);
 				// Database menu
 				_buy = player addAction [localize "STR_EPOCH_PLAYER_289", "\z\addons\dayz_code\actions\show_dialog.sqf",(_traderMenu select 0), 999, true, false, "",""];
 				s_player_parts set [count s_player_parts,_buy];
@@ -785,7 +947,24 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		{player removeAction _x} count s_player_parts;s_player_parts = [];
 		s_player_parts_crtl = -1;
 	};
-
+if(NOSScript)then{
+		//Nitro
+	_isaCar = _cursorTarget isKindOf "Car";
+	if (("ItemJerrycan" in _magazinesPlayer) && ("ItemSodaRbull" in _magazinesPlayer)) then {
+	    _hasNOSitems = true;
+	} else {
+	    _hasNOSitems = false;
+	};
+	_isNOSinstalled = _cursorTarget getVariable ["nitroinstalled", 0];
+	if (_isaCar and !locked _cursorTarget and _hasNOSitems and _isNOSinstalled == 0) then {
+		if (s_player_nitroInstall < 0) then {
+			s_player_nitroInstall = player addAction [("<t color=""#39C1F3"">" + ("Install NOS boost") +"</t>"), "scripts\NOS\nitroinstall.sqf",_cursorTarget, 999, true, false, "",""];
+		};
+	} else {
+		player removeAction s_player_nitroInstall;
+		s_player_nitroInstall = -1;
+	};
+};
 	
 	if(dayz_tameDogs) then {
 		
@@ -842,6 +1021,18 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 			s_player_followdog = -1;
 		};
 	};
+if(RobBankScript)then{	
+	// Bank Robbery 
+	_bankrobbery = cursorTarget isKindOf "Notebook";
+	if ((speed player <= 1) && _bankrobbery && (player distance cursorTarget < 5)) then {
+	if (s_player_bankrob < 0) then {
+	s_player_bankrob = player addAction ["Attempt to rob the bank","scripts\banks\novyBank.sqf",cursorTarget, 0, false, true, "",""];
+	};
+	} else {
+	player removeAction s_player_bankrob;
+	s_player_bankrob = -1;
+	};
+};
 
 } else {
 	//Engineering
@@ -930,6 +1121,49 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	s_player_fuelauto = -1;
 	player removeAction s_player_fuelauto2;
 	s_player_fuelauto2 = -1;
+	//####----####----####---- Base Building 1.3 Start ----####----####----####
+	player removeAction s_player_getTargetUID;
+	s_player_getTargetUID = -1;
+	player removeAction s_player_giveBaseOwnerAccess;
+	s_player_giveBaseOwnerAccess = -1;
+	player removeAction s_player_gateActions;
+	s_player_gateActions = -1;
+	player removeAction s_player_roofToggle;
+	s_player_roofToggle = -1;
+	player removeAction s_player_addGateAuthorization;
+	s_player_addGateAuthorization = -1;
+	player removeAction s_player_removeGateAuthorization;
+	s_player_removeGateAuthorization = -1;
+	player removeAction s_player_disarmBomb;
+	s_player_disarmBomb = -1;
+	player removeAction s_player_bbZombieShield_on;
+	s_player_bbZombieShield_on = -1;
+	player removeAction s_player_bbZombieShield_off;
+	s_player_bbZombieShield_off = -1;
+	player removeAction s_player_inflameBarrels;
+	s_player_inflameBarrels = -1;
+	player removeAction s_player_deflameBarrels;
+	s_player_deflameBarrels = -1;
+	player removeAction s_player_towerLightsOn;
+	s_player_towerLightsOn = -1;
+	player removeAction s_player_towerLightsOff;
+	s_player_towerLightsOff = -1;
+	player removeAction s_player_bbLightMenu;
+	s_player_bbLightMenu = -1;
+//####----####----####---- Base Building 1.3 End ----####----####----####
+	player removeAction s_player_bury_human;
+    s_player_bury_human = -1;
+	//arrest
+	player removeAction s_player_arrest;
+    s_player_arrest = -1;
+    player removeAction s_player_release;
+    s_player_release = -1;
+    player removeAction s_player_escort;
+    s_player_escort = -1;
+    player removeAction s_player_search;
+    s_player_search = -1;
+	player removeAction s_player_butcherZ;
+	s_player_butcherZ = -1;
 };
 
 
@@ -961,4 +1195,92 @@ if (_dogHandle > 0) then {
 	s_player_speeddog =		-1;
 	player removeAction s_player_calldog;
 	s_player_calldog = 		-1;
+};
+if(DrinkWaterScript)then{
+	// ----------------------------- / Drink water \ ----------------------
+	private["_playerPos","_canDrink","_isPond","_isWell","_pondPos","_objectsWell","_objectsPond","_display"];
+	 
+	_playerPos = getPosATL player;
+	_canDrink = count nearestObjects [_playerPos, ["Land_pumpa","Land_water_tank"], 4] > 0;
+	_isPond = false;
+	_isWell = false;
+	_pondPos = [];
+	_objectsWell = [];
+	 
+	if (!_canDrink) then {
+		_objectsWell = nearestObjects [_playerPos, [], 4];
+		{
+			//Check for Well
+			_isWell = ["_well",str(_x),false] call fnc_inString;
+			if (_isWell) then {_canDrink = true};
+		} forEach _objectsWell;
+	};
+	 
+	if (!_canDrink) then {
+		_objectsPond = nearestObjects [_playerPos, [], 50];
+		{
+			//Check for pond
+			_isPond = ["pond",str(_x),false] call fnc_inString;
+			if (_isPond) then {
+				_pondPos = (_x worldToModel _playerPos) select 2;
+				if (_pondPos < 0) then {
+					_canDrink = true;
+				};
+			};
+		} forEach _objectsPond;
+	};
+	 
+	if (_canDrink) then {
+			if (s_player_drinkWater < 0) then {
+				s_player_drinkWater = player addaction[("<t color=""#0000c7"">" + (localize "STR_action_drink") +"</t>"),"scripts\DrinkWater\drink_water.sqf"];
+			};
+		} else {
+			player removeAction s_player_drinkWater;
+			s_player_drinkWater = -1;
+		};
+	// ----------------------------- \ Drink water / ----------------------
+};
+if(AntiZombieEmitterScript)then{
+	// ZOMBIE SHIELD START
+	if (("TrashTinCan" in magazines player) && ("TrashJackDaniels" in magazines player) && ("PartEngine" in magazines player) && ("ItemJerrycan" in magazines player) && ("ItemToolbox" in items player)) then {
+		hasShield = true;
+	} else {
+		hasShield = false;
+	};
+	if (hasShield) then {
+		if (zombieShield < 0) then {
+		zombieShield = player addAction [("<t color=""#00c362"">" + ("Anti-Zombie Emitter") +"</t>"),"scripts\ZombieBait_Bomb_Shield\zombieshield.sqf","",5,false,true,"",""];
+		};
+	} else {
+		player removeAction zombieShield;
+		zombieShield = -1;
+	};
+	// ZOMBIE SHIELD END
+};
+if(ZombieBaitScript)then{
+	// Zombie Bait
+	if (("ItemBloodbag" in magazines player) && ("FoodbeefRaw" in magazines player)) then {
+		hasBait = true;
+	} else {
+		hasBait = false;
+	};
+	if (hasBait) then {
+		if (zombieBait < 0) then {
+	zombieBait = player addAction [("<t color=""#c30000"">" + ("Place Zombie Bait") +"</t>"),"scripts\ZombieBait_Bomb_Shield\zombiebait.sqf","",5,false,true,"",""];
+		};
+	} else {
+		player removeAction zombieBait;
+		zombieBait = -1;
+	};
+};
+if(ZombieBombScript)then{
+	// Exploding Zombie Bait
+	if ((hasBait) && ("HandGrenade_West" in magazines player)) then {
+		if (zombieBomb < 0) then {
+		zombieBomb = player addAction [("<t color=""#c30000"">" + ("Place Exploding Bait") +"</t>"),"scripts\ZombieBait_Bomb_Shield\zombiebomb.sqf","",5,false,true,"",""];
+		};
+	} else {
+		player removeAction zombieBomb;
+		zombieBomb = -1;
+	};
 };

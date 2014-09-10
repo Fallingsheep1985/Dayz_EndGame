@@ -2,7 +2,11 @@
 	DayZ Base Building
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
-private ["_location","_dir","_classname","_item","_hasrequireditem","_missing","_hastoolweapon","_cancel","_reason","_started","_finished","_animState","_isMedic","_dis","_sfx","_hasbuilditem","_tmpbuilt","_onLadder","_isWater","_require","_text","_offset","_IsNearPlot","_isOk","_location1","_location2","_counter","_limit","_proceed","_num_removed","_position","_object","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_findNearestPoles","_findNearestPole","_distance","_classnametmp","_ghost","_isPole","_needText","_lockable","_zheightchanged","_rotate","_combination_1","_combination_2","_combination_3","_combination_4","_combination","_combination_1_Display","_combinationDisplay","_zheightdirection","_abort","_isNear","_need","_needNear","_vehicle","_inVehicle","_requireplot","_objHDiff","_isLandFireDZ","_isTankTrap"];
+private ["_helperColor","_objectHelper","_objectHelperDir","_objectHelperPos","_canDo",
+"_location","_dir","_classname","_item","_hasrequireditem","_missing","_hastoolweapon","_cancel","_reason","_started","_finished","_animState","_isMedic","_dis","_sfx","_hasbuilditem","_tmpbuilt","_onLadder","_isWater","_require","_text","_offset","_IsNearPlot","_isOk","_location1","_location2","_counter","_limit","_proceed","_num_removed","_position","_object","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_findNearestPoles","_findNearestPole","_distance","_classnametmp","_ghost","_isPole","_needText","_lockable","_zheightchanged","_rotate","_combination_1","_combination_2","_combination_3","_combination_4","_combination","_combination_1_Display","_combinationDisplay","_zheightdirection","_abort","_isNear","_need","_needNear","_vehicle","_inVehicle","_requireplot","_objHDiff","_isLandFireDZ","_isTankTrap"];
+
+DZE_BuildVector = [[0,0,0],[0,0,0]];
+
 
 if(DZE_ActionInProgress) exitWith { cutText [(localize "str_epoch_player_40") , "PLAIN DOWN"]; };
 DZE_ActionInProgress = true;
@@ -19,6 +23,68 @@ _canBuildOnPlot = false;
 _vehicle = vehicle player;
 _inVehicle = (_vehicle != player);
 
+//snap vars -- temporary fix for errors so variables.sqf can be skipped
+if (isNil "snapProVariables") then {
+	if (isNil "DZE_snapExtraRange") then {
+		DZE_snapExtraRange = 0;
+	};
+	s_player_toggleSnap = -1;
+	s_player_toggleSnapSelect = -1;
+	s_player_toggleSnapSelectPoint=[];
+	snapActions = -1;
+	snapGizmos = [];
+	snapGizmosNearby = [];
+	snapProVariables = true; // will skip this statement from now on.
+};
+// snap vars
+
+helperDetach = false; 
+
+_canDo = (!r_drag_sqf and !r_player_unconscious);
+
+
+_vector = [];
+
+fnc_SetPitchBankYaw = { 
+    private ["_object","_rotations","_aroundX","_aroundY","_aroundZ","_dirX","_dirY","_dirZ","_upX","_upY","_upZ","_dir","_up","_dirXTemp",
+    "_upXTemp"];
+    _object = _this select 0; 
+    _rotations = _this select 1; 
+    _aroundX = _rotations select 0; 
+    _aroundY = _rotations select 1; 
+    _aroundZ = (360 - (_rotations select 2)) - 360; 
+    _dirX = 0; 
+    _dirY = 1; 
+    _dirZ = 0; 
+    _upX = 0; 
+    _upY = 0; 
+    _upZ = 1; 
+    if (_aroundX != 0) then { 
+        _dirY = cos _aroundX; 
+        _dirZ = sin _aroundX; 
+        _upY = -sin _aroundX; 
+        _upZ = cos _aroundX; 
+    }; 
+    if (_aroundY != 0) then { 
+        _dirX = _dirZ * sin _aroundY; 
+        _dirZ = _dirZ * cos _aroundY; 
+        _upX = _upZ * sin _aroundY; 
+        _upZ = _upZ * cos _aroundY; 
+    }; 
+    if (_aroundZ != 0) then { 
+        _dirXTemp = _dirX; 
+        _dirX = (_dirXTemp* cos _aroundZ) - (_dirY * sin _aroundZ); 
+        _dirY = (_dirY * cos _aroundZ) + (_dirXTemp * sin _aroundZ);        
+        _upXTemp = _upX; 
+        _upX = (_upXTemp * cos _aroundZ) - (_upY * sin _aroundZ); 
+        _upY = (_upY * cos _aroundZ) + (_upXTemp * sin _aroundZ); 		
+    }; 
+    _dir = [_dirX,_dirY,_dirZ]; 
+    _up = [_upX,_upY,_upZ]; 
+    _object setVectorDirAndUp [_dir,_up];
+	DZE_BuildVector = [_dir,_up];
+}; 
+
 DZE_Q = false;
 DZE_Z = false;
 
@@ -31,6 +97,7 @@ DZE_Z_ctrl = false;
 DZE_5 = false;
 DZE_4 = false;
 DZE_6 = false;
+DZE_F = false;
 
 DZE_cancelBuilding = false;
 
@@ -204,16 +271,42 @@ if (_hasrequireditem) then {
 		_classname = _ghost;
 	};
 
+
+	
 	_object = createVehicle [_classname, _location, [], 0, "CAN_COLLIDE"];
-
-	_object attachTo [player,_offset];
-
-	_position = getPosATL _object;
-
-	cutText [(localize "str_epoch_player_45"), "PLAIN DOWN"];
+	_object setDir 0;
+	//Build gizmo
+	_objectHelper = "Sign_sphere10cm_EP1" createVehicle _location;
+	_helperColor = "#(argb,8,8,3)color(0,0,0,0,ca)";
+	_objectHelper setobjecttexture [0,_helperColor];
+	_objectHelper attachTo [player,_offset];
+	_object attachTo [_objectHelper,[0,0,0]];
+	_position = getPosATL _objectHelper;
+	
+	//cutText [(localize "str_epoch_player_45"), "PLAIN DOWN"];
 
 	_objHDiff = 0;
 
+	if (isClass (missionConfigFile >> "SnapBuilding" >> _classname)) then {	
+		["","","",["Init",_object,_classname,_objectHelper]] spawn snap_build;
+	};
+
+	DZE_updateVec = false;
+	DZE_memDir = getDir _objectHelper;
+	DZE_memForBack = 0;
+	DZE_memLeftRight = 0;
+	if !(_classname in DZE_noRotate) then{
+		s_player_setVectorsReset = player addaction ["Reset","scripts\snap_pro\player_vectorChange.sqf","reset"];
+		s_player_setVectorsForward = player addaction ["Pitch Forward","scripts\snap_pro\player_vectorChange.sqf","forward"];
+		s_player_setVectorsBack = player addaction ["Pitch Back","scripts\snap_pro\player_vectorChange.sqf","back"];
+		s_player_setVectorsLeft = player addaction ["Bank Left","scripts\snap_pro\player_vectorChange.sqf","left"];
+		s_player_setVectorsRight = player addaction ["Bank Right","scripts\snap_pro\player_vectorChange.sqf","right"];
+		s_player_setVectors1 = player addaction ["Increment by 1 degree","scripts\snap_pro\player_vectorChange.sqf","1"];
+		s_player_setVectors5 = player addaction ["Increment by 5 degrees","scripts\snap_pro\player_vectorChange.sqf","5"];
+		s_player_setVectors45 = player addaction ["Increment by 45 degrees","scripts\snap_pro\player_vectorChange.sqf","45"];
+		s_player_setVectors90 = player addaction ["Increment by 90 degrees","scripts\snap_pro\player_vectorChange.sqf","90"];
+	};
+	
 	while {_isOk} do {
 
 		_zheightchanged = false;
@@ -253,24 +346,62 @@ if (_hasrequireditem) then {
 		if (DZE_4) then {
 			_rotate = true;
 			DZE_4 = false;
-			_dir = 180;
+			if (helperDetach) then {
+				_dir = -45;
+				DZE_memDir = DZE_memDir - 45;
+			} else {
+				_dir = 180;
+				DZE_memDir = 180;
+			};
 		};
 		if (DZE_6) then {
 			_rotate = true;
 			DZE_6 = false;
-			_dir = 0;
+			if (helperDetach) then {
+				_dir = 45;
+				DZE_memDir = DZE_memDir + 45;
+			} else {
+				_dir = 0;
+				DZE_memDir = 0;
+			};
+		};
+		
+		if(DZE_updateVec) then{
+			[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
+			DZE_updateVec = false;
+		};
+		
+		if (DZE_F and _canDo) then {
+		
+			if (helperDetach) then {
+				_objectHelper attachTo [player];
+				DZE_memDir = DZE_memDir-(getDir player);
+				helperDetach = false;
+				[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
+			} else {		
+				_objectHelperPos = getPosATL _objectHelper;
+				detach _objectHelper;			
+				DZE_memDir = getDir _objectHelper;
+				[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
+				_objectHelper setPosATL _objectHelperPos;
+
+
+				_objectHelper setVelocity [0,0,0]; //fix sliding glitch
+				helperDetach = true;
+			};
+			DZE_F = false;
 		};
 
 		if(_rotate) then {
-			_object setDir _dir;
-			_object setPosATL _position;
-			//diag_log format["DEBUG Rotate BUILDING POS: %1", _position];
+			[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
 		};
 
 		if(_zheightchanged) then {
-			detach _object;
+			if (!helperDetach) then {
+			detach _objectHelper;
+			};
 
-			_position = getPosATL _object;
+			_position = getPosATL _objectHelper;
 
 			if(_zheightdirection == "up") then {
 				_position set [2,((_position select 2)+0.1)];
@@ -299,47 +430,66 @@ if (_hasrequireditem) then {
 				_objHDiff = _objHDiff - 0.01;
 			};
 
-			_object setDir (getDir _object);
+			_objectHelper setDir (getDir _objectHelper);
 
 			if((_isAllowedUnderGround == 0) && ((_position select 2) < 0)) then {
 				_position set [2,0];
 			};
 
-			_object setPosATL _position;
+			_objectHelper setPosATL _position;
 
 			//diag_log format["DEBUG Change BUILDING POS: %1", _position];
 
-			_object attachTo [player];
-
+			if (!helperDetach) then {
+				_objectHelper attachTo [player];
+			};
+			
+			[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
 		};
 
 		sleep 0.5;
 
 		_location2 = getPosATL player;
-
+		_objectHelperPos = getPosATL _objectHelper;
 		if(DZE_5) exitWith {
 			_isOk = false;
-			detach _object;
+			detach _object;			
 			_dir = getDir _object;
+			_vector = [(vectorDir _object),(vectorUp _object)];	
 			_position = getPosATL _object;
 			//diag_log format["DEBUG BUILDING POS: %1", _position];
 			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
 		};
 
-		if(_location1 distance _location2 > 5) exitWith {
+		if(_location1 distance _location2 > 10) exitWith {
 			_isOk = false;
 			_cancel = true;
-			_reason = "You've moved to far away from where you started building (within 5 meters)";
+			_reason = "You've moved to far away from where you started building (within 10 meters)";
 			detach _object;
 			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
+		};
+		if(_location1 distance _objectHelperPos > 10) exitWith {
+			_isOk = false;
+			_cancel = true;
+			_reason = "Object is placed to far away from where you started building (within 10 meters)";
+			detach _object;
+			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
 		};
 
-		if(abs(_objHDiff) > 5) exitWith {
+		if(abs(_objHDiff) > 10) exitWith {
 			_isOk = false;
 			_cancel = true;
-			_reason = "Cannot move up || down more than 5 meters";
+			_reason = "Cannot move up or down more than 10 meters";
 			detach _object;
 			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
 		};
 
 		if (player getVariable["combattimeout", 0] >= time) exitWith {
@@ -348,6 +498,8 @@ if (_hasrequireditem) then {
 			_reason = (localize "str_epoch_player_43");
 			detach _object;
 			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
 		};
 
 		if (DZE_cancelBuilding) exitWith {
@@ -356,9 +508,22 @@ if (_hasrequireditem) then {
 			_reason = "Cancelled building.";
 			detach _object;
 			deleteVehicle _object;
+			detach _objectHelper;
+			deleteVehicle _objectHelper;
 		};
 	};
 
+	if !(_classname in DZE_noRotate) then{
+		player removeAction s_player_setVectorsReset;
+		player removeAction s_player_setVectorsForward;
+		player removeAction s_player_setVectorsBack;
+		player removeAction s_player_setVectorsLeft;
+		player removeAction s_player_setVectorsRight;
+		player removeAction s_player_setVectors1;
+		player removeAction s_player_setVectors5;
+		player removeAction s_player_setVectors45;
+		player removeAction s_player_setVectors90;
+	};	
 	//No building on roads unless toggled
 	if (!DZE_BuildOnRoads) then {
 		if (isOnRoad _position) then { _cancel = true; _reason = "Cannot build on a road."; };
@@ -375,16 +540,18 @@ if (_hasrequireditem) then {
 		_tmpbuilt = createVehicle [_classname, _location, [], 0, "CAN_COLLIDE"];
 
 		_tmpbuilt setdir _dir;
-
+		
+		
 		// Get position based on object
 		_location = _position;
 
 		if((_isAllowedUnderGround == 0) && ((_location select 2) < 0)) then {
 			_location set [2,0];
 		};
-
+		
+		_tmpbuilt setVectorDirAndUp _vector;
 		_tmpbuilt setPosATL _location;
-
+		
 
 		cutText [format[(localize "str_epoch_player_138"),_text], "PLAIN DOWN"];
 
@@ -517,7 +684,7 @@ if (_hasrequireditem) then {
 					_tmpbuilt setVariable ["CharacterID",_combination,true];
 
 
-					PVDZE_obj_Publish = [_combination,_tmpbuilt,[_dir,_location],_classname];
+					PVDZE_obj_Publish = [_combination,_tmpbuilt,[_dir,_location,_vector],_classname];
 					publicVariableServer "PVDZE_obj_Publish";
 
 					cutText [format[(localize "str_epoch_player_140"),_combinationDisplay,_text], "PLAIN DOWN", 5];
@@ -530,7 +697,7 @@ if (_hasrequireditem) then {
 					if(_tmpbuilt isKindOf "Land_Fire_DZ") then {
 						_tmpbuilt spawn player_fireMonitor;
 					} else {
-						PVDZE_obj_Publish = [dayz_characterID,_tmpbuilt,[_dir,_location],_classname];
+						PVDZE_obj_Publish = [dayz_characterID,_tmpbuilt,[_dir,_location,_vector],_classname];
 						publicVariableServer "PVDZE_obj_Publish";
 					};
 				};

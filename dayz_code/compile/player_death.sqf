@@ -76,7 +76,9 @@ terminate dayz_medicalH;
 terminate dayz_gui;
 
 r_player_dead = true;
-
+if(TakeClothesScript)then{
+	call compile preprocessFileLineNumbers "scripts\TakeClothes\Recoverskin.sqf";
+};
 "dynamicBlur" ppEffectEnable true;"dynamicBlur" ppEffectAdjust [4]; "dynamicBlur" ppEffectCommit 0.2;
 
 "colorCorrections" ppEffectEnable true;
@@ -105,7 +107,7 @@ _body setVariable["combattimeout", 0, true];
 //["dayzFlies",player] call broadcastRpcCallAll;
 sleep 2;
 
-1 cutRsc ["DeathScreen","BLACK OUT",3];
+100 cutRsc ["DeathScr","BLACK OUT",3];
 
 playMusic "dayz_track_death_1";
 
