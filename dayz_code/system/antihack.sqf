@@ -5,7 +5,9 @@
 private ["_log","_playerName","_playerUID","_al1veOnce","_debug","_lastpos","_lastheight","_lasttime","_lastVehicle","_v","_h","_topv","_toph","_curpos","_distance","_acceptableDistance","_curtime","_difftime","_plant","_curheight","_speed","_topSpeed","_terrainHeight","_differenceCheck","_lastPosVar","_safetyVehicle","_curPos"];
 
 waitUntil {vehicle player == player};
-
+if (((getPlayerUID player) in AdminList)||((getPlayerUID player) in ModList)||((getPlayerUID player) in TempList))then{
+//dont load the antihack so admin tools work properly
+}else{
 [] spawn {
 	private ["_playerName","_playerUID"];
 	_playerName = name player;
@@ -70,6 +72,8 @@ while {1 == 1} do {
 	_topv = 0;
 	_toph = 0;
 
+	// removed so admins can Teleport,TP to ME, TP to Player and for NOS
+	/*
 	while {((typeName player == "OBJECT") && {((player in playableUnits) || {(alive player)})})} do {
 		_curpos = getPosATL (vehicle player);
 		_distance = _lastpos distance _curpos;
@@ -108,6 +112,8 @@ while {1 == 1} do {
 		};
 		sleep 0.25;
 	};
+	*/
 	sleep 0.1;
 };
 endMission "LOSER";
+};

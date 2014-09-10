@@ -14,7 +14,7 @@ item9[] = {"Collect",2,250,-75.000000,100.000000,25.000000,150.000000,0.000000,"
 item10[] = {"Has_PlayerID",4,218,-75.000000,175.000000,25.000000,225.000000,1.000000,"Has PlayerID"};
 item11[] = {"no_PlayerID",4,218,50.000000,150.000000,150.000000,200.000000,2.000000,"no PlayerID"};
 item12[] = {"ERROR__No_Player",2,250,175.000000,150.000000,275.000000,200.000000,0.000000,"ERROR:" \n "No PlayerID"};
-item13[] = {"Request",2,250,-75.000000,400.000000,25.000000,450.000000,0.000000,"Request"};
+item13[] = {"Request",2,4346,-75.000000,400.000000,25.000000,450.000000,0.000000,"Request"};
 item14[] = {"Response",4,218,-175.000000,450.000000,-75.000000,500.000000,0.000000,"Response"};
 item15[] = {"Parse_Login",2,250,-75.000000,500.000000,25.000000,550.000000,0.000000,"Parse Login"};
 item16[] = {"Hive_Bad",4,218,50.000000,500.000000,150.000000,550.000000,10.000000,"Hive" \n "Bad"};
@@ -34,7 +34,7 @@ item29[] = {"ERROR__Bad_Versi",2,250,175.000000,800.000000,275.000000,850.000000
 item30[] = {"Display_Ready",4,218,-175.000000,1050.000000,-75.000000,1100.000000,0.000000,"Display" \n "Ready"};
 item31[] = {"Preload_Display",2,250,-75.000000,1100.000000,25.000000,1150.000000,0.000000,"Preload" \n "Display"};
 item32[] = {"Preload_Done",4,218,-175.000000,1150.000000,-75.000000,1200.000000,0.000000,"Preload" \n "Done"};
-item33[] = {"Initialize",2,4346,-75.000000,1200.000000,25.000000,1250.000000,0.000000,"Initialize"};
+item33[] = {"Initialize",2,250,-75.000000,1200.000000,25.000000,1250.000000,0.000000,"Initialize"};
 item34[] = {"Finish",1,250,-75.000000,1300.000000,25.000000,1350.000000,0.000000,"Finish"};
 item35[] = {"True",8,218,25.000000,1250.000000,125.000000,1300.000000,0.000000,"True"};
 item36[] = {"Too_Long",4,218,300.000000,150.000000,400.000000,200.000000,0.000000,"Too" \n "Long"};
@@ -80,6 +80,14 @@ item75[] = {"",7,210,871.000000,521.000000,879.000000,529.000000,0.000000,""};
 item76[] = {"",7,210,871.000000,170.999985,879.000000,179.000015,0.000000,""};
 item77[] = {"",7,210,871.000000,-79.000000,879.000000,-71.000000,0.000000,""};
 item78[] = {"",7,210,871.000000,271.000000,879.000000,279.000000,0.000000,""};
+item79[] = {"Request_Character",2,250,-275.000000,75.000000,-175.000000,125.000000,0.000000,"Request" \n "Character Data"};
+item80[] = {"Response",4,218,-425.000000,100.000000,-325.000000,150.000000,1.000000,"Response"};
+item81[] = {"Character_Selection",2,250,-425.000000,250.000000,-325.000000,300.000000,0.000000,"Character" \n "Selection" \n "Dialog"};
+item82[] = {"Selected",4,218,-250.000000,300.000000,-150.000000,350.000000,3.000000,"Selected"};
+item83[] = {"Refresh",4,218,-325.000000,150.000000,-225.000000,200.000000,2.000000,"Refresh"};
+item84[] = {"Nothing__Selecte",4,218,-525.000000,175.000000,-425.000000,225.000000,1.000000,"Nothing " \n "Selected"};
+item85[] = {"Retry",4,218,-350.000000,0.000000,-250.000000,50.000000,0.000000,"Retry"};
+item86[] = {"Disconnect",4,218,-275.000000,225.000000,-175.000000,275.000000,0.000000,"Disconnect"};
 link0[] = {0,1};
 link1[] = {0,5};
 link2[] = {1,2};
@@ -154,7 +162,7 @@ link70[] = {62,73};
 link71[] = {63,64};
 link72[] = {63,65};
 link73[] = {64,78};
-link74[] = {65,13};
+link74[] = {65,79};
 link75[] = {66,67};
 link76[] = {67,71};
 link77[] = {68,69};
@@ -169,8 +177,20 @@ link85[] = {75,57};
 link86[] = {76,78};
 link87[] = {77,76};
 link88[] = {78,57};
-globals[] = {25.000000,1,0,0,0,640,480,1,143,6316128,1,-280.065002,277.754272,1315.142944,920.020874,864,612,1};
-window[] = {0,-1,-1,-1,-1,966,208,1697,208,1,882};
+link89[] = {79,80};
+link90[] = {79,85};
+link91[] = {80,81};
+link92[] = {81,82};
+link93[] = {81,83};
+link94[] = {81,84};
+link95[] = {81,86};
+link96[] = {82,13};
+link97[] = {83,79};
+link98[] = {84,81};
+link99[] = {85,79};
+link100[] = {86,57};
+globals[] = {25.000000,1,0,0,0,640,480,1,151,6316128,1,-533.498108,531.183777,527.904785,-150.829941,960,612,1};
+window[] = {0,-1,-1,-1,-1,810,52,1541,52,1,978};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -472,7 +492,7 @@ class FSM
        "" \n
        "_msg = [];" \n
        "" \n
-       "PVDZE_plr_Login = [_playerUID,player];" \n
+       "PVDZE_plr_Login = [_playerUID,player,dayz_characterSlot];" \n
        "publicVariableServer ""PVDZE_plr_Login"";" \n
        "" \n
        "if (isServer) then {" \n
@@ -1644,7 +1664,7 @@ class FSM
         class Server_Ready
         {
           priority = 0.000000;
-          to="Request";
+          to="Request_Character";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!isNil ""sm_done"""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -1686,11 +1706,297 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
+    /*%FSM<STATE "Request_Character">*/
+    class Request_Character
+    {
+      name = "Request_Character";
+      init = /*%FSM<STATEINIT""">*/"PVDZE_plr_CharactersRes = [];" \n
+       "PVDZE_plr_Characters = player;" \n
+       "publicVariableServer ""PVDZE_plr_Characters"";" \n
+       "" \n
+       "diag_log [time,""PVDZE_plr_Characters"",PVDZE_plr_Characters];" \n
+       "dayz_loadScreenMsg = ""Requesting character data"";" \n
+       "_myTime = diag_tickTime;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Response">*/
+        class Response
+        {
+          priority = 1.000000;
+          to="Character_Selection";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count PVDZE_plr_CharactersRes > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""PVDZE_plr_CharactersRes"",PVDZE_plr_CharactersRes];" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Retry">*/
+        class Retry
+        {
+          priority = 0.000000;
+          to="Request_Character";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 10"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""retry requesting character data""];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Character_Selection">*/
+    class Character_Selection
+    {
+      name = "Character_Selection";
+      init = /*%FSM<STATEINIT""">*/"1 cutText ["""", ""BLACK"",0];" \n
+       "endLoadingScreen;" \n
+       "" \n
+       "diag_log [time,""createDialog RscDisplayCharacterSelect""];" \n
+       "" \n
+       "private [""_data"",""_charArray"",""_hiveVersion"",""_fnc_formatTime"",""_currentSlot"",""_switchBlock"",""_lastLoginMin"",""_dialog"",""_playerName"",""_waitTime"",""_charId"",""_slot"",""_wordspace"",""_alive"",""_generation"",""_humanity"",""_stats"",""_distanceFoot"",""_model"",""_infected"",""_lastLogin"",""_survivalTime"",""_killsZ"",""_headshotsZ"",""_killsH"",""_killsB"",""_humanityColor"",""_position"",""_nearestCities"",""_nearestCity"",""_locationName"",""_deadBodyNearby"",""_skin"",""_skinName"",""_sex"",""_text""];" \n
+       "" \n
+       "_data = PVDZE_plr_CharactersRes;" \n
+       "" \n
+       "_charArray = _data select 0;" \n
+       "_hiveVersion = _data select 1;" \n
+       "" \n
+       "// global variables" \n
+       "if (isNil ""DZE_CharacterSwitchTimeout"") then {" \n
+       "	DZE_CharacterSwitchTimeout = 30; // how often a player can switch character slots (in minutes)" \n
+       "};" \n
+       "if (isNil ""DZE_CharacterMinDistance"") then {" \n
+       "	DZE_CharacterMinDistance = 1000; // minimum distance to the player's dead characters (in meters)" \n
+       "};" \n
+       "" \n
+       "_fnc_formatTime = {" \n
+       "	private [""_min"",""_days"",""_hours"",""_time""];" \n
+       "	_min = round _this;" \n
+       "	_days = 0;" \n
+       "	_hours = 0;" \n
+       "	_time = """";" \n
+       "	if (_min >= 1440) then {" \n
+       "		_days = floor (_min / 1440);" \n
+       "		_min = _min - (_days * 1440);" \n
+       "		_time = (str _days) + "" day"";" \n
+       "		if (_days != 1) then { _time = _time + ""s""; };" \n
+       "	};" \n
+       "	if (_min >= 60) then {" \n
+       "		_hours = floor (_min / 60);" \n
+       "		_min = _min - (_hours * 60);" \n
+       "		if (_time != """") then { _time = _time + "" ""; };" \n
+       "		_time = _time + (str _hours) + "" hour"";" \n
+       "		if (_hours != 1) then { _time = _time + ""s""; };" \n
+       "	};" \n
+       "	if (_min >= 0) then {" \n
+       "		if (_time != """") then { _time = _time + "" ""; };" \n
+       "		_time = _time + (str _min) + "" minute"";" \n
+       "		if (_min != 1) then { _time = _time + ""s""; };" \n
+       "	};" \n
+       "	_time" \n
+       "};" \n
+       "" \n
+       "_currentSlot = 1;" \n
+       "_switchBlock = false;" \n
+       "_lastLoginMin = 999999999;" \n
+       "{" \n
+       "	_charId = _x select 0;" \n
+       "	_slot = _x select 1;" \n
+       "	_lastLogin = _x select 10;" \n
+       "	if (_slot >= 1 && _slot <= 3) then {" \n
+       "		if (_lastLogin < _lastLoginMin) then {" \n
+       "			_currentSlot = _slot;" \n
+       "			_lastLoginMin = _lastLogin;" \n
+       "		};" \n
+       "		if (_lastLogin < DZE_CharacterSwitchTimeout) then {" \n
+       "			_switchBlock = true;" \n
+       "		};" \n
+       "	} else {" \n
+       "		diag_log format [""invalid character slot %1 for character %2"", _slot, _charId];" \n
+       "	};" \n
+       "} forEach _charArray;" \n
+       "" \n
+       "dayz_characterSlot = 0;" \n
+       "_dialog = createDialog ""RscDisplayCharacterSelect"";" \n
+       "" \n
+       "_playerName = name player;" \n
+       "ctrlSetText [501, format [""%1, Select your Character"", _playerName]]; // title" \n
+       "" \n
+       "_waitTime = 0;" \n
+       "if (_switchBlock) then {" \n
+       "	ctrlSetText [502, format [""You can only switch to another living character every %1"", DZE_CharacterSwitchTimeout call _fnc_formatTime]]; // info 1" \n
+       "	_waitTime = DZE_CharacterSwitchTimeout - _lastLoginMin;" \n
+       "};" \n
+       "" \n
+       "{" \n
+       "	_charId = _x select 0;" \n
+       "	_slot = _x select 1;" \n
+       "	_wordspace = _x select 2;" \n
+       "	_alive = _x select 3;" \n
+       "	_generation = _x select 4;" \n
+       "	_humanity = _x select 5;" \n
+       "	_stats = _x select 6;" \n
+       "	_distanceFoot = _x select 7;" \n
+       "	_model = _x select 8;" \n
+       "	_infected = _x select 9;" \n
+       "	_lastLogin = _x select 10;" \n
+       "	_survivalTime = _x select 11;" \n
+       "" \n
+       "	_killsZ = _stats select 0;" \n
+       "	_headshotsZ = _stats select 1;" \n
+       "	_killsH = _stats select 2;" \n
+       "	_killsB = _stats select 3;" \n
+       "	" \n
+       "	if (_slot >= 1 && _slot <= 3) then {" \n
+       "		_humanityColor = ""#ffffff"";" \n
+       "		if (_humanity < -5000) then {" \n
+       "			_humanityColor = ""#ff0000"";" \n
+       "		} else {" \n
+       "			if (_humanity > 5000) then {" \n
+       "				_humanityColor = ""#3333ff"";" \n
+       "			};" \n
+       "		};" \n
+       "		" \n
+       "		_locationName = ""Wilderness"";" \n
+       "		_deadBodyNearby = false;" \n
+       "		if (count _wordspace > 1) then {" \n
+       "			_position = _wordspace select 1;" \n
+       "			_nearestCities = nearestLocations [_position, [""NameCityCapital"",""NameCity"",""NameVillage""], 1000];" \n
+       "			if (count _nearestCities > 0) then {" \n
+       "				_nearestCity = _nearestCities select 0;" \n
+       "				_locationName = format [""Near %1 (%2 m)"", text _nearestCity, round (_position distance _nearestCity)];" \n
+       "			};" \n
+       "			// check for dead bodies near the spawn position" \n
+       "			if (DZE_CharacterMinDistance > 0) then {" \n
+       "				{" \n
+       "					if ((_x isKindOf ""CAManBase"") && {(_x getVariable [""bodyName"", """"]) == _playerName} && {(_position distance _x) < DZE_CharacterMinDistance}) exitWith {" \n
+       "						_deadBodyNearby = true;" \n
+       "						ctrlSetText [503, format [""You can not spawn near your dead body (at least %1 m distance)"", DZE_CharacterMinDistance]]; // info 2" \n
+       "					};" \n
+       "				} forEach allDead;" \n
+       "			};" \n
+       "		};" \n
+       "		" \n
+       "		_skin = ""Skin_"" + _model;" \n
+       "		_skinName = getText (configFile >> ""CfgMagazines"" >> _skin >> ""displayName"");" \n
+       "		_sex = getText (configFile >> ""CfgSurvival"" >> ""Skins"" >> _skin >> ""sex"");" \n
+       "		" \n
+       "		with uiNamespace do {" \n
+       "			private [""_titleControl"",""_pictureControl"",""_textControl"",""_buttonControl""];" \n
+       "			_titleControl = CharacterSelectDisplay displayCtrl (1000 + _slot);" \n
+       "			_pictureControl = CharacterSelectDisplay displayCtrl (1200 + _slot);" \n
+       "			_textControl = CharacterSelectDisplay displayCtrl (1100 + _slot);" \n
+       "			_buttonControl = CharacterSelectDisplay displayCtrl (1600 + _slot);" \n
+       "			if (_infected == 1) then {" \n
+       "				// TODO zombie skin" \n
+       "				//_pictureControl ctrlSetText ""zombie.paa"";" \n
+       "			} else {" \n
+       "				if (_sex == ""female"") then {" \n
+       "					_pictureControl ctrlSetText ""z\addons\dayz_code\gui\gender_menu_woman.paa"";" \n
+       "				};" \n
+       "				// else _sex == ""male""" \n
+       "			};" \n
+       "			if (_alive == 1) then {" \n
+       "				// alive" \n
+       "				_titleControl ctrlSetText format [""Character %1 ID:%2"", _slot, _charId];" \n
+       "				if (_slot != _currentSlot && (_switchBlock || _deadBodyNearby)) then {" \n
+       "					if (_deadBodyNearby) then {" \n
+       "						_buttonControl ctrlSetText ""Dead body nearby"";" \n
+       "					} else { // _switchBlock" \n
+       "						_buttonControl ctrlSetText format [""Wait %1"", _waitTime call _fnc_formatTime];" \n
+       "					};" \n
+       "					_buttonControl ctrlEnable false;" \n
+       "				}" \n
+       "			} else {" \n
+       "				// dead" \n
+       "				_titleControl ctrlSetText format [""Character %1 (DEAD) ID:%2"", _slot, _charId];" \n
+       "				_titleControl ctrlSetTextColor [1, 0, 0, 1]; // red" \n
+       "				_pictureControl ctrlSetTextColor [1, 0, 0, 0.4]; // red" \n
+       "				_buttonControl ctrlSetText ""Respawn"";" \n
+       "			};" \n
+       "			_text = parseText format [""" \n
+       "				<t align='left'>Generation: </t><t align='right'>%1</t><br/>" \n
+       "				<t align='left'>Humanity: </t><t align='right' color='%2'>%3</t><br/>" \n
+       "				<t align='left'>Zombies Killed: </t><t align='right'>%4</t><br/>" \n
+       "				<t align='left'>Headshots: </t><t align='right'>%5</t><br/>" \n
+       "				<t align='left'>Murders: </t><t align='right'>%6</t><br/>" \n
+       "				<t align='left'>Bandits Killed: </t><t align='right'>%7</t><br/><br/>" \n
+       "				<t align='left'>Distance Foot: </t><t align='right'>%8</t><br/><br/>" \n
+       "				Skin: %9<br/>" \n
+       "				%10<br/>" \n
+       "				Infected: %11<br/><br/><br/>" \n
+       "				<t align='center' color='#DDDDDD'>Survived %12</t><br/><br/>" \n
+       "				<t align='center' color='#16DB57'>Last login %13 ago</t>""," \n
+       "				_generation," \n
+       "				_humanityColor," \n
+       "				_humanity," \n
+       "				_killsZ," \n
+       "				_headshotsZ," \n
+       "				_killsH," \n
+       "				_killsB," \n
+       "				_distanceFoot," \n
+       "				_skinName," \n
+       "				_locationName," \n
+       "				if (_infected == 1) then [{""yes""},{""no""}]," \n
+       "				_survivalTime call _fnc_formatTime," \n
+       "				_lastLogin call _fnc_formatTime" \n
+       "			];" \n
+       "			_textControl ctrlSetStructuredText _text;" \n
+       "		};" \n
+       "	};" \n
+       "} forEach _charArray;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Selected">*/
+        class Selected
+        {
+          priority = 3.000000;
+          to="Request";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!dialog && dayz_characterSlot > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""CharacterSelectDisplay selected"",dayz_characterSlot];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Refresh">*/
+        class Refresh
+        {
+          priority = 2.000000;
+          to="Request_Character";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!dialog && dayz_characterSlot == -1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""CharacterSelectDisplay refresh""];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Nothing__Selecte">*/
+        class Nothing__Selecte
+        {
+          priority = 1.000000;
+          to="Character_Selection";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!dialog && dayz_characterSlot == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""CharacterSelectDisplay nothing selected""];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Disconnect">*/
+        class Disconnect
+        {
+          priority = 0.000000;
+          to="Disconnect";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!dialog && dayz_characterSlot == -2"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"diag_log [time,""CharacterSelectDisplay disconnect""];"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
   };
   initState="init";
   finalStates[] =
   {
-    "Finish"
+    "Finish",
   };
 };
 /*%FSM</COMPILE>*/

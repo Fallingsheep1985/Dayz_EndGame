@@ -135,7 +135,7 @@ if (!isDedicated) then {
 	
 	//Run the player monitor
 	_id = player addEventHandler ["Respawn", {_id = [] spawn player_death;}];
-	_playerMonitor = 	 execVM "fixes\player_monitor.sqf";	
+	_playerMonitor = 	 execVM "\z\addons\dayz_code\system\player_monitor.sqf";	
 	
 	if(VASPScript)then{
 		_nil =  execVM "scripts\VASP\VASP_init.sqf";
@@ -146,7 +146,7 @@ if (!isDedicated) then {
 	};
 	
 	//anti Hack
-	 //execVM "fixes\antihack.sqf"; //moved admin check into anti hack
+	 //execVM "\z\addons\dayz_code\system\antihack.sqf"; //moved admin check into anti hack
 	
 	//Lights
 	//[false,12] execVM "\z\addons\dayz_code\compile\local_lights_init.sqf";
