@@ -99,17 +99,17 @@ EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","
 dayz_fullMoonNights = true;
 
 //Load in compiled functions
-call compile preprocessFileLineNumbers "init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
 call compile preprocessFileLineNumbers "scripts\JAEM\variables.sqf";
 progressLoadingScreen 0.1;
 call compile preprocessFileLineNumbers "\z\addons\dayz_server\init\publicEH.sqf";	
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;
-call compile preprocessFileLineNumbers "init\compiles.sqf";				//Compile regular functions
-call compile preprocessFileLineNumbers "init\compiles2.sqf";			//compile overrides
-call compile preprocessFileLineNumbers "scripts\Buildables\Crafting_Compiles.sqf"; //Alchemy compiles
+call compile preprocessFileLineNumbers "\z\addons\dayz_server\init\compiles.sqf";				//Compile regular functions
 progressLoadingScreen 0.5;
+call compile preprocessFileLineNumbers "scripts\Buildables\Crafting_Compiles.sqf"; //Alchemy compiles
+progressLoadingScreen 0.6;
 call compile preprocessFileLineNumbers "server_traders.sqf";				//Compile trader configs
 progressLoadingScreen 1.0;
 
