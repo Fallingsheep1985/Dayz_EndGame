@@ -51,9 +51,6 @@ _hitpoints = ["HitGlass1","HitGlass2","HitGlass3","HitGlass4","HitGlass5","HitGl
 
     // allow removal of any lightly damaged parts
     if (_damage <= 0.5 and _damage >= 0) then {
-       
-        // Do not allow removal of engine || fueltanks
-        if( _part == "PartGlass" || _part == "PartWheel" ) then {
 
             _color = "color='#ffff00'"; //yellow
             if (_damage >= 0.7) then {_color = "color='#ff8800'";}; //orange
@@ -63,8 +60,6 @@ _hitpoints = ["HitGlass1","HitGlass2","HitGlass3","HitGlass4","HitGlass5","HitGl
             _string = format["<t %2>Remove%1 (%3 %4)</t>",_cmpt,_color,_percent,"%"]; //Remove - Part
             _handle = dayz_myCursorTarget addAction [_string, "\z\addons\dayz_code\actions\salvage.sqf",[_vehicle,_part,_x], 0, false, true, "",""];
             s_player_repairActions set [count s_player_repairActions,_handle];
-           
-        };
     };
 
 } count _hitpoints;

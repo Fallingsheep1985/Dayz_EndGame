@@ -27,3 +27,5 @@ CHANGED - merged multichar.hpp into defines.hpp
 0.0.0.7
 FIXED - can now add ammo to AH6J
 FIXED - cant untow within 5 meters of a wall
+FIXED - salvage vehicle exploit (you can now only salvage items that are less than 50% damaged)
+ADDED - you can salvage engines and fuel tanks
