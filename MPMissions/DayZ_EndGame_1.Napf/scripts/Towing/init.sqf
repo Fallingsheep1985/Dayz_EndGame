@@ -537,14 +537,6 @@ MF_Tow_Animate_Player_Tow_Action =
 	[player,20,true,(getPosATL player)] spawn player_alertZombies; // Alert nearby zombies
 	[1,1] call dayz_HungerThirst; // Use some hunger and thirst to perform the action
 	
-	// Attach the player to the tow truck temporarily for safety so that they aren't accidentally hit by the vehicle when it gets attached
-	player attachTo [_towTruck, 
-		[
-			(boundingBox _towTruck select 1 select 0),
-			(boundingBox _towTruck select 0 select 1) + 1,
-			(boundingBox _towTruck select 0 select 2) - (boundingBox player select 0 select 2) + _offsetZ
-		]
-	];
 
 	player setDir 270;
 	player setPos (getPos player);

@@ -70,7 +70,32 @@ if(_isTowing) then {
 				player playActionNow "stop";
 			};
 		};
+		
+		_isWall =[
+			"Land_DZE_LargeWoodDoorLocked",
+			"WoodLargeWallDoor_DZ",
+			"WoodLargeWallWin_DZ",
+			"WoodLargeWall_DZ",
+			"Land_DZE_WoodDoorLocked",
+			"WoodSmallWallDoor_DZ",
+			"WoodSmallWallWin_DZ",
+			"Land_DZE_GarageWoodDoor",
+			"Land_DZE_GarageWoodDoorLocked",
+			"WoodSmallWall_DZ",
+			"WoodSmallWallThird_DZ",
+			"CinderWallHalf_DZ",
+			"CinderWall_DZ",
+			"CinderWallDoorway_DZ",
+			"Land_DZE_LargeWoodDoor",
+			"CinderWallDoorSmallLocked_DZ",
+			"CinderWallSmallDoorway_DZ",
+			"CinderWallDoor_DZ"
+		];
 
+_nearWall = nearestObjects [player,_isWall, 5];
+
+if (count _nearWall > 0) exitWith {cutText [format["Cannot untow! A Wall is within 5 Meters!"], "PLAIN DOWN"];};
+		
 		if (_finished) then {
 			detach _vehicle;
 			detach player;

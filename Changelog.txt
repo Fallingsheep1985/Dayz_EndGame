@@ -1,11 +1,29 @@
-0.0.0.4
+0.0.0.2
+CHANGED - lowered all loot chances to 0.01 imprpe for balancing
+ADDED - Miltary Vehicles to traders and vehicle spawns
+ADDED - origins vehicles
+ADDED - pook boats
+ADDED - GNT C185 + variants
+ADDED - Qantas C130
+ADDED - Usec Bell206 + variants
+ADDED - KYC Microlight + Ultralights
+ADDED - CYBP_Camel + variants
+CHANGED - split vehicles in air/land/sea and adjusted traders
+CHANGED - map is now NAPF
 
-FIXED - Brave Sir Robins spawn bike fix
+0.0.0.3
+FIXED - spawn bike (Thanks to Brave Sir Robin)
+
+0.0.0.4
 ADDED - overpoch weapons to loot spawns
 
 0.0.0.5
 ADDED - Brave Sir Robins Custom buildings
 
 0.0.0.6
-MOVED - a lot off code from mission into client
-COMBINED - multichar.hpp into defines.hpp
+CHANGED - moved a lot off code from mission into client
+CHANGED - merged multichar.hpp into defines.hpp
+
+0.0.0.7
+FIXED - can now add ammo to AH6J
+FIXED - cant untow within 5 meters of a wall
