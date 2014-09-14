@@ -1164,6 +1164,8 @@ if(RobBankScript)then{
     s_player_search = -1;
 	player removeAction s_player_butcherZ;
 	s_player_butcherZ = -1;
+	_vehicle removeAction s_player_giveAH6_Ammo;
+   s_player_giveAH6_Ammo = -1;
 };
 
 
@@ -1283,4 +1285,14 @@ if(ZombieBombScript)then{
 		player removeAction zombieBomb;
 		zombieBomb = -1;
 	};
+};
+
+//Ammo fix ah6j_ep1_dze
+if (_inVehicle && (_vehicle isKindOf "AH6J_EP1_DZE") && ("2000Rnd_762x51_M134" in _magazinesPlayer)) then {
+   if (s_player_giveAH6_Ammo < 0) then {
+     s_player_giveAH6_Ammo = _vehicle addAction ["Add AMMO to AH-6J","scripts\addammo.sqf","",5,false,true];
+   };
+} else {
+   _vehicle removeAction s_player_giveAH6_Ammo;
+   s_player_giveAH6_Ammo = -1;
 };
