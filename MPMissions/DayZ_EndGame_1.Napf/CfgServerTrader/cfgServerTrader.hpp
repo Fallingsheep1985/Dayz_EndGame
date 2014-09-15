@@ -93,5 +93,4 @@ class CfgTraderCategory {
 	#include "Category\EndGameVehicles.hpp"
 	#include "Category\EndGameAircraft.hpp"
 	#include "Category\EndGameBoats.hpp"
-	#include "Category\EndGameMechs.hpp"
 };

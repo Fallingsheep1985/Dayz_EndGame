@@ -2,7 +2,7 @@
 serverTraders = ["Tanny_PMC","Graves","US_Delta_Force_AR_EP1","GUE_Commander","Damsel3","Soldier_MG_PKM_PMC","GUE_Worker2","GUE_Woodlander2","RUS_Soldier2","Drake_Light","GUE_Woodlander3","Soldier_GL_PMC","GUE_Villager3","CIV_EuroWoman01_EP1","Dr_Annie_Baker_EP1","RUS_Commander","Damsel5","TK_Special_Forces_MG_EP1","TK_Special_Forces_EP1","Ins_Soldier_AR","Ins_Lopotev","Ins_Worker2","Ins_Woodlander3","Dr_Hladik_EP1","pook_Doc_Bell47","Ins_Woodlander2"];
 // Hero Vendor
 menu_Tanny_PMC = [
-	[["Ammunition",478],["Clothes",476],["Helicopter Armed",493],["Military Armed",562],["Trucks Armed",479],["Weapons",477],["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003],["Mechs",5000]],
+	[["Ammunition",478],["Clothes",476],["Helicopter Armed",493],["Military Armed",562],["Trucks Armed",479],["Weapons",477],["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003]],
 	[],
 	"hero"
 ];
@@ -50,7 +50,7 @@ menu_GUE_Woodlander2 = [
 ];
 // Bandit Trader
 menu_RUS_Soldier2 = [
-	[["Ammunition",577],["Clothing",575],["Helicopter Armed",512],["Military Armed",569],["Trucks Armed",534],["Weapons",627],["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003],["Mechs",5000]],
+	[["Ammunition",577],["Clothing",575],["Helicopter Armed",512],["Military Armed",569],["Trucks Armed",534],["Weapons",627],["Tanks",2000],["Choppers",2002],["Jets",2001],["Wheeled",2003]],
 	[],
 	"hostile"
 ];
