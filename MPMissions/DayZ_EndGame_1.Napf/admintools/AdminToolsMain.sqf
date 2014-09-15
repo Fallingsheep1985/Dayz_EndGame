@@ -287,7 +287,6 @@ SheepsMenu =
 	["Add Zombie Bait Parts", [],"", -5, [["expression", format[_EXECscript7,"addZombieBait.sqf"]]], "1", "1"],
 	["Add Zombie Bomb Parts", [],"", -5, [["expression", format[_EXECscript7,"addZombieBomb.sqf"]]], "1", "1"],
 	["Add Anti Zombie Emitter Parts", [],"", -5, [["expression", format[_EXECscript7,"addAntiZombieEmitter.sqf"]]], "1", "1"],
-	["Mech Suit", [],"", -5, [["expression", format[_EXECscript7,"mech.sqf"]]], "1", "1"],		
 	["", [], "", -5, [["expression", ""]], "1", "0"],
 		["Main Menu", [20], "#USER:epochmenustart", -5, [["expression", ""]], "1", "1"]
 ];
