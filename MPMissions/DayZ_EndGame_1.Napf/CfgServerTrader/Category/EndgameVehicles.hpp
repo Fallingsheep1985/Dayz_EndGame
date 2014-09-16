@@ -1,4 +1,24 @@
 class Category_4000 {
+	class ori_titanic {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class ori_bigRaft {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class ori_scrapTank {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class ori_ScrapBuggy {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
 		class sigisolda1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
