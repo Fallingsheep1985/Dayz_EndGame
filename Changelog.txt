@@ -33,3 +33,9 @@ ADDED - 2 mechs for testing! (buy at hero/bandit traders)
 ADDED - AlienZ addon (no there wont be aliens its for the weapons!)
 ADDED - Hazmat unit (will give protection from radiation zones )
 ADDED - Vilas Colinal space marines addon
+
+0.0.0.8
+ADDED - Origins submarine
+CHANGED - New loadscreen
+FIXED - Moved sigboats to correct category for traders
+ADDED - Hazmat skins
