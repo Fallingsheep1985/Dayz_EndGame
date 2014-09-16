@@ -1,4 +1,9 @@
 class Category_4002 {
+		class ori_submarine {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
 		class sigisolda1 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
