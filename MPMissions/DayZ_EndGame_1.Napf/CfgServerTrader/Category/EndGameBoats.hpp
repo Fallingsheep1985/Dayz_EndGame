@@ -1,4 +1,34 @@
 class Category_4002 {
+		class sigisolda1 {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class sigisolda2 {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class sigisolda3 {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class sigisolda4 {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class sigisolda5 {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class ori_bigRaft {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};	
 		class pook_PBR_Base {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
