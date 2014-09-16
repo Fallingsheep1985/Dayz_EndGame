@@ -1355,6 +1355,17 @@ class CfgVehicles {
 		weaponSlots = 1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072;
 		canHideBodies = true;
 	};
+	class HazmatBlack : Soldier_Crew_PMC {
+		displayName = "Hazmat Black";
+		side = TWest;
+		weapons[] = {"Throw", "Put"};
+		magazines[] = {};
+		model = "\hazmata\hazmatBlack.p3d";
+		respawnWeapons[] = {"Throw", "Put"};
+		respawnMagazines[] = {};
+		weaponSlots = 1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072;
+		canHideBodies = true;
+	};
 	
 	class Survivor3_DZ : Survivor2_DZ {
 		model = "\dayz\characters\man_hero";
