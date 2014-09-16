@@ -1,14 +1,4 @@
 class Category_4001 {
-		class ori_pragaCopter_green {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
-		class ori_pragaCopter_yellow {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
 		class UH60CG {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
