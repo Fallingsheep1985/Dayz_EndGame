@@ -26,7 +26,7 @@ menu_GUE_Commander = [
 ];
 // General Store
 menu_Damsel3 = [
-	[["Backpacks",538],["Clothes",497],["Cooked Meats",580],["Drinks",498],["Packaged Food",579]],
+	[["Backpacks",538],["Clothes",497],["Cooked Meats",580],["Drinks",498],["Packaged Food",579],["Endgame Clothes",4003]],
 	[["ItemTinBar","TrashJackDaniels",1,1,"buy","Empty Wiskey Bottle","Tin Bar",101]],
 	"neutral"
 ];
@@ -80,7 +80,7 @@ menu_GUE_Villager3 = [
 ];
 // General Store 2
 menu_CIV_EuroWoman01_EP1 = [
-	[["Backpacks",538],["Clothes",628],["Cooked Meats",630],["Drinks",601],["Packaged Food",629]],
+	[["Backpacks",538],["Clothes",628],["Cooked Meats",630],["Drinks",601],["Packaged Food",629],["Endgame Clothes",4003]],
 	[["ItemTinBar","TrashJackDaniels",1,1,"buy","Empty Wiskey Bottle","Tin Bar",101]],
 	"friendly"
 ];
@@ -98,7 +98,7 @@ menu_RUS_Commander = [
 ];
 // General Store 3 
 menu_Damsel5 = [
-	[["Backpacks",688],["Clothes",631],["Cooked Meats",634],["Drinks",633],["Packaged Food",635]],
+	[["Backpacks",688],["Clothes",631],["Cooked Meats",634],["Drinks",633],["Packaged Food",635],["Endgame Clothes",4003]],
 	[["ItemTinBar","TrashJackDaniels",1,1,"buy","Empty Wiskey Bottle","Tin Bar",101]],
 	"neutral"
 ];
