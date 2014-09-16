@@ -1320,17 +1320,7 @@ class CfgVehicles {
 		weaponSlots = 1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072;
 		canHideBodies = true;
 	};
-	class Survivor1_DZ : Soldier_Crew_PMC {
-		displayName = $STR_CHAR_1;
-		side = TWest;
-		weapons[] = {"Throw", "Put"};
-		model = "\dayz\objects\proxy_man";
-		magazines[] = {};
-		respawnWeapons[] = {"Throw", "Put"};
-		respawnMagazines[] = {};
-		weaponSlots = 1	 + 	4	 + 12*		256	 + 2*	4096	 + 	2	 + 8*	16  + 12*131072;
-		canHideBodies = true;
-	};
+
 	
 	class HazmatRed : Soldier_Crew_PMC {
 		displayName = "Hazmat Red";
@@ -1355,7 +1345,7 @@ class CfgVehicles {
 		canHideBodies = true;
 	};
 	class HazmatOlive : Soldier_Crew_PMC {
-		displayName = "Hazmat Yellow";
+		displayName = "Hazmat Olive";
 		side = TWest;
 		weapons[] = {"Throw", "Put"};
 		magazines[] = {};
