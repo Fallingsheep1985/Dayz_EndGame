@@ -1040,12 +1040,22 @@ class CfgMagazines {
 	class HazmatRed : SkinBase {
 		scope = public;
 		displayName = "Hazmat Red";
-		descriptionShort = "A Red Hazmat suit that provides radiation protection";
+		descriptionShort = "A Red Hazmat suit that provides radiation protection.";
 	};
 	class HazmatYellow : SkinBase {
 		scope = public;
 		displayName = "Hazmat Yellow";
-		descriptionShort = "A Yellow Hazmat suit that provides radiation protection";
+		descriptionShort = "A Yellow Hazmat suit that provides radiation protection.";
+	};
+	class HazmatBlack: SkinBase {
+		scope = public;
+		displayName = "Hazmat Black";
+		descriptionShort = "A Black Hazmat suit that provides radiation protection.";
+	};
+	class HazmatOlive : SkinBase {
+		scope = public;
+		displayName = "Hazmat Olive";
+		descriptionShort = "A Olive Hazmat suit that provides radiation protection.";
 	};
 	
 	class ItemBandage : CA_Magazine {
