@@ -89842,6 +89842,27 @@ class CfgMagazines {
 		displayName = "Steve";
 		descriptionShort = "Steve";
 	};
+	class Skin_HazmatRed : SkinBase {
+		scope = public;
+		displayName = "Hazmat Red";
+		descriptionShort = "A Red Hazmat suit that provides radiation protection.";
+	};
+	class Skin_HazmatYellow : SkinBase {
+		scope = public;
+		displayName = "Hazmat Yellow";
+		descriptionShort = "A Yellow Hazmat suit that provides radiation protection.";
+	};
+	class Skin_HazmatBlack: SkinBase {
+		scope = public;
+		displayName = "Hazmat Black";
+		descriptionShort = "A Black Hazmat suit that provides radiation protection.";
+	};
+	class Skin_HazmatOlive : SkinBase {
+		scope = public;
+		displayName = "Hazmat Olive";
+		descriptionShort = "A Olive Hazmat suit that provides radiation protection.";
+	};
+	
 	class HandGrenade;	// External class reference
 	
 	class ItemSodaEmpty : HandGrenade {
@@ -94656,6 +94677,26 @@ class CfgSurvival {
 			playerModel = "Survivor2_DZ";
 		};
 		
+		class Skin_HazmatRed : Default {
+			sex = "male";
+			playerModel = "HazmatRed";
+		};
+		
+		class Skin_HazmatYellow : Default {
+			sex = "male";
+			playerModel = "HazmatYellow";
+		};
+		
+		class Skin_HazmatBlack : Default {
+			sex = "male";
+			playerModel = "HazmatBlack";
+		};
+		
+		class Skin_HazmatOlive : Default {
+			sex = "male";
+			playerModel = "HazmatOlive";
+		};
+		
 		class Skin_Survivor2_DZ : Default {
 			sex = "male";
 			playerModel = "Survivor2_DZ";
@@ -94920,6 +94961,8 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "INS_Worker2_DZ";
 		};
+		
+		
 	};
 };
 
@@ -96730,5 +96773,22 @@ class CfgWeight {
 		class bulk_17Rnd_9x19_glock17 {
 			weight = 25;
 		};
+		
+		class Skin_HazmatRed {
+			weight = 1;
+		};
+		
+		class Skin_HazmatYellow {
+			weight = 1;
+		};
+		
+		class Skin_HazmatBlack {
+			weight = 1;
+		};
+		
+		class Skin_HazmatOlive {
+			weight = 1;
+		};
+		
 	};
 };
