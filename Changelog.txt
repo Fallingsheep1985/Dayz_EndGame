@@ -42,5 +42,4 @@ ADDED - Hazmat skins (4)
 ADDED - Stalker Skins (10)
 ADDED - Press Skins (4)
 ADDED - SWAT Skin
-ADDED - Sahrani Police Skins (10)
 ADDED - KPFS Civilian skins (3)

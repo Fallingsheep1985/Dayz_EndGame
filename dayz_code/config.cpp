@@ -89864,58 +89864,6 @@ class CfgMagazines {
 		displayName = "Postman 3";
 		descriptionShort = "Postman 3";
 	};
-	//SRA Police
-	class Skin_SRA_RACS_Policeman : SkinBase {
-		scope = public;
-		displayName = "Police 1 - Sahrani";
-		descriptionShort = "Police 1 - Sahrani";
-	};
-	class Skin_SRA_RACS_Police_Elite_Sniper : SkinBase {
-		scope = public;
-		displayName = "Police Elite Sniper - Sahrani";
-		descriptionShort = "Police Elite Sniper - Sahrani";
-	};
-	class Skin_SRA_RACS_Police_Elite : SkinBase {
-		scope = public;
-		displayName = "Police Elite - Sahrani";
-		descriptionShort = "Police Elite - Sahrani";
-	};
-	class Skin_SRA_RACS_Police_Elite_B : SkinBase {
-		scope = public;
-		displayName = "Police Elite 2 - Sahrani";
-		descriptionShort = "Police Elite 2 - Sahrani";
-	};
-	//SRA Militia
-	class Skin_SRA_SLA_Policeman : SkinBase {
-		scope = public;
-		displayName = "Police 2 - Sahrani";
-		descriptionShort = "Police 2 - Sahrani";
-	};
-	class Skin_SRA_SLA_Policeman_vest : SkinBase {
-		scope = public;
-		displayName = "Police Vest - Sahrani";
-		descriptionShort = "Police Vest - Sahrani";
-	};
-	class Skin_SRA_SLA_Police_Elite : SkinBase {
-		scope = public;
-		displayName = "Police Elite 3 - Sahrani";
-		descriptionShort = "Police Elite 3 - Sahrani";
-	};
-	class Skin_SRA_SLA_Police_Elite_Officer : SkinBase {
-		scope = public;
-		displayName = "Police Elite Officer - Sahrani";
-		descriptionShort = "Police Elite Officer - Sahrani";
-	};
-	class Skin_SRA_SLA_Police_Elite_Sniper : SkinBase {
-		scope = public;
-		displayName = "Police Elite Sniper - Sahrani";
-		descriptionShort = "Police Elite Sniper - Sahrani";
-	};
-	class Skin_SRA_SLA_Police_Crew : SkinBase {
-		scope = public;
-		displayName = "Police Crew - Sahrani";
-		descriptionShort = "Police Crew - Sahrani";
-	};
 	//Hazmat Skins
 	class Skin_HazmatRed : SkinBase {
 		scope = public;
@@ -94882,49 +94830,6 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "dpag_1_tshirt";
 		};
-		
-		//SRA Police
-		class Skin_SRA_RACS_Policeman  : Default {
-			sex = "male";
-			playerModel = "res_policeman";
-		};
-		class Skin_SRA_RACS_Police_Elite  : Default {
-			sex = "male";
-			playerModel = "res_police_elite";
-		};
-		class Skin_SRA_RACS_Police_Elite_B  : Default {
-			sex = "male";
-			playerModel = "res_police_elite_b";
-		};
-		class Skin_SRA_RACS_Police_Elite_Sniper  : Default {
-			sex = "male";
-			playerModel = "res_police_elite_sniper";
-		};
-		//SRA Militia
-		class Skin_SRA_SLA_Policeman : Default {
-			sex = "male";
-			playerModel = "np_policeman";
-		};
-		class Skin_SRA_SLA_Policeman_vest : Default {
-			sex = "male";
-			playerModel = "np_policeman_vest";
-		};
-		class Skin_SRA_SLA_Police_Elite : Default {
-			sex = "male";
-			playerModel = "np_police_elite";
-		};
-		class Skin_SRA_SLA_Police_Elite_Officer : Default {
-			sex = "male";
-			playerModel = "np_police_elite_b";
-		};
-		class Skin_SRA_SLA_Police_Elite_Sniper : Default {
-			sex = "male";
-			playerModel = "np_police_elite_sniper";
-		};
-		class Skin_SRA_SLA_Police_Crew : Default {
-			sex = "male";
-			playerModel = "np_police_crew";
-		};
 		//HAZMAT
 		class Skin_HazmatRed : Default {
 			sex = "male";
@@ -97111,38 +97016,6 @@ class CfgWeight {
 				weight = 1;
 		};
 		class Skin_KPFS_Postman_dpag  {
-				weight = 1;
-		};
-		//SRA Police
-		class Skin_SRA_RACS_Policeman  {
-				weight = 1;
-		};
-		class Skin_SRA_RACS_Police_Elite  {
-				weight = 1;
-		};
-		class Skin_SRA_RACS_Police_Elite_B  {
-				weight = 1;
-		};
-		class Skin_SRA_RACS_Police_Elite_Sniper  {
-				weight = 1;
-		};
-		//SRA Milica
-		class Skin_SRA_SLA_Policeman  {
-				weight = 1;
-		};
-		class Skin_SRA_SLA_Policeman_vest  {
-				weight = 1;
-		};
-		class Skin_SRA_SLA_Police_Elite  {
-				weight = 1;
-		};
-		class Skin_SRA_SLA_Police_Elite_Officer  {
-				weight = 1;
-		};
-		class Skin_SRA_SLA_Police_Elite_Sniper  {
-				weight = 1;
-		};
-		class Skin_SRA_SLA_Police_Crew  {
 				weight = 1;
 		};
 	};
