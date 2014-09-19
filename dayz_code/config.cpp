@@ -89842,6 +89842,81 @@ class CfgMagazines {
 		displayName = "Steve";
 		descriptionShort = "Steve";
 	};
+	//SWAT
+	class Skin_SWAT : SkinBase {
+		scope = public;
+		displayName = "S.W.A.T";
+		descriptionShort = "S.W.A.T";
+	};
+	//KPFS CIvilians
+	class Skin_KPFS_Postman_west : SkinBase {
+		scope = public;
+		displayName = "Postman 1";
+		descriptionShort = "Postman 1";
+	};
+	class Skin_KPFS_Postman_west_cap : SkinBase {
+		scope = public;
+		displayName = "Postman 2";
+		descriptionShort = "Postman 2";
+	};
+	class Skin_KPFS_Postman_dpag : SkinBase {
+		scope = public;
+		displayName = "Postman 3";
+		descriptionShort = "Postman 3";
+	};
+	//SRA Police
+	class Skin_SRA_RACS_Policeman : SkinBase {
+		scope = public;
+		displayName = "Police 1 - Sahrani";
+		descriptionShort = "Police 1 - Sahrani";
+	};
+	class Skin_SRA_RACS_Police_Elite_Sniper : SkinBase {
+		scope = public;
+		displayName = "Police Elite Sniper - Sahrani";
+		descriptionShort = "Police Elite Sniper - Sahrani";
+	};
+	class Skin_SRA_RACS_Police_Elite : SkinBase {
+		scope = public;
+		displayName = "Police Elite - Sahrani";
+		descriptionShort = "Police Elite - Sahrani";
+	};
+	class Skin_SRA_RACS_Police_Elite_B : SkinBase {
+		scope = public;
+		displayName = "Police Elite 2 - Sahrani";
+		descriptionShort = "Police Elite 2 - Sahrani";
+	};
+	//SRA Militia
+	class Skin_SRA_SLA_Policeman : SkinBase {
+		scope = public;
+		displayName = "Police 2 - Sahrani";
+		descriptionShort = "Police 2 - Sahrani";
+	};
+	class Skin_SRA_SLA_Policeman_vest : SkinBase {
+		scope = public;
+		displayName = "Police Vest - Sahrani";
+		descriptionShort = "Police Vest - Sahrani";
+	};
+	class Skin_SRA_SLA_Police_Elite : SkinBase {
+		scope = public;
+		displayName = "Police Elite 3 - Sahrani";
+		descriptionShort = "Police Elite 3 - Sahrani";
+	};
+	class Skin_SRA_SLA_Police_Elite_Officer : SkinBase {
+		scope = public;
+		displayName = "Police Elite Officer - Sahrani";
+		descriptionShort = "Police Elite Officer - Sahrani";
+	};
+	class Skin_SRA_SLA_Police_Elite_Sniper : SkinBase {
+		scope = public;
+		displayName = "Police Elite Sniper - Sahrani";
+		descriptionShort = "Police Elite Sniper - Sahrani";
+	};
+	class Skin_SRA_SLA_Police_Crew : SkinBase {
+		scope = public;
+		displayName = "Police Crew - Sahrani";
+		descriptionShort = "Police Crew - Sahrani";
+	};
+	//Hazmat Skins
 	class Skin_HazmatRed : SkinBase {
 		scope = public;
 		displayName = "Hazmat Red";
@@ -89861,6 +89936,78 @@ class CfgMagazines {
 		scope = public;
 		displayName = "Hazmat Olive";
 		descriptionShort = "A Olive Hazmat suit that provides radiation protection.";
+	};
+	//Press
+	class Skin_civil_pressmanikf : SkinBase {
+		scope = public;
+		displayName = "Press 1 (female)";
+		descriptionShort = "(male)";
+	};
+	class Skin_civil_pressmanikf2 : SkinBase {
+		scope = public;
+		displayName = "Press 2 (female)";
+		descriptionShort = "(male)";
+	};
+	class Skin_civil_pressmanik : SkinBase {
+		scope = public;
+		displayName = "Press 1 (male)";
+		descriptionShort = "(male)";
+	};
+	class Skin_civil_pressmanik2 : SkinBase {
+		scope = public;
+		displayName = "Press 2 (male)";
+		descriptionShort = "(male)";
+	};
+	// GSC Stalker
+	class Skin_gsc_military_helmet_wdl : SkinBase {
+		scope = public;
+		displayName = "Military";
+		descriptionShort = "Military";
+	};
+	class Skin_gsc_military_helmet_grey : SkinBase {
+		scope = public;
+		displayName = "Grey Military";
+		descriptionShort = "Grey Military";
+	};
+	class Skin_gsc_military_head_wdl : SkinBase {
+		scope = public;
+		displayName = "Military - Sniper";
+		descriptionShort = "Military - Sniper";
+	};
+	class Skin_gsc_scientist1 : SkinBase {
+		scope = public;
+		displayName = "Military";
+		descriptionShort = "Military";
+	};
+	class Skin_gsc_scientist2 : SkinBase {
+		scope = public;
+		displayName = "Military";
+		descriptionShort = "Military";
+	};
+	class Skin_gsc_eco_stalker_mask_fred : SkinBase {
+		scope = public;
+		displayName = "Stalker 1";
+		descriptionShort = "Stalker 1";
+	};
+	class Skin_gsc_eco_stalker_mask_camo : SkinBase {
+		scope = public;
+		displayName = "Stalker 2";
+		descriptionShort = "Stalker 2";
+	};
+	class Skin_gsc_cloth_loner_head : SkinBase {
+		scope = public;
+		displayName = "Stalker 3";
+		descriptionShort = "Stalker 3";
+	};
+	class Skin_gsc_eco_stalker_mask_duty : SkinBase {
+		scope = public;
+		displayName = "Stalker 4";
+		descriptionShort = "Stalker 4";
+	};
+	class Skin_gsc_eco_stalker_mask_neutral : SkinBase {
+		scope = public;
+		displayName = "Stalker 5";
+		descriptionShort = "Stalker 5";
 	};
 	
 	class HandGrenade;	// External class reference
@@ -94676,7 +94823,109 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "Survivor2_DZ";
 		};
+		//GSC STALKER
+		class Skin_gsc_military_helmet_wdl : Default {
+				sex = "male";
+				playerModel = "gsc_military_helmet_wdl";
+		};
+		class Skin_gsc_military_helmet_grey : Default {
+				sex = "male";
+				playerModel = "gsc_military_helmet_grey";
+		};
+		class Skin_gsc_military_head_wdl : Default {
+				sex = "male";
+				playerModel = "gsc_military_head_wdl";
+		};
+		class Skin_gsc_scientist1 : Default {
+				sex = "male";
+				playerModel = "gsc_eco_suit";
+		};
+		class Skin_gsc_scientist2 : Default {
+				sex = "male";
+				playerModel = "gsc_eco_suit2";
+		};
+		class Skin_gsc_eco_stalker_mask_fred : Default {
+				sex = "male";
+				playerModel = "gsc_eco_stalker_mask_fred";
+		};
+		class Skin_gsc_eco_stalker_mask_camo : Default {
+				sex = "male";
+				playerModel = "gsc_eco_stalker_mask_camo";
+		};
+		class Skin_gsc_cloth_loner_head : Default {
+				sex = "male";
+				playerModel = "gsc_cloth_loner_head";
+		};
+		class Skin_gsc_eco_stalker_mask_duty : Default {
+				sex = "male";
+				playerModel = "gsc_eco_stalker_mask_duty";
+		};
+		class Skin_gsc_eco_stalker_mask_neutral : Default {
+				sex = "male";
+				playerModel = "gsc_eco_stalker_mask";
+		};
+		//SWAT
+		class Skin_SWAT : Default {
+			sex = "male";
+			playerModel = "soldier";
+		};
+		//KPFS CIvilians
+		class Skin_KPFS_Postman_west : Default {
+			sex = "male";
+			playerModel = "dbp_officer";
+		};
+		class Skin_KPFS_Postman_west_cap : Default {
+			sex = "male";
+			playerModel = "dbp_officer_cap";
+		};
+		class Skin_KPFS_Postman_dpag : Default {
+			sex = "male";
+			playerModel = "dpag_1_tshirt";
+		};
 		
+		//SRA Police
+		class Skin_SRA_RACS_Policeman  : Default {
+			sex = "male";
+			playerModel = "res_policeman";
+		};
+		class Skin_SRA_RACS_Police_Elite  : Default {
+			sex = "male";
+			playerModel = "res_police_elite";
+		};
+		class Skin_SRA_RACS_Police_Elite_B  : Default {
+			sex = "male";
+			playerModel = "res_police_elite_b";
+		};
+		class Skin_SRA_RACS_Police_Elite_Sniper  : Default {
+			sex = "male";
+			playerModel = "res_police_elite_sniper";
+		};
+		//SRA Militia
+		class Skin_SRA_SLA_Policeman : Default {
+			sex = "male";
+			playerModel = "np_policeman";
+		};
+		class Skin_SRA_SLA_Policeman_vest : Default {
+			sex = "male";
+			playerModel = "np_policeman_vest";
+		};
+		class Skin_SRA_SLA_Police_Elite : Default {
+			sex = "male";
+			playerModel = "np_police_elite";
+		};
+		class Skin_SRA_SLA_Police_Elite_Officer : Default {
+			sex = "male";
+			playerModel = "np_police_elite_b";
+		};
+		class Skin_SRA_SLA_Police_Elite_Sniper : Default {
+			sex = "male";
+			playerModel = "np_police_elite_sniper";
+		};
+		class Skin_SRA_SLA_Police_Crew : Default {
+			sex = "male";
+			playerModel = "np_police_crew";
+		};
+		//HAZMAT
 		class Skin_HazmatRed : Default {
 			sex = "male";
 			playerModel = "HazmatRed";
@@ -94696,7 +94945,24 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "HazmatOlive";
 		};
-		
+		//Press
+		class Skin_civil_pressmanikf : Default {
+			sex = "female";
+			playerModel = "civil_pressmanikf";
+		};
+		class Skin_civil_pressmanikf2 : Default {
+			sex = "female";
+			playerModel = "civil_pressmanikf2";
+		};
+		class Skin_civil_pressmanik : Default {
+			sex = "male";
+			playerModel = "civil_pressmanik";
+		};
+		class Skin_civil_pressmanik2 : Default {
+			sex = "male";
+			playerModel = "civil_pressmanik2";
+		};
+		//Other
 		class Skin_Survivor2_DZ : Default {
 			sex = "male";
 			playerModel = "Survivor2_DZ";
@@ -96789,6 +97055,95 @@ class CfgWeight {
 		class Skin_HazmatOlive {
 			weight = 1;
 		};
-		
+		//Press
+		class Skin_civil_pressmanikf {
+			weight = 1;
+		};
+		class Skin_civil_pressmanikf2 {
+			weight = 1;
+		};
+		class Skin_civil_pressmanik {
+			weight = 1;
+		};
+		class Skin_civil_pressmanik2 {
+			weight = 1;
+		};
+		//GSC STALKER
+		class Skin_gsc_military_helmet_wdl  {
+				weight = 1;
+		};
+		class Skin_gsc_military_helmet_grey  {
+				weight = 1;
+		};
+		class Skin_gsc_military_head_wdl  {
+				weight = 1;
+		};
+		class Skin_gsc_scientist1  {
+				weight = 1;
+		};
+		class Skin_gsc_scientist2  {
+				weight = 1;
+		};
+		class Skin_gsc_eco_stalker_mask_fred  {
+				weight = 1;
+		};
+		class Skin_gsc_eco_stalker_mask_camo  {
+				weight = 1;
+		};
+		class Skin_gsc_cloth_loner_head  {
+				weight = 1;
+		};
+		class Skin_gsc_eco_stalker_mask_duty  {
+				weight = 1;
+		};
+		class Skin_gsc_eco_stalker_mask_neutral  {
+				weight = 1;
+		};
+		//SWAT
+		class Skin_SWAT  {
+				weight = 1;
+		};
+		//KPFS CIvilians
+		class Skin_KPFS_Postman_west  {
+				weight = 1;
+		};
+		class Skin_KPFS_Postman_west_cap  {
+				weight = 1;
+		};
+		class Skin_KPFS_Postman_dpag  {
+				weight = 1;
+		};
+		//SRA Police
+		class Skin_SRA_RACS_Policeman  {
+				weight = 1;
+		};
+		class Skin_SRA_RACS_Police_Elite  {
+				weight = 1;
+		};
+		class Skin_SRA_RACS_Police_Elite_B  {
+				weight = 1;
+		};
+		class Skin_SRA_RACS_Police_Elite_Sniper  {
+				weight = 1;
+		};
+		//SRA Milica
+		class Skin_SRA_SLA_Policeman  {
+				weight = 1;
+		};
+		class Skin_SRA_SLA_Policeman_vest  {
+				weight = 1;
+		};
+		class Skin_SRA_SLA_Police_Elite  {
+				weight = 1;
+		};
+		class Skin_SRA_SLA_Police_Elite_Officer  {
+				weight = 1;
+		};
+		class Skin_SRA_SLA_Police_Elite_Sniper  {
+				weight = 1;
+		};
+		class Skin_SRA_SLA_Police_Crew  {
+				weight = 1;
+		};
 	};
 };
