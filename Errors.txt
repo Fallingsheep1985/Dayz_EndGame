@@ -1,0 +1,93 @@
+RPT SPAM
+
+class HitPoints::HitEngine not found in usec_bell206_2
+
+
+Warning Message: No entry 'bin\config.bin/CfgVehicles/NATO_Box_Base.scope'.
+
+
+20:18:20 Error in expression <matYellow","HazmatBlack"];
+AllPlayers = AllPlayers + Hazmat;
+MeleeWeapons = ["M>
+20:18:20   Error position: <AllPlayers + Hazmat;
+MeleeWeapons = ["M>
+20:18:20   Error Undefined variable in expression: allplayers
+20:18:20 File z\addons\dayz_code\init\variables.sqf, line 20
+
+
+20:20:12 Error in expression < =		_primary select 8;
+if (!(_model in AllPlayers)) then {
+_model = "Survivor2_>
+20:20:12   Error position: <AllPlayers)) then {
+_model = "Survivor2_>
+20:20:12   Error Undefined variable in expression: allplayers
+20:20:12 File z\addons\dayz_server\compile\server_playerLogin.sqf, line 76
+
+
+20:20:33 Warning Message: Cannot load material file z\addons\dayz_communityassets\faces\zombie_03.rvmat.
+20:20:33 Cannot load material file z\addons\dayz_communityassets\faces\zombie_03.rvmat
+
+
+20:20:30 Error in expression <,True,[_ArrayIndex,_Index],Side _Object,_Offset,_MapSize,[False,False,0,[]],[],[>
+20:20:30   Error position: <_Offset,_MapSize,[False,False,0,[]],[],[>
+20:20:30   Error Undefined variable in expression: _offset
+20:20:30 Error in expression <cle,[False,False,False,False,0],_Flares,_HasGunner,_Offset,_IncomingID,_FiredID,>
+20:20:30   Error position: <_HasGunner,_Offset,_IncomingID,_FiredID,>
+20:20:30   Error Undefined variable in expression: _hasgunner
+
+
+20:20:30 Error in expression <n RKSLS1",_ArrayIndex,_Index,_Respawned,_Offset];
+_Object SetVehicleInit _Init>
+20:20:30   Error position: <_Offset];
+_Object SetVehicleInit _Init>
+20:20:30   Error Undefined variable in expression: _offset
+
+
+20:20:30 Error in expression <LauncherPos,_LauncherVel,_LauncherCount,_LauncherIndex] Call RKSL_AssignFlareTab>
+20:20:30   Error position: <_LauncherIndex] Call RKSL_AssignFlareTab>
+20:20:30   Error Undefined variable in expression: _launcherindex
+20:20:30 Error in expression <uncherVel,_LauncherCount,_LauncherSetup,_LauncherIndex,_XEHInit] Call RKSL_Flare>
+20:20:30   Error position: <_LauncherIndex,_XEHInit] Call RKSL_Flare>
+20:20:30   Error Undefined variable in expression: _launcherindex
+
+
+
+20:20:08 Error in expression <cle,[False,False,False,False,0],_Flares,_HasGunner,_Offset,_IncomingID,_FiredID,>
+20:20:08   Error position: <_HasGunner,_Offset,_IncomingID,_FiredID,>
+20:20:08   Error Undefined variable in expression: _hasgunner
+20:20:08 "_iClass isNil, exiting loot spawn!"
+20:20:08 Error in expression <2) then {
+_position set [2,0];
+_item = [_itemType select 0, _itemType select 1, >
+20:20:08   Error position: <_itemType select 0, _itemType select 1, >
+20:20:08   Error Undefined variable in expression: _itemtype
+20:20:08 File z\addons\dayz_server\compile\fn_bases.sqf, line 58
+
+
+20:20:08 Error in expression <
+_itemType = [];
+_itemType = _itemTypes select _index;
+_position = [];
+_positio>
+20:20:08   Error position: <select _index;
+_position = [];
+_positio>
+20:20:08   Error Zero divisor
+20:20:08 File z\addons\dayz_server\compile\fn_bases.sqf, line 50
+
+
+20:19:34 Error in expression <temType = 1;
+dayz_serverobjectmonitor = dayz_serverobjectmonitor;
+if(count _thi>
+20:19:34   Error position: <dayz_serverobjectmonitor;
+if(count _thi>
+20:19:34   Error Undefined variable in expression: dayz_serverobjectmonitor
+20:19:34 File z\addons\dayz_server\compile\server_spawnAN2CrashSite.sqf, line 20
+
+
+20:19:29 Error in expression <Set [RKSL_SYSENEMIES,_Enemy];
+};
+If ([_SPDetect,_Offsets] Call RKSL_ErrorMsg) >
+20:19:29   Error position: <_SPDetect,_Offsets] Call RKSL_ErrorMsg) >
+20:19:29   Error Undefined variable in expression: _spdetect
+20:19:29 File rksl\rksl-system\s\RKSLSystemStart.sqs, line 207
