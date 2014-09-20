@@ -89842,13 +89842,11 @@ class CfgMagazines {
 		displayName = "Steve";
 		descriptionShort = "Steve";
 	};
-	//SWAT
 	class Skin_SWAT : SkinBase {
 		scope = public;
 		displayName = "S.W.A.T";
 		descriptionShort = "S.W.A.T";
 	};
-	//KPFS CIvilians
 	class Skin_KPFS_Postman_west : SkinBase {
 		scope = public;
 		displayName = "Postman 1";
@@ -89864,7 +89862,6 @@ class CfgMagazines {
 		displayName = "Postman 3";
 		descriptionShort = "Postman 3";
 	};
-	//Hazmat Skins
 	class Skin_HazmatRed : SkinBase {
 		scope = public;
 		displayName = "Hazmat Red";
@@ -89885,16 +89882,15 @@ class CfgMagazines {
 		displayName = "Hazmat Olive";
 		descriptionShort = "A Olive Hazmat suit that provides radiation protection.";
 	};
-	//Press
 	class Skin_civil_pressmanikf : SkinBase {
 		scope = public;
 		displayName = "Press 1 (female)";
-		descriptionShort = "(male)";
+		descriptionShort = "(female)";
 	};
 	class Skin_civil_pressmanikf2 : SkinBase {
 		scope = public;
 		displayName = "Press 2 (female)";
-		descriptionShort = "(male)";
+		descriptionShort = "(female)";
 	};
 	class Skin_civil_pressmanik : SkinBase {
 		scope = public;
@@ -89906,7 +89902,6 @@ class CfgMagazines {
 		displayName = "Press 2 (male)";
 		descriptionShort = "(male)";
 	};
-	// GSC Stalker
 	class Skin_gsc_military_helmet_wdl : SkinBase {
 		scope = public;
 		displayName = "Military";

@@ -1,45 +1,45 @@
 class Category_4003 {
-		class Skin_HazmatRed {
+	class Skin_HazmatRed {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class Skin_HazmatYellow {
+	class Skin_HazmatYellow {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class Skin_HazmatOlive {
+	class Skin_HazmatOlive {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class Skin_HazmatBlack {
+	class Skin_HazmatBlack {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
 			//Press
-		class Skin_civil_pressmanikf {
+	class Skin_civil_pressmanikf {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-		};
-		class Skin_civil_pressmanikf2 {
+	};
+	class Skin_civil_pressmanikf2 {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-		};
-		class Skin_civil_pressmanik {
-		type = "trade_items";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};;
-		};
-		class Skin_civil_pressmanik2 {
+	};
+	class Skin_civil_pressmanik {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
-		};
+	};
+	class Skin_civil_pressmanik2 {
+		type = "trade_items";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
 		//GSC STALKER
 		class Skin_gsc_military_helmet_wdl  {
 		type = "trade_items";
