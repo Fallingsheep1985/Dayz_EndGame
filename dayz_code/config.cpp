@@ -89872,7 +89872,7 @@ class CfgMagazines {
 		displayName = "Hazmat Yellow";
 		descriptionShort = "A Yellow Hazmat suit that provides radiation protection.";
 	};
-	class Skin_HazmatBlack: SkinBase {
+	class Skin_HazmatBlack : SkinBase {
 		scope = public;
 		displayName = "Hazmat Black";
 		descriptionShort = "A Black Hazmat suit that provides radiation protection.";
@@ -89885,22 +89885,22 @@ class CfgMagazines {
 	class Skin_civil_pressmanikf : SkinBase {
 		scope = public;
 		displayName = "Press 1 (female)";
-		descriptionShort = "(female)";
+		descriptionShort = "Press 1(female)";
 	};
 	class Skin_civil_pressmanikf2 : SkinBase {
 		scope = public;
 		displayName = "Press 2 (female)";
-		descriptionShort = "(female)";
+		descriptionShort = "Press 2(female)";
 	};
 	class Skin_civil_pressmanik : SkinBase {
 		scope = public;
 		displayName = "Press 1 (male)";
-		descriptionShort = "(male)";
+		descriptionShort = "Press 1(male)";
 	};
 	class Skin_civil_pressmanik2 : SkinBase {
 		scope = public;
 		displayName = "Press 2 (male)";
-		descriptionShort = "(male)";
+		descriptionShort = "Press 2(male)";
 	};
 	class Skin_gsc_military_helmet_wdl : SkinBase {
 		scope = public;
@@ -89952,6 +89952,322 @@ class CfgMagazines {
 		displayName = "Stalker 5";
 		descriptionShort = "Stalker 5";
 	};
+	class Skin_FR_Scout4W : SkinBase { 
+			scope = public; 
+			displayName = "Scout 1"; 	
+			descriptionShort = "Scout 1"; 
+	 };
+	class Skin_sof_winter_sabot : SkinBase { 
+			scope = public; 
+			displayName = "Winter 1"; 	
+			descriptionShort = "Winter 1"; 
+	 };
+	class Skin_sof_winter_mg : SkinBase { 
+			scope = public; 
+			displayName = "Winter 2"; 	
+			descriptionShort = "Winter 2"; 
+	 };
+	class Skin_sof_winter_hat : SkinBase { 
+			scope = public; 
+			displayName = "Winter 3"; 	
+			descriptionShort = "Winter 3"; 
+	 };
+	class Skin_sof_winter_medic : SkinBase { 
+			scope = public; 
+			displayName = "Winter 4"; 	
+			descriptionShort = "Winter 4"; 
+	 };
+	class Skin_sof_winter_hood : SkinBase { 
+			scope = public; 
+			displayName = "Winter 5"; 	
+			descriptionShort = "Winter 5"; 
+	 };
+	class Skin_sof_winter_mask : SkinBase { 
+			scope = public; 
+			displayName = "Winter 6"; 	
+			descriptionShort = "Winter 6"; 
+	 };
+	class Skin_sof_winter_back : SkinBase { 
+			scope = public; 
+			displayName = "Winter 7"; 	
+			descriptionShort = "Winter 7"; 
+	 };
+	class Skin_sof_winter_back_w : SkinBase { 
+			scope = public; 
+			displayName = "Winter 8"; 	
+			descriptionShort = "Winter 8"; 
+	 };
+	class Skin_sof_winter_hood_2 : SkinBase { 
+			scope = public; 
+			displayName = "Winter 9"; 	
+			descriptionShort = "Winter 9"; 
+	 };
+	class Skin_sof_winter_noheadgear2 : SkinBase { 
+			scope = public; 
+			displayName = "Winter 10"; 	
+			descriptionShort = "Winter 10"; 
+	 };
+	class Skin_sof_winter_noheadgear : SkinBase { 
+			scope = public; 
+			displayName = "Winter 11"; 	
+			descriptionShort = "Winter 11"; 
+	 };
+	class Skin_sof_winter_back_w2 : SkinBase { 
+			scope = public; 
+			displayName = "Winter 12"; 	
+			descriptionShort = "Winter 12"; 
+	 };
+	class Skin_us_army_officer : SkinBase { 
+			scope = public; 
+			displayName = "US Army Officer"; 	
+			descriptionShort = ""; 
+	 };
+	class Skin_army_soldier_mine : SkinBase { 
+			scope = public; 
+			displayName = "US Army 1"; 	
+			descriptionShort = "US Army 1"; 
+	 };
+	class Skin_army_soldier_dmr : SkinBase { 
+			scope = public; 
+			displayName = "US Army 2"; 	
+			descriptionShort = "US Army 2"; 
+	 };
+	class Skin_army_soldier_desert : SkinBase { 
+			scope = public; 
+			displayName = "US Army 3"; 	
+			descriptionShort = "US Army 3"; 
+	 };
+	class Skin_fr_scout1 : SkinBase { 
+			scope = public; 
+			displayName = "Scout 2"; 	
+			descriptionShort = "Scout 2"; 
+	 };
+	class Skin_FR_Scout2 : SkinBase { 
+			scope = public; 
+			displayName = "Scout 3"; 	
+			descriptionShort = "Scout 3"; 
+	 };
+	class Skin_FR_HeavyD : SkinBase { 
+			scope = public; 
+			displayName = "Heavy 1"; 	
+			descriptionShort = "Heavy 1"; 
+	 };
+	class Skin_FR_Scout3 : SkinBase { 
+			scope = public; 
+			displayName = "Scout 4"; 	
+			descriptionShort = "Scout 4"; 
+	 };
+	class Skin_fr_corpsman : SkinBase { 
+			scope = public; 
+			displayName = "Corpsman 1"; 	
+			descriptionShort = "Corpsman 1"; 
+	 };
+	class Skin_fr_marksman : SkinBase { 
+			scope = public; 
+			displayName = "Marksman 1"; 	
+			descriptionShort = "Marksman 1"; 
+	 };
+	class Skin_desert_mercenary_noheadgear : SkinBase { 
+			scope = public; 
+			displayName = "Mercenary 1"; 	
+			descriptionShort = "Mercenary 1"; 
+	 };
+	class Skin_desert_mercenary_noheadgear2 : SkinBase { 
+			scope = public; 
+			displayName = "Mercenary 2"; 	
+			descriptionShort = "Mercenary 2"; 
+	 };
+	class Skin_fr_co_w : SkinBase { 
+			scope = public; 
+			displayName = "Corpsman 2"; 	
+			descriptionShort = "Corpsman 2"; 
+	 };
+	class Skin_fr_scout1w : SkinBase { 
+			scope = public; 
+			displayName = "Scout 5"; 	
+			descriptionShort = "Scout 5"; 
+	 };
+	class Skin_FR_HeavyW : SkinBase { 
+			scope = public; 
+			displayName = "Heavy 2"; 	
+			descriptionShort = "Heavy 2"; 
+	 };
+	class Skin_fr_marksmanw2 : SkinBase { 
+			scope = public; 
+			displayName = "Marksman 2"; 	
+			descriptionShort = "Marksman 2"; 
+	 };
+	class Skin_SF_Diver : SkinBase { 
+			scope = public; 
+			displayName = "Diver 1"; 	
+			descriptionShort = "Diver 1"; 
+	 };
+	class Skin_SF_Diver2 : SkinBase { 
+			scope = public; 
+			displayName = "Diver 2"; 	
+			descriptionShort = "Diver 2"; 
+	 };
+	class Skin_wdl_mercenary_noheadgear : SkinBase { 
+			scope = public; 
+			displayName = "Mercenary 3"; 	
+			descriptionShort = "Mercenary 3"; 
+	 };
+	class Skin_FR_ScoutD : SkinBase { 
+			scope = public; 
+			displayName = "Scout 6"; 	
+			descriptionShort = "Scout 6"; 
+	 };
+	class Skin_FR_DirAction2 : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 2"; 	
+			descriptionShort = "Soldier 2"; 
+	 };
+	class Skin_FR_DirAction1 : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 3"; 	
+			descriptionShort = "Soldier 3"; 
+	 };
+	class Skin_ins_soldier_2 : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 4"; 	
+			descriptionShort = "Soldier 4"; 
+	 };
+	class Skin_FR_Light : SkinBase { 
+			scope = public; 
+			displayName = "Light 1"; 	
+			descriptionShort = "Light 1"; 
+	 };
+	class Skin_usmc_soldier_Light : SkinBase { 
+			scope = public; 
+			displayName = "Light 2"; 	
+			descriptionShort = "Light 2"; 
+	 };
+	class Skin_usmc_soldier_Light2 : SkinBase { 
+			scope = public; 
+			displayName = "Light 3"; 	
+			descriptionShort = "Light 3"; 
+	 };
+	class Skin_noheadgear_blackop : SkinBase { 
+			scope = public; 
+			displayName = "Black Op 1"; 	
+			descriptionShort = "Black Op 1"; 
+	 };
+	class Skin_usmc_soldier_lightb : SkinBase { 
+			scope = public; 
+			displayName = "Light 4"; 	
+			descriptionShort = "Light 4"; 
+	 };
+	class Skin_usmc_soldier : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 5"; 	
+			descriptionShort = "Soldier 5"; 
+	 };
+	class Skin_usmc_soldier_co : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 6"; 	
+			descriptionShort = "Soldier 6"; 
+	 };
+	class Skin_usmc_soldier_desert : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 7"; 	
+			descriptionShort = "Soldier 7"; 
+	 };
+	class Skin_usmc_soldier_FR : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 8"; 	
+			descriptionShort = " Soldier 8"; 
+	 };
+	class Skin_usmc_soldier_mine : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 9"; 	
+			descriptionShort = "Soldier 9"; 
+	 };
+	class Skin_FR_DirAction2b : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 10"; 	
+			descriptionShort = "Soldier 10"; 
+	 };
+	class Skin_Soldier : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 11"; 	
+			descriptionShort = "Soldier 11"; 
+	 };
+	class Skin_FR_Scout3W : SkinBase { 
+			scope = public; 
+			displayName = "Scout 7"; 	
+			descriptionShort = "Scout 7"; 
+	 };
+	class Skin_FR_Scout2W : SkinBase { 
+			scope = public; 
+			displayName = "Scout 8"; 	
+			descriptionShort = "Scout 8"; 
+	 };
+	class Skin_FRw_co : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 12"; 	
+			descriptionShort = "Soldier 12"; 
+	 };
+	class Skin_wdl_mercenary_noheadgear : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 13"; 	
+			descriptionShort = "Soldier 13"; 
+	 };
+	class Skin_FRw2_co : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 14"; 	
+			descriptionShort = "Soldier 14"; 
+	 };
+	class Skin_Worker : SkinBase { 
+			scope = public; 
+			displayName = "Worker"; 	
+			descriptionShort = "Worker"; 
+	 };
+	class Skin_Prizrak : SkinBase { 
+			scope = public; 
+			displayName = "Prizrak"; 	
+			descriptionShort = "Prizrak"; 
+	 };
+	class Skin_usmc_soldier_Lightw : SkinBase { 
+			scope = public; 
+			displayName = "Light 5"; 	
+			descriptionShort = "Light 5"; 
+	 };
+	class Skin_usmc_soldier_Lightw2 : SkinBase { 
+			scope = public; 
+			displayName = "Light 6"; 	
+			descriptionShort = "Light 6"; 
+	 };
+	class Skin_FR_DirAction2w : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 15"; 	
+			descriptionShort = "Soldier 15"; 
+	 };
+	class Skin_fr_marksmanw : SkinBase { 
+			scope = public; 
+			displayName = "Marksman 3"; 	
+			descriptionShort = "Marksman 3"; 
+	 };
+	class Skin_usmc_soldier_pilot : SkinBase { 
+			scope = public; 
+			displayName = "Pilot"; 	
+			descriptionShort = "Pilot"; 
+	 };
+	class Skin_citizen : SkinBase { 
+			scope = public; 
+			displayName = "Citizen"; 	
+			descriptionShort = "Citizen"; 
+	 };
+	class Skin_Ins_Lopotev : SkinBase { 
+			scope = public; 
+			displayName = "Lopotev"; 	
+			descriptionShort = "Lopotev"; 
+	 };
+	class Skin_Soldier2 : SkinBase { 
+			scope = public; 
+			displayName = "Soldier 16"; 	
+			descriptionShort = "Soldier 16"; 
+	 };
+	
 	
 	class HandGrenade;	// External class reference
 	
@@ -94807,12 +95123,10 @@ class CfgSurvival {
 				sex = "male";
 				playerModel = "gsc_eco_stalker_mask";
 		};
-		//SWAT
 		class Skin_SWAT : Default {
 			sex = "male";
 			playerModel = "soldier";
 		};
-		//KPFS CIvilians
 		class Skin_KPFS_Postman_west : Default {
 			sex = "male";
 			playerModel = "dbp_officer";
@@ -94825,7 +95139,6 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "dpag_1_tshirt";
 		};
-		//HAZMAT
 		class Skin_HazmatRed : Default {
 			sex = "male";
 			playerModel = "HazmatRed";
@@ -94845,7 +95158,6 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "HazmatOlive";
 		};
-		//Press
 		class Skin_civil_pressmanikf : Default {
 			sex = "female";
 			playerModel = "civil_pressmanikf";
@@ -94862,7 +95174,6 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "civil_pressmanik2";
 		};
-		//Other
 		class Skin_Survivor2_DZ : Default {
 			sex = "male";
 			playerModel = "Survivor2_DZ";
@@ -95127,8 +95438,280 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "INS_Worker2_DZ";
 		};
-		
-		
+		//NEW SKINS
+class FR_Scout4W : Default { 
+ sex = "male"; 
+ playerModel = "class FR_Scout4W"; 
+ };
+class sof_winter_sabot : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_sabot"; 
+ };
+class sof_winter_mg : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_mg"; 
+ };
+class sof_winter_hat : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_hat"; 
+ };
+class sof_winter_medic : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_medic"; 
+ };
+class sof_winter_hood : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_hood"; 
+ };
+class sof_winter_mask : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_mask"; 
+ };
+class sof_winter_back : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_back"; 
+ };
+class sof_winter_back_w : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_back_w"; 
+ };
+class sof_winter_hood_2 : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_hood_2"; 
+ };
+class sof_winter_noheadgear2 : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_noheadgear2"; 
+ };
+class sof_winter_noheadgear : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_noheadgear"; 
+ };
+class sof_winter_back_w2 : Default { 
+ sex = "male"; 
+ playerModel = "sof_winter_back_w2"; 
+ };
+class us_army_officer : Default { 
+ sex = "male"; 
+ playerModel = "us_army_officer"; 
+ };
+class army_soldier_mine : Default { 
+ sex = "male"; 
+ playerModel = "army_soldier_mine"; 
+ };
+class army_soldier_dmr : Default { 
+ sex = "male"; 
+ playerModel = "army_soldier_dmr"; 
+ };
+class army_soldier_desert : Default { 
+ sex = "male"; 
+ playerModel = "army_soldier_desert"; 
+ };
+class fr_scout1 : Default { 
+ sex = "male"; 
+ playerModel = "fr_scout1"; 
+ };
+class FR_Scout2 : Default { 
+ sex = "male"; 
+ playerModel = "FR_Scout2"; 
+ };
+class FR_HeavyD : Default { 
+ sex = "male"; 
+ playerModel = "FR_HeavyD"; 
+ };
+class FR_Scout3 : Default { 
+ sex = "male"; 
+ playerModel = "FR_Scout3"; 
+ };
+class fr_corpsman : Default { 
+ sex = "male"; 
+ playerModel = "fr_corpsman"; 
+ };
+class fr_marksman : Default { 
+ sex = "male"; 
+ playerModel = "fr_marksman"; 
+ };
+class fr_corpsman : Default { 
+ sex = "male"; 
+ playerModel = "fr_corpsman"; 
+ };
+class desert_mercenary_noheadgear : Default { 
+ sex = "male"; 
+ playerModel = "desert_mercenary_noheadgear"; 
+ };
+class desert_mercenary_noheadgear2 : Default { 
+ sex = "male"; 
+ playerModel = "desert_mercenary_noheadgear2"; 
+ };
+class fr_co_w : Default { 
+ sex = "male"; 
+ playerModel = "fr_co_w"; 
+ };
+class fr_scout1w : Default { 
+ sex = "male"; 
+ playerModel = "fr_scout1w"; 
+ };
+class FR_HeavyW : Default { 
+ sex = "male"; 
+ playerModel = "FR_HeavyW"; 
+ };
+class fr_marksmanw2 : Default { 
+ sex = "male"; 
+ playerModel = "fr_marksmanw2"; 
+ };
+class SF_Diver : Default { 
+ sex = "male"; 
+ playerModel = "SF_Diver"; 
+ };
+class SF_Diver2 : Default { 
+ sex = "male"; 
+ playerModel = "SF_Diver2"; 
+ };
+class wdl_mercenary_noheadgear : Default { 
+ sex = "male"; 
+ playerModel = "wdl_mercenary_noheadgear"; 
+ };
+class FR_ScoutD : Default { 
+ sex = "male"; 
+ playerModel = "FR_ScoutD"; 
+ };
+class FR_DirAction2 : Default { 
+ sex = "male"; 
+ playerModel = "FR_DirAction2"; 
+ };
+class FR_DirAction1 : Default { 
+ sex = "male"; 
+ playerModel = "FR_DirAction1"; 
+ };
+class ins_soldier_2 : Default { 
+ sex = "male"; 
+ playerModel = "ins_soldier_2"; 
+ };
+class FR_Light : Default { 
+ sex = "male"; 
+ playerModel = "FR_Light"; 
+ };
+class usmc_soldier_Light : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_Light"; 
+ };
+class usmc_soldier_Light2 : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_Light2"; 
+ };
+class noheadgear_blackop : Default { 
+ sex = "male"; 
+ playerModel = "noheadgear_blackop"; 
+ };
+class usmc_soldier_lightb : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_lightb"; 
+ };
+class usmc_soldier : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier"; 
+ };
+class usmc_soldier_co : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_co"; 
+ };
+class fr_scout1 : Default { 
+ sex = "male"; 
+ playerModel = "fr_scout1"; 
+ };
+class FR_co : Default { 
+ sex = "male"; 
+ playerModel = "FR_co"; 
+ };
+class FRb_co : Default { 
+ sex = "male"; 
+ playerModel = "FRb_co"; 
+ };
+class desert_mercenary_noheadgear : Default { 
+ sex = "male"; 
+ playerModel = "desert_mercenary_noheadgear"; 
+ };
+class usmc_soldier_desert : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_desert"; 
+ };
+class usmc_soldier_FR : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_FR"; 
+ };
+class usmc_soldier_mine : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_mine"; 
+ };
+class FR_DirAction2b : Default { 
+ sex = "male"; 
+ playerModel = "FR_DirAction2b"; 
+ };
+class Soldier : Default { 
+ sex = "male"; 
+ playerModel = "Soldier"; 
+ };
+class FR_Scout3W : Default { 
+ sex = "male"; 
+ playerModel = "FR_Scout3W"; 
+ };
+class FR_Scout2W : Default { 
+ sex = "male"; 
+ playerModel = "FR_Scout2W"; 
+ };
+class FRw_co : Default { 
+ sex = "male"; 
+ playerModel = "FRw_co"; 
+ };
+class wdl_mercenary_noheadgear : Default { 
+ sex = "male"; 
+ playerModel = "wdl_mercenary_noheadgear"; 
+ };
+class FRw2_co : Default { 
+ sex = "male"; 
+ playerModel = "FRw2_co"; 
+ };
+class Worker : Default { 
+ sex = "male"; 
+ playerModel = "Worker"; 
+ };
+class Prizrak : Default { 
+ sex = "male"; 
+ playerModel = "Prizrak"; 
+ };
+class usmc_soldier_Lightw : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_Lightw"; 
+ };
+class usmc_soldier_Lightw2 : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_Lightw2"; 
+ };
+class FR_DirAction2w : Default { 
+ sex = "male"; 
+ playerModel = "FR_DirAction2w"; 
+ };
+class fr_marksmanw : Default { 
+ sex = "male"; 
+ playerModel = "fr_marksmanw"; 
+ };
+class usmc_soldier_pilot : Default { 
+ sex = "male"; 
+ playerModel = "usmc_soldier_pilot"; 
+ };
+class citizen : Default { 
+ sex = "male"; 
+ playerModel = "citizen"; 
+ };
+class Ins_Lopotev : Default { 
+ sex = "male"; 
+ playerModel = "Ins_Lopotev"; 
+ };
+class Soldier2 : Default { 
+ sex = "male"; 
+ playerModel = "Soldier2"; 
+ };
+
 	};
 };
 
@@ -96955,7 +97538,6 @@ class CfgWeight {
 		class Skin_HazmatOlive {
 			weight = 1;
 		};
-		//Press
 		class Skin_civil_pressmanikf {
 			weight = 1;
 		};
@@ -96968,7 +97550,6 @@ class CfgWeight {
 		class Skin_civil_pressmanik2 {
 			weight = 1;
 		};
-		//GSC STALKER
 		class Skin_gsc_military_helmet_wdl  {
 				weight = 1;
 		};
@@ -96999,11 +97580,9 @@ class CfgWeight {
 		class Skin_gsc_eco_stalker_mask_neutral  {
 				weight = 1;
 		};
-		//SWAT
 		class Skin_SWAT  {
 				weight = 1;
 		};
-		//KPFS CIvilians
 		class Skin_KPFS_Postman_west  {
 				weight = 1;
 		};
@@ -97013,5 +97592,211 @@ class CfgWeight {
 		class Skin_KPFS_Postman_dpag  {
 				weight = 1;
 		};
+		//NEW SKINS
+		class Skin_FR_Scout4W {  
+weight = 1; 
+ };
+class Skin_sof_winter_sabot {  
+weight = 1; 
+ };
+class Skin_sof_winter_mg {  
+weight = 1; 
+ };
+class Skin_sof_winter_hat {  
+weight = 1; 
+ };
+class Skin_sof_winter_medic {  
+weight = 1; 
+ };
+class Skin_sof_winter_hood {  
+weight = 1; 
+ };
+class Skin_sof_winter_mask {  
+weight = 1; 
+ };
+class Skin_sof_winter_back {  
+weight = 1; 
+ };
+class Skin_sof_winter_back_w {  
+weight = 1; 
+ };
+class Skin_sof_winter_hood_2 {  
+weight = 1; 
+ };
+class Skin_sof_winter_noheadgear2 {  
+weight = 1; 
+ };
+class Skin_sof_winter_noheadgear {  
+weight = 1; 
+ };
+class Skin_sof_winter_back_w2 {  
+weight = 1; 
+ };
+class Skin_us_army_officer {  
+weight = 1; 
+ };
+class Skin_army_soldier_mine {  
+weight = 1; 
+ };
+class Skin_army_soldier_dmr {  
+weight = 1; 
+ };
+class Skin_army_soldier_desert {  
+weight = 1; 
+ };
+class Skin_fr_scout1 {  
+weight = 1; 
+ };
+class Skin_FR_Scout2 {  
+weight = 1; 
+ };
+class Skin_FR_HeavyD {  
+weight = 1; 
+ };
+class Skin_FR_Scout3 {  
+weight = 1; 
+ };
+class Skin_fr_corpsman {  
+weight = 1; 
+ };
+class Skin_fr_marksman {  
+weight = 1; 
+ };
+class Skin_fr_corpsman {  
+weight = 1; 
+ };
+class Skin_desert_mercenary_noheadgear {  
+weight = 1; 
+ };
+class Skin_desert_mercenary_noheadgear2 {  
+weight = 1; 
+ };
+class Skin_fr_co_w {  
+weight = 1; 
+ };
+class Skin_fr_scout1w {  
+weight = 1; 
+ };
+class Skin_FR_HeavyW {  
+weight = 1; 
+ };
+class Skin_fr_marksmanw2 {  
+weight = 1; 
+ };
+class Skin_SF_Diver {  
+weight = 1; 
+ };
+class Skin_SF_Diver2 {  
+weight = 1; 
+ };
+class Skin_wdl_mercenary_noheadgear {  
+weight = 1; 
+ };
+class Skin_FR_ScoutD {  
+weight = 1; 
+ };
+class Skin_FR_DirAction2 {  
+weight = 1; 
+ };
+class Skin_FR_DirAction1 {  
+weight = 1; 
+ };
+class Skin_ins_soldier_2 {  
+weight = 1; 
+ };
+class Skin_FR_Light {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_Light {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_Light2 {  
+weight = 1; 
+ };
+class Skin_noheadgear_blackop {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_lightb {  
+weight = 1; 
+ };
+class Skin_usmc_soldier {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_co {  
+weight = 1; 
+ };
+class Skin_fr_scout1 {  
+weight = 1; 
+ };
+class Skin_FR_co {  
+weight = 1; 
+ };
+class Skin_FRb_co {  
+weight = 1; 
+ };
+class Skin_desert_mercenary_noheadgear {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_desert {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_FR {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_mine {  
+weight = 1; 
+ };
+class Skin_FR_DirAction2b {  
+weight = 1; 
+ };
+class Skin_Soldier {  
+weight = 1; 
+ };
+class Skin_FR_Scout3W {  
+weight = 1; 
+ };
+class Skin_FR_Scout2W {  
+weight = 1; 
+ };
+class Skin_FRw_co {  
+weight = 1; 
+ };
+class Skin_wdl_mercenary_noheadgear {  
+weight = 1; 
+ };
+class Skin_FRw2_co {  
+weight = 1; 
+ };
+class Skin_Worker {  
+weight = 1; 
+ };
+class Skin_Prizrak {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_Lightw {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_Lightw2 {  
+weight = 1; 
+ };
+class Skin_FR_DirAction2w {  
+weight = 1; 
+ };
+class Skin_fr_marksmanw {  
+weight = 1; 
+ };
+class Skin_usmc_soldier_pilot {  
+weight = 1; 
+ };
+class Skin_citizen {  
+weight = 1; 
+ };
+class Skin_Ins_Lopotev {  
+weight = 1; 
+ };
+class Skin_Soldier2 {  
+weight = 1; 
+ };
+
 	};
 };
