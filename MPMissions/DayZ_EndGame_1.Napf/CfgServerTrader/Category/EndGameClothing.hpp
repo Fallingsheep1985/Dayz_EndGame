@@ -552,7 +552,7 @@ class Skin_sah_civilian7_shorts  {
 		class Skin_fsk_marksman  {
  			type = "trade_items"; 
  			buy[] = {2,"ItemGoldBar"};  
- 			sell[] = {1,"ItemGoldBar"}; ;
+ 			sell[] = {1,"ItemGoldBar"};
 		};
 		class Skin_fsk_grenadier  {
  			type = "trade_items"; 
