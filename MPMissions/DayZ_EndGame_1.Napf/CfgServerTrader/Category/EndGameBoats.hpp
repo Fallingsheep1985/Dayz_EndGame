@@ -1,5 +1,35 @@
 class Category_4002 {
-		class ori_submarine {
+	class ori_submarine {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+	class GNT_LosAngeles {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+	class GNT_Akula {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+	class GNT_DeltaIV {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class EGO_Compact {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class IMG_Yacht {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
+		class IMG_Jetski {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};

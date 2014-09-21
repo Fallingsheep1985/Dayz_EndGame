@@ -1,4 +1,9 @@
 class Category_4000 {
+	class firetruck {
+		type = "trade_any_vehicle";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
 	class ori_titanic {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};

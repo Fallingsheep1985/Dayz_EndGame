@@ -89847,6 +89847,31 @@ class CfgMagazines {
 		displayName = "S.W.A.T";
 		descriptionShort = "S.W.A.T";
 	};
+	class Skin_JIN : SkinBase {
+		scope = public;
+		displayName = "Jin";
+		descriptionShort = "Jin";
+	};
+	class Skin_fsk_co : SkinBase {
+		scope = public;
+		displayName = "Soldier 11";
+		descriptionShort = "Soldier 11";
+	};
+	class Skin_fsk_corpsman : SkinBase {
+		scope = public;
+		displayName = "Corpsman 3";
+		descriptionShort = "Corpsman 3";
+	};
+	class Skin_fsk_grenadier : SkinBase {
+		scope = public;
+		displayName = "Grenadier";
+		descriptionShort = "Grenadier";
+	};
+	class Skin_fsk_marksman : SkinBase {
+		scope = public;
+		displayName = "Marksman 4";
+		descriptionShort = "Marksman 4";
+	};
 	
 		class Skin_Navy_SEALs1 : SkinBase {
 		scope = public;
@@ -90405,7 +90430,6 @@ class CfgMagazines {
 			displayName = "Soldier 21"; 	
 			descriptionShort = "Soldier 21"; 
 	 };	 
-		//NEW SKINS
 
 	 
 	class HandGrenade;	// External class reference
@@ -95266,6 +95290,26 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "soldier";
 		};
+		class Skin_JIN : Default {
+			sex = "female";
+			playerModel = "jinpmcw";
+		};
+		class Skin_fsk_co : Default {
+			sex = "male";
+			playerModel = "fsk_co";
+		};
+		class Skin_fsk_corpsman : Default {
+			sex = "male";
+			playerModel = "fsk_corpsman";
+		};
+		class Skin_fsk_grenadier : Default {
+			sex = "male";
+			playerModel = "fsk_grenadier";
+		};
+		class Skin_fsk_marksman : Default {
+			sex = "male";
+			playerModel = "fsk_marksman";
+		};
 		
 		class Skin_Navy_SEALs1 : Default {
 			sex = "male";
@@ -95957,9 +96001,6 @@ class Skin_Soldier2 : Default {
  sex = "male"; 
  playerModel = "sbh_soldier5"; 
  };
- 
- 		//NEW SKINS
-
 	};
 };
 
@@ -97831,7 +97872,21 @@ class CfgWeight {
 		class Skin_SWAT  {
 				weight = 1;
 		};
-		
+		class Skin_JIN  {
+				weight = 1;
+		};
+		class Skin_fsk_marksman  {
+				weight = 1;
+		};
+		class Skin_fsk_grenadier  {
+				weight = 1;
+		};
+		class Skin_fsk_corpsman {
+				weight = 1;
+		};
+		class Skin_fsk_co  {
+				weight = 1;
+		};
 		class Skin_Navy_SEALs1  {
 				weight = 1;
 		};
@@ -98128,9 +98183,5 @@ weight = 1;
  class Skin_sbh_soldier5 {  
 weight = 1; 
  };
- 		//NEW SKINS
-		
-		
-		
 	};
 };

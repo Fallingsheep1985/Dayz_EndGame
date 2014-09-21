@@ -1,4 +1,9 @@
 class Category_4003 {
+	class Skin_JIN {
+		type = "trade_items";
+		buy[] = {2,"ItemGoldBar"};
+		sell[] = {1,"ItemGoldBar"};
+	};
 	class Skin_HazmatRed {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
