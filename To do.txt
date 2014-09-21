@@ -1,8 +1,7 @@
 
     make trader prices higher
     remove silver and use only gold currency
-    AI military
-    Fully militarize
+    AI add military stuff
     Add restriction to using Tanks/Jets/Choppers
 	trader city's actually in city's and at logical places
     increase the zombie threat
@@ -11,7 +10,6 @@
     make it so you can break into locked cars
 	add new loot to loot tables and traders
     completely new traders and trade locations
-    edit the existing napf map
     new vehicles to dynamic spawns
     add new locations to map
     move scripts to client from mission file
