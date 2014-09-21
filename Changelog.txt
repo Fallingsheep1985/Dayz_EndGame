@@ -35,9 +35,8 @@ ADDED - Hazmat unit (will give protection from radiation zones )
 ADDED - Vilas Colinal space marines addon
 
 0.0.0.8
-ADDED - Origins submarine
 CHANGED - New loadscreen
 FIXED - Moved sigboats to correct category for traders
 ADDED - 115+ new skins
-ADDED - 7 new vehicles (Including a fire truck!)
+ADDED - 8 new vehicles (Including a fire truck!)
 
