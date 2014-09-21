@@ -89,11 +89,6 @@ class Category_4001 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class il76 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
 		class qantas_C130 {
 		type = "trade_any_vehicle";
 		buy[] = {2,"ItemGoldBar"};

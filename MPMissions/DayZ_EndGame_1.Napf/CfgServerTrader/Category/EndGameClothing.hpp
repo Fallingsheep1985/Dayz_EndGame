@@ -229,11 +229,6 @@ class Category_4003 {
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 
 		};
-	class Skin_fr_corpsman { 
-			type = "trade_items"; 
-			buy[] = {2,"ItemGoldBar"}; 
-			sell[] = {1,"ItemGoldBar"}; 
-		};
 	class Skin_desert_mercenary_noheadgear { 
 			type = "trade_items"; 
 			buy[] = {2,"ItemGoldBar"}; 
@@ -334,22 +329,12 @@ class Category_4003 {
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 
 		};
-	class Skin_fr_scout1 { 
-			type = "trade_items"; 
-			buy[] = {2,"ItemGoldBar"}; 
-			sell[] = {1,"ItemGoldBar"}; 
-		};
 	class Skin_FR_co { 
 			type = "trade_items"; 
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 
 		};
 	class Skin_FRb_co { 
-			type = "trade_items"; 
-			buy[] = {2,"ItemGoldBar"}; 
-			sell[] = {1,"ItemGoldBar"}; 
-		};
-	class Skin_desert_mercenary_noheadgear { 
 			type = "trade_items"; 
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 
@@ -390,11 +375,6 @@ class Category_4003 {
 			sell[] = {1,"ItemGoldBar"}; 
 		};
 	class Skin_FRw_co { 
-			type = "trade_items"; 
-			buy[] = {2,"ItemGoldBar"}; 
-			sell[] = {1,"ItemGoldBar"}; 
-		};
-	class Skin_wdl_mercenary_noheadgear { 
 			type = "trade_items"; 
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 

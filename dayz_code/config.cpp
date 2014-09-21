@@ -90274,11 +90274,6 @@ class CfgMagazines {
 			displayName = "Soldier 12"; 	
 			descriptionShort = "Soldier 12"; 
 	 };
-	class Skin_wdl_mercenary_noheadgear : SkinBase { 
-			scope = public; 
-			displayName = "Soldier 13"; 	
-			descriptionShort = "Soldier 13"; 
-	 };
 	class Skin_FRw2_co : SkinBase { 
 			scope = public; 
 			displayName = "Soldier 14"; 	
@@ -95781,10 +95776,6 @@ class Skin_army_soldier_desert : Default {
  sex = "male"; 
  playerModel = "army_soldier_desert"; 
  };
-class Skin_fr_scout1 : Default { 
- sex = "male"; 
- playerModel = "fr_scout1"; 
- };
 class Skin_FR_Scout2 : Default { 
  sex = "male"; 
  playerModel = "FR_Scout2"; 
@@ -95804,10 +95795,6 @@ class Skin_fr_corpsman : Default {
 class Skin_fr_marksman : Default { 
  sex = "male"; 
  playerModel = "fr_marksman"; 
- };
-class Skin_fr_corpsman : Default { 
- sex = "male"; 
- playerModel = "fr_corpsman"; 
  };
 class Skin_desert_mercenary_noheadgear : Default { 
  sex = "male"; 
@@ -95840,10 +95827,6 @@ class Skin_SF_Diver : Default {
 class Skin_SF_Diver2 : Default { 
  sex = "male"; 
  playerModel = "SF_Diver2"; 
- };
-class Skin_wdl_mercenary_noheadgear : Default { 
- sex = "male"; 
- playerModel = "wdl_mercenary_noheadgear"; 
  };
 class Skin_FR_ScoutD : Default { 
  sex = "male"; 
@@ -95900,10 +95883,6 @@ class Skin_FR_co : Default {
 class Skin_FRb_co : Default { 
  sex = "male"; 
  playerModel = "FRb_co"; 
- };
-class Skin_desert_mercenary_noheadgear : Default { 
- sex = "male"; 
- playerModel = "desert_mercenary_noheadgear"; 
  };
 class Skin_usmc_soldier_desert : Default { 
  sex = "male"; 
@@ -98018,9 +97997,6 @@ weight = 1;
 class Skin_army_soldier_desert {  
 weight = 1; 
  };
-class Skin_fr_scout1 {  
-weight = 1; 
- };
 class Skin_FR_Scout2 {  
 weight = 1; 
  };
@@ -98034,9 +98010,6 @@ class Skin_fr_corpsman {
 weight = 1; 
  };
 class Skin_fr_marksman {  
-weight = 1; 
- };
-class Skin_fr_corpsman {  
 weight = 1; 
  };
 class Skin_desert_mercenary_noheadgear {  
@@ -98061,9 +98034,6 @@ class Skin_SF_Diver {
 weight = 1; 
  };
 class Skin_SF_Diver2 {  
-weight = 1; 
- };
-class Skin_wdl_mercenary_noheadgear {  
 weight = 1; 
  };
 class Skin_FR_ScoutD {  
@@ -98106,9 +98076,6 @@ class Skin_FR_co {
 weight = 1; 
  };
 class Skin_FRb_co {  
-weight = 1; 
- };
-class Skin_desert_mercenary_noheadgear {  
 weight = 1; 
  };
 class Skin_usmc_soldier_desert {  
