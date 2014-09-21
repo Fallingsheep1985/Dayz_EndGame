@@ -95240,7 +95240,6 @@ class CfgSurvival {
 			sex = "male";
 			playerModel = "Survivor2_DZ";
 		};
-		//GSC STALKER
 		class Skin_gsc_military_helmet_wdl : Default {
 				sex = "male";
 				playerModel = "gsc_military_helmet_wdl";
