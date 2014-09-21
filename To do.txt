@@ -23,7 +23,7 @@ lower high end vehicle spawns to 0 (chance of 1 still spawning)
 clean up SQL dump (remove char data and object data)
 
 
-add new weapons and unit skins(hazmat,AVP stuff,AlienZ)
+add skins from BB_OA_MERCS PBO
 
 
 

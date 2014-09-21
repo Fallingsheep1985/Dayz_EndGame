@@ -19,7 +19,6 @@ class Category_4003 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-			//Press
 	class Skin_civil_pressmanikf {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
@@ -40,7 +39,6 @@ class Category_4003 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-	//GSC STALKER
 		class Skin_gsc_military_helmet_wdl  {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
@@ -91,13 +89,11 @@ class Category_4003 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 		};
-	//SWAT
 		class Skin_SWAT  {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 		};
-	//KPFS CIvilians
 		class Skin_KPFS_Postman_west  {
 		type = "trade_items";
 		buy[] = {2,"ItemGoldBar"};
@@ -113,7 +109,6 @@ class Category_4003 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 		};
-	//BB MERCS DESERT
 	class Skin_FR_Scout4W { 
 		type = "trade_items"; 
  		buy[] = {2,"ItemGoldBar"}; 
@@ -454,5 +449,119 @@ class Category_4003 {
 			buy[] = {2,"ItemGoldBar"}; 
 			sell[] = {1,"ItemGoldBar"}; 
 		};
-
+class Skin_KPFS_Postman_east  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_KPFS_Firefighter  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_KPFS_Fire_Officer {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_KPFS_Fire_Guard  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian1_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian2_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian3_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian4_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian5_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian6_pants  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian7_pants {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian1_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian2_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian3_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian4_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian5_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian6_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+class Skin_sah_civilian7_shorts  { 
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+  		};
+		class Skin_Navy_SEALs1  {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+		};
+		class Skin_Navy_SEALs2  {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+		};
+		class Skin_Navy_SEALs3  {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+		};
+		class Skin_Navy_SEALs4  {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+		};
+		class Skin_Navy_SEALs5  {
+ 			type = "trade_items"; 
+ 			buy[] = {2,"ItemGoldBar"};  
+ 			sell[] = {1,"ItemGoldBar"}; 
+		};
 };

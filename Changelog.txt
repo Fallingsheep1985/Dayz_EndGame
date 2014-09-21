@@ -38,5 +38,5 @@ ADDED - Vilas Colinal space marines addon
 ADDED - Origins submarine
 CHANGED - New loadscreen
 FIXED - Moved sigboats to correct category for traders
-ADDED - 85 new skins
+ADDED - 110+ new skins
 
