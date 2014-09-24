@@ -14,7 +14,7 @@ _costsFree = "free"; // text for no costs
 _message = "Vehicle Service Point nearby"; // message to be shown when in range of a service point (set to "" to disable)
 
 // refuel settings
-_refuel_enable = true; // enable or disable the refuel option
+_refuel_enable = false; // enable or disable the refuel option
 _refuel_costs = []; // free for all vehicles (equal to [["AllVehicles",[]]])
 _refuel_updateInterval = 1; // update interval (in seconds)
 _refuel_amount = 0.05; // amount of fuel to add with every update (in percent)
