@@ -1,18 +1,32 @@
-private ["_qty","_started","_finished","_animState","_isMedic","_abort","_fillCounter","_dis","_sfx","_displayName","_fuelCans"];
+private ["_AddFuelAmount","_fuelAmount","_fuelBarrel","_qty","_started","_finished","_animState","_isMedic","_abort","_fillCounter","_dis","_sfx","_displayName","_fuelCans"];
 
 if(DZE_ActionInProgress) exitWith { cutText [(localize "str_epoch_player_34"), "PLAIN DOWN"]; };
 DZE_ActionInProgress = true;
+_fuelBarrel = _this select 3;
+_playernear = ({isPlayer _x} count (getPos vehicle player nearEntities [["AllVehicles"], 8]))-1;
+if (_playernear != 0) exitWith {DZE_ActionInProgress = false;cutText [format["You cannot fill while another player is nearby"] , "PLAIN DOWN"]};
 
 player removeAction s_player_fillfuel;
 s_player_fillfuel = 1;
 
 _fillCounter = 0;
 _abort = false;
+_fuelAmount = _fuelBarrel getVariable["fuelAmount",0];
+
+if (_fuelAmount == 0) then {
+_AddFuelAmount = round(random 630);
+while {_AddFuelAmount < 20} do {_AddFuelAmount = round(random 630);};
+_fuelBarrel setVariable ["fuelAmount",_AddFuelAmount,true];
+};
+
+_fuelAmount = _fuelBarrel getVariable["fuelAmount",0];
+
+if (_fuelAmount < 20) exitWith { cutText [format["This fuel tank is empty."], "PLAIN DOWN"]; DZE_ActionInProgress = false;};
 
 _fuelCans = [];
 
 {
-	if(_x == "ItemJerrycanEmpty" || _x == "ItemFuelBarrelEmpty") then {
+	if(_x == "ItemJerrycanEmpty" || _x == "ItemFuelBarrelEmpty" ) then {
 		_fuelCans set [(count _fuelCans),_x];
 	};
 } count magazines player;
@@ -20,6 +34,7 @@ _fuelCans = [];
 _qty = count _fuelCans;
 
 {
+	if (_fuelAmount < 20) exitWith { cutText [format["This fuel tank is empty now."], "PLAIN DOWN"]; DZE_ActionInProgress = false;};
 	_displayName = getText (configFile >> "cfgMagazines" >> _x >> "displayName");
 	
 	_fillCounter = _fillCounter + 1;
@@ -73,10 +88,14 @@ _qty = count _fuelCans;
 		if(([player,_x] call BIS_fnc_invRemove) == 1) then {
 			if (_x == "ItemFuelBarrelEmpty") then {
 				player addMagazine "ItemFuelBarrel";
+				_fuelAmount = _fuelAmount - 210;
 			} else {
 				player addMagazine "ItemJerrycan";
-			};
-			cutText [format[(localize "str_epoch_player_134"),_displayName], "PLAIN DOWN"];	
+				_fuelAmount = _fuelAmount - 20;
+			};							
+				
+				cutText [format[(localize "str_epoch_player_134"),_displayName], "PLAIN DOWN"];	
+				_fuelBarrel setVariable ["fuelAmount",_fuelAmount,true];
 		} else {
 			_abort = true;
 		};
