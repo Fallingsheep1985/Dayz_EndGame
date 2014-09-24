@@ -24,5 +24,5 @@ if (_removed == 1) then {
 		cutText [("Failed to Crack Vault.") , "PLAIN DOWN"];
 	};
 };
-
+s_player_unlockvault = -1;
 DZE_ActionInProgress = false;
