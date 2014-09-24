@@ -22,6 +22,8 @@ if (_removed == 1) then {
 				publicVariable "PVDZE_veh_Lock";
 			};
 		};
+		//add kit back
+		[player,"ItemHotwireKit",1] call BIS_fnc_invAdd;
 	} else {
 		cutText [(localize "str_epoch_player_33") , "PLAIN DOWN"];
 	};
