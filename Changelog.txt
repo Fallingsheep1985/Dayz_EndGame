@@ -40,3 +40,9 @@ FIXED - Moved sigboats to correct category for traders
 ADDED - 115+ new skins
 ADDED - 8 new vehicles (Including a fire truck!)
 
+0.0.0.9
+ADDED - Origins Strongholds, houses and garages (thanks to lunchboxcharlies epoch origins)
+ADDED - Can break into vaults
+ADDED - fuel tanks now have a limited amount of fuel in them
+REMOVED - auto refuel
+
