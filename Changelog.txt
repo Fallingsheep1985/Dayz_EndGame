@@ -45,4 +45,5 @@ ADDED - Origins Strongholds, houses and garages (thanks to lunchboxcharlies epoc
 ADDED - Can break into vaults
 ADDED - fuel tanks now have a limited amount of fuel in them
 REMOVED - auto refuel
+REMOVED - Bell 206 (caused RPT Spam)
 

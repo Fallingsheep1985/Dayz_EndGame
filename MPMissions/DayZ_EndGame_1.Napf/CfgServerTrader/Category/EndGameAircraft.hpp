@@ -94,29 +94,4 @@ class Category_4001 {
 		buy[] = {2,"ItemGoldBar"};
 		sell[] = {1,"ItemGoldBar"};
 	};
-		class usec_bell206 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
-		class usec_bell206_1 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
-		class usec_bell206_2 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
-		class usec_bell206_3 {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	};
-		class usec_bell206_uscg {
-		type = "trade_any_vehicle";
-		buy[] = {2,"ItemGoldBar"};
-		sell[] = {1,"ItemGoldBar"};
-	}
 };
