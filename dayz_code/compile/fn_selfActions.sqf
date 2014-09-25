@@ -59,79 +59,7 @@ if (_inVehicle and _isCopcar and (driver _vehicle == player)) then {
     };
 };
 
-//OriginsDoors
-if(isNil "s_player_openhouse") then {
-        s_player_openhouse = -1;
-};
-if(isNil "HouseState") then {
-		HouseState = 0;
-};
-if(isNil "GarageState") then {
-		GarageState = 0;
-};
-if(isNil "s_player_opengarage") then {
-		s_player_opengarage = -1;
-};
-_houses = ["Uroven1DrevenaBudka", "Uroven2KladaDomek", "Uroven3DrevenyDomek", "Uroven1VelkaBudka", "Uroven2MalyDomek", "Uroven3VelkyDomek"];
-_garages = ["malaGaraz", "velkaGaraz","Uroven3DrevenyDomek","Uroven3VelkyDomek","kingramida"];
-        DoorToOpen = objnull;
-                _obj = player;
-                _cursorTarget = cursorTarget;
-                if (!isNull _cursorTarget) then {
-                        if (player distance _cursorTarget < 10) then {
-                                _ownerID = _cursorTarget getVariable['CharacterID','0'];
-                               if (getPlayerUIDOld player == _ownerID) then {
-                                        DoorToOpen = _cursorTarget;
-                                        if (s_player_openhouse < 0) then {
-											if(typeOf(DoorToOpen) in _houses) then {
-                                                _OpenClose = "";
-												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Unlock Bandit Level 1 House';};
-												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Unlock Bandit Level 2 House';};
-												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Bandit Level 3 House';};
-												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Unlock Hero Level 1 House';};
-												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Unlock Hero Level 2 House';};
-												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Hero Level 3 House';};
-                                                if (HouseState == 1) then {
-                                                _OpenClose = "";
-												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Lock Bandit Level 1 House';};
-												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Lock Bandit Level 2 House';};
-												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Bandit Level 3 House';};
-												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Lock Hero Level 1 House';};
-												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Lock Hero Level 2 House';};
-												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Hero Level 3 House';};
-                                                };
-                                                s_player_openhouse = player addAction [_OpenClose, 'Custom\originsHouses.sqf'];
-											};
-                                        };
-										if (s_player_opengarage < 0) then
-                                        {
-											if(typeOf(DoorToOpen) in _garages) then {
-                                                _OpenClose = "";
-												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Unlock Small Garage';};
-												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Unlock Large Garage';};
-												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
-												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
-												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Unlock Pyramid';};
-                                                if (GarageState == 1) then {
-                                                _OpenClose = "";
-												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Lock Small Garage';};
-												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Lock Large Garage';};
-												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
-												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
-												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Lock Pyramid';};
-												};
-                                                s_player_opengarage = player addAction [_OpenClose, 'Custom\originsGarages.sqf'];
-											};
-										};
-                                };
-                        };            
-                };
-if ((_obj != player) || (_cursorTarget != cursorTarget)) then {
-    _obj removeAction s_player_openhouse;
-	_obj removeAction s_player_opengarage;
-     s_player_openhouse = -1;
-	 s_player_opengarage = -1;
-};
+
 
 if(DeployBikeScript)then{
 	//Deploy Bike
@@ -1377,7 +1305,80 @@ if (_inVehicle && (_vehicle isKindOf "AH6J_EP1_DZE") && ("2000Rnd_762x51_M134" i
    _vehicle removeAction s_player_giveAH6_Ammo;
    s_player_giveAH6_Ammo = -1;
 };
-//Origins stronghold
+//Origins
+//OriginsDoors
+if(isNil "s_player_openhouse") then {
+        s_player_openhouse = -1;
+};
+if(isNil "HouseState") then {
+		HouseState = 0;
+};
+if(isNil "GarageState") then {
+		GarageState = 0;
+};
+if(isNil "s_player_opengarage") then {
+		s_player_opengarage = -1;
+};
+_houses = ["Uroven1DrevenaBudka", "Uroven2KladaDomek", "Uroven3DrevenyDomek", "Uroven1VelkaBudka", "Uroven2MalyDomek", "Uroven3VelkyDomek"];
+_garages = ["malaGaraz", "velkaGaraz","Uroven3DrevenyDomek","Uroven3VelkyDomek","kingramida"];
+        DoorToOpen = objnull;
+                _obj = player;
+                _cursorTarget = cursorTarget;
+                if (!isNull _cursorTarget) then {
+                        if (player distance _cursorTarget < 10) then {
+                                _ownerID = _cursorTarget getVariable['CharacterID','0'];
+                               if (getPlayerUIDOld player == _ownerID) then {
+                                        DoorToOpen = _cursorTarget;
+                                        if (s_player_openhouse < 0) then {
+											if(typeOf(DoorToOpen) in _houses) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Unlock Bandit Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Unlock Bandit Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Bandit Level 3 House';};
+												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Unlock Hero Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Unlock Hero Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Hero Level 3 House';};
+                                                if (HouseState == 1) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Lock Bandit Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Lock Bandit Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Bandit Level 3 House';};
+												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Lock Hero Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Lock Hero Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Hero Level 3 House';};
+                                                };
+                                                s_player_openhouse = player addAction [_OpenClose, 'Custom\originsHouses.sqf'];
+											};
+                                        };
+										if (s_player_opengarage < 0) then
+                                        {
+											if(typeOf(DoorToOpen) in _garages) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Unlock Small Garage';};
+												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Unlock Large Garage';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
+												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Unlock Pyramid';};
+                                                if (GarageState == 1) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Lock Small Garage';};
+												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Lock Large Garage';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
+												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Lock Pyramid';};
+												};
+                                                s_player_opengarage = player addAction [_OpenClose, 'Custom\originsGarages.sqf'];
+											};
+										};
+                                };
+                        };            
+                };
+if ((_obj != player) || (_cursorTarget != cursorTarget)) then {
+    _obj removeAction s_player_openhouse;
+	_obj removeAction s_player_opengarage;
+     s_player_openhouse = -1;
+	 s_player_opengarage = -1;
+};
 
 if((typeOf cursorTarget == "krepost") and (player distance cursorTarget < 23)) then {
    if (str1 < 0) then {
