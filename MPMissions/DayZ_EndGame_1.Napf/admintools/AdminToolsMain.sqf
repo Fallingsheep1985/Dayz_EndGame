@@ -25,7 +25,8 @@ if ((getPlayerUID player) in AdminList) then { // Admins
 		["Admin Menu >>", [], "#USER:AdminMenu", -5, [["expression", ""]], "1", "1"],
 		["Admin Build Menu", [], "#USER:AdminBuildMenu", -5, [["expression", ""]], "1", "1"],
 		["Sheeps Menu >>", [], "#USER:SheepsMenu", -5, [["expression", ""]], "1", "1"],
-		["Vehicle Menu >>",[],"#USER:VehicleMenu",-5,[["expression",""]],"1","1"],		
+		["Vehicle Menu >>",[],"#USER:VehicleMenu",-5,[["expression",""]],"1","1"],
+		["Build Menu >>",[],"#USER:BuildMenu",-5,[["expression",""]],"1","1"],			
 		["Crate Menu >>",[],"#USER:CrateMenuLocal",-5,[["expression",""]],"1","1"],
 		["Epoch Menu >>", [], "#USER:EpochMenu", -5, [["expression", ""]], "1", "1"],			
 		["Weapon/Item Kits >>", [], "#USER:WeaponMenu", -5, [["expression", ""]], "1", "1"],
@@ -47,6 +48,15 @@ if ((getPlayerUID player) in AdminList) then { // Admins
 		];
 	}
 };
+BuildMenu = [
+	["",true],
+	["Building Kits Menu >>", [], "#USER:BuildingKitMenu", -5, [["expression", ""]], "1", "1"],	
+	["Materials Menu >>", [], "#USER:MaterialsMenu", -5, [["expression", ""]], "1", "1"],
+	["Gems Menu >>", [], "#USER:GemsMenu", -5, [["expression", ""]], "1", "1"],
+		["", [], "", -5, [["expression", ""]], "1", "0"],
+			["Main Menu", [20], "#USER:epochmenustart", -5, [["expression", ""]], "1", "1"]		
+	];
+
 AdminBuildMenu =
 [
 ["",true],
@@ -276,13 +286,11 @@ AdminOreBuildMenu =
 
 SheepsMenu =
 [
-["",true],
-	["Building Kits Menu >>", [], "#USER:BuildingKitMenu", -5, [["expression", ""]], "1", "1"],	
-	["Materials Menu >>", [], "#USER:MaterialsMenu", -5, [["expression", ""]], "1", "1"],
-	["Gems Menu >>", [], "#USER:GemsMenu", -5, [["expression", ""]], "1", "1"],	
+["",true],	
 	["Show Position", [],"", -5, [["expression", format[_EXECscript7,"showpostion.sqf"]]], "1", "1"],
 	["Show Position ATL", [],"", -5, [["expression", format[_EXECscript7,"showpostionATL.sqf"]]], "1", "1"],
 	["Add NOS", [],"", -5, [["expression", format[_EXECscript7,"addNOS.sqf"]]], "1", "1"],
+	["Add Hotwire", [],"", -5, [["expression", format[_EXECscript7,"addHotwire.sqf"]]], "1", "1"],
 	["Add 100oz Briefcase", [],"", -5, [["expression", format[_EXECscript7,"add100ozbriefcase.sqf"]]], "1", "1"],
 	["Add Zombie Bait Parts", [],"", -5, [["expression", format[_EXECscript7,"addZombieBait.sqf"]]], "1", "1"],
 	["Add Zombie Bomb Parts", [],"", -5, [["expression", format[_EXECscript7,"addZombieBomb.sqf"]]], "1", "1"],
