@@ -8,6 +8,7 @@ private ["_isWreckBuilding","_temp_keys","_magazinesPlayer","_isPZombie","_vehic
 
 
 if (DZE_ActionInProgress) exitWith {}; // Do not allow if any script is running.
+_origins_buildings = ["Uroven1DrevenaBudka", "Uroven2KladaDomek", "Uroven3DrevenyDomek", "Uroven1VelkaBudka", "Uroven2MalyDomek", "Uroven3VelkyDomek", "malaGaraz", "velkaGaraz", "kingramida", "ori_safe","krepost"];
 
 _vehicle = vehicle player;
 _isPZombie = player isKindOf "PZombie_VB";
@@ -56,6 +57,80 @@ if (_inVehicle and _isCopcar and (driver _vehicle == player)) then {
         s_player_sirens_on = -1;
         s_player_sirens_off = -1;
     };
+};
+
+//OriginsDoors
+if(isNil "s_player_openhouse") then {
+        s_player_openhouse = -1;
+};
+if(isNil "HouseState") then {
+		HouseState = 0;
+};
+if(isNil "GarageState") then {
+		GarageState = 0;
+};
+if(isNil "s_player_opengarage") then {
+		s_player_opengarage = -1;
+};
+_houses = ["Uroven1DrevenaBudka", "Uroven2KladaDomek", "Uroven3DrevenyDomek", "Uroven1VelkaBudka", "Uroven2MalyDomek", "Uroven3VelkyDomek"];
+_garages = ["malaGaraz", "velkaGaraz","Uroven3DrevenyDomek","Uroven3VelkyDomek","kingramida"];
+        DoorToOpen = objnull;
+                _obj = player;
+                _cursorTarget = cursorTarget;
+                if (!isNull _cursorTarget) then {
+                        if (player distance _cursorTarget < 10) then {
+                                _ownerID = _cursorTarget getVariable['CharacterID','0'];
+                               if (getPlayerUIDOld player == _ownerID) then {
+                                        DoorToOpen = _cursorTarget;
+                                        if (s_player_openhouse < 0) then {
+											if(typeOf(DoorToOpen) in _houses) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Unlock Bandit Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Unlock Bandit Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Bandit Level 3 House';};
+												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Unlock Hero Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Unlock Hero Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Hero Level 3 House';};
+                                                if (HouseState == 1) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "Uroven1DrevenaBudka") then { _OpenClose = 'Lock Bandit Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2KladaDomek") then { _OpenClose = 'Lock Bandit Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Bandit Level 3 House';};
+												if (_cursorTarget isKindOf "Uroven1VelkaBudka") then { _OpenClose = 'Lock Hero Level 1 House';};
+												if (_cursorTarget isKindOf "Uroven2MalyDomek") then { _OpenClose = 'Lock Hero Level 2 House';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Hero Level 3 House';};
+                                                };
+                                                s_player_openhouse = player addAction [_OpenClose, 'Custom\originsHouses.sqf'];
+											};
+                                        };
+										if (s_player_opengarage < 0) then
+                                        {
+											if(typeOf(DoorToOpen) in _garages) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Unlock Small Garage';};
+												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Unlock Large Garage';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Unlock Level 3 Garage';};
+												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Unlock Pyramid';};
+                                                if (GarageState == 1) then {
+                                                _OpenClose = "";
+												if (_cursorTarget isKindOf "malaGaraz") then { _OpenClose = 'Lock Small Garage';};
+												if (_cursorTarget isKindOf "velkaGaraz") then { _OpenClose = 'Lock Large Garage';};
+												if (_cursorTarget isKindOf "Uroven3DrevenyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
+												if (_cursorTarget isKindOf "Uroven3VelkyDomek") then { _OpenClose = 'Lock Level 3 Garage';};
+												if (_cursorTarget isKindOf "kingramida") then { _OpenClose = 'Lock Pyramid';};
+												};
+                                                s_player_opengarage = player addAction [_OpenClose, 'Custom\originsGarages.sqf'];
+											};
+										};
+                                };
+                        };            
+                };
+if ((_obj != player) || (_cursorTarget != cursorTarget)) then {
+    _obj removeAction s_player_openhouse;
+	_obj removeAction s_player_opengarage;
+     s_player_openhouse = -1;
+	 s_player_opengarage = -1;
 };
 
 if(DeployBikeScript)then{
@@ -1301,4 +1376,29 @@ if (_inVehicle && (_vehicle isKindOf "AH6J_EP1_DZE") && ("2000Rnd_762x51_M134" i
 } else {
    _vehicle removeAction s_player_giveAH6_Ammo;
    s_player_giveAH6_Ammo = -1;
+};
+//Origins stronghold
+
+if((typeOf cursorTarget == "krepost") and (player distance cursorTarget < 23)) then {
+   if (str1 < 0) then {
+     if ((cursorTarget getVariable ["CharacterID","0"] == dayz_combination) or (cursorTarget getVariable ["CharacterID","0"] == dayz_playerUID)) then {
+       str1 = player addAction [format[ "Open %1",getText (configFile >> "CfgVehicles" >> typeOf cursorTarget >> "displayName")], "custom\build\stronghold\s_open.sqf",cursorTarget, 0, false, true];
+       str2 = player addAction [format[ "Open interior doors",_text], "custom\build\stronghold\s_openall.sqf",_cursorTarget, 0, false, true];
+       str3 = player addAction [format[ "Close interior doors",_text], "custom\build\stronghold\s_closeall.sqf",_cursorTarget, 0, false, true];
+       str4 = player addAction [format[ "Lock %1",getText (configFile >> "CfgVehicles" >> typeOf cursorTarget >> "displayName")], "custom\build\stronghold\s_lock.sqf",_cursorTarget, 0, false, true];
+	   _open set [count _open,5];
+     } else {
+       str1 = player addAction [format["Unlock %1",getText (configFile >> "CfgVehicles" >> typeOf cursorTarget >> "displayName")], "custom\build\stronghold\s_unlock.sqf",cursorTarget, 0, false, true];
+	    _open set [count _open,1];
+     };
+   };
+} else {
+   player removeAction str1;
+   str1 = -1;
+   player removeAction str2;
+   str2 = -1;
+   player removeAction str3;
+   str3 = -1;
+   player removeAction str4;
+   str4 = -1;
 };
