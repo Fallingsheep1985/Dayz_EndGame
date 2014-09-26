@@ -60,12 +60,12 @@ DZE_CLICK_ACTIONS = [
 	["ItemTopaz","Build Small Garage","['SG'] execVM 'custom\originsbuild.sqf'","true"],
 	["ItemTopaz","Build Large Garage","['LG'] execVM 'custom\originsbuild.sqf'","true"],
 	["ItemEmerald","Build Pyramid Garage","['PG'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemSapphire","Build Hero Level 1 House","['H1'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemSapphire","Build Hero Level 2 House","['H2'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemSapphire","Build Hero Level 3 House","['H3'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemRuby","Build Bandit Level 1 House","['B1'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemRuby","Build Bandit Level 2 House","['B2'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemRuby","Build Bandit Level 3 House","['B3'] execVM 'custom\originsbuild.sqf'","true"],
-	["ItemObsidian","Build Stronghold","[] execVM 'custom\build\s.sqf'","true"]
+	["ItemSapphire","Build Hero Level 1 House","['H1'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemSapphire","Build Hero Level 2 House","['H2'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemSapphire","Build Hero Level 3 House","['H3'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemRuby","Build Bandit Level 1 House","['B1'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemRuby","Build Bandit Level 2 House","['B2'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemRuby","Build Bandit Level 3 House","['B3'] execVM 'custom\originsbuild.sqf';","true"],
+	["ItemObsidian","Build Stronghold","spawn player_buildStronghold;","true"]
 	
 ];                                               

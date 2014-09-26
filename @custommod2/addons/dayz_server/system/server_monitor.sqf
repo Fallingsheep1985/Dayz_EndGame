@@ -28,6 +28,16 @@ if(isnil "MaxMineVeins") then {
 };
 // Custon Configs End
 
+//Define arrays
+owner_B1 = [];
+owner_B2 = [];
+owner_B3 = [];
+owner_H1 = [];
+owner_H2 = [];
+owner_H3 = [];
+owner_SG = [];
+owner_LG = [];
+owner_PG = [];
 if (isServer && isNil "sm_done") then {
 
 	serverVehicleCounter = [];
@@ -104,6 +114,29 @@ if (isServer && isNil "sm_done") then {
 		
 		_pos = [0,0,0];
 		_wsDone = false;
+//switch spawned objects
+		switch(_type) do {
+			case "Uroven1DrevenaBudka" 	: { owner_B1 set [count owner_B1, _ownerID]; };
+			case "Uroven2KladaDomek" 	: { owner_B2 set [count owner_B2, _ownerID]; };
+			case "Uroven3DrevenyDomek" 	: { owner_B3 set [count owner_B3, _ownerID]; };
+			case "Uroven1VelkaBudka" 	: { owner_H1 set [count owner_H1, _ownerID]; };
+			case "Uroven2MalyDomek" 	: { owner_H2 set [count owner_H2, _ownerID]; };
+			case "Uroven3VelkyDomek" 	: { owner_H3 set [count owner_H3, _ownerID]; };
+			case "malaGaraz" 			: { owner_SG set [count owner_SG, _ownerID]; };
+			case "velkaGaraz" 			: { owner_LG set [count owner_LG, _ownerID]; };
+			case "kingramida" 			: { owner_PG set [count owner_PG, _ownerID]; };
+};
+//publish publicVariables
+	publicVariable "owner_B1";
+	publicVariable "owner_B2";
+	publicVariable "owner_B3";
+	publicVariable "owner_H1";
+	publicVariable "owner_H2";
+	publicVariable "owner_H3";
+	publicVariable "owner_SG";
+	publicVariable "owner_LG";
+	publicVariable "owner_PG";
+	diag_log (format["HOUSE SERVER: Owners Are: B1 %1 B2 %2 B3 %3 H1 %4 H2 %5 H3 %6 SG %7 LG %8 PG %9", owner_B1, owner_B2, owner_B3, owner_H1, owner_H2, owner_H3, owner_SG, owner_LG, owner_PG]);
     if (count _worldspace >= 2) then
         {
             if(count _worldspace == 3) then{
