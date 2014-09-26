@@ -38,6 +38,7 @@ owner_H3 = [];
 owner_SG = [];
 owner_LG = [];
 owner_PG = [];
+owner_SH = [];
 if (isServer && isNil "sm_done") then {
 
 	serverVehicleCounter = [];
@@ -136,7 +137,8 @@ if (isServer && isNil "sm_done") then {
 	publicVariable "owner_SG";
 	publicVariable "owner_LG";
 	publicVariable "owner_PG";
-	diag_log (format["HOUSE SERVER: Owners Are: B1 %1 B2 %2 B3 %3 H1 %4 H2 %5 H3 %6 SG %7 LG %8 PG %9", owner_B1, owner_B2, owner_B3, owner_H1, owner_H2, owner_H3, owner_SG, owner_LG, owner_PG]);
+	publicVariable "owner_SH";
+	diag_log (format["HOUSE SERVER: Owners Are: B1 %1 B2 %2 B3 %3 H1 %4 H2 %5 H3 %6 SG %7 LG %8 PG %9 SH &10", owner_B1, owner_B2, owner_B3, owner_H1, owner_H2, owner_H3, owner_SG, owner_LG, owner_PG, owner_SH]);
     if (count _worldspace >= 2) then
         {
             if(count _worldspace == 3) then{

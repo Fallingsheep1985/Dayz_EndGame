@@ -22,6 +22,12 @@ _name = "";
 _abort = false;
 _message = "";
 switch(_type) do {
+	case 'SH' : {
+		_classname = "krepost";
+		_price = -2;
+		_name = "Stronghold";
+		if(_charID in owner_SH or _charID in owner_SH) exitwith {closeDialog 1; _abort = true; _message = format["You have already built a Level 1 House!", _name];};
+	};
 	case 'B1' : {
 		_classname = "Uroven1DrevenaBudka";
 		_limit = -5000;
@@ -441,6 +447,79 @@ _limit = getNumber(configFile >> "CfgVehicles" >> _classname >> "constructioncou
 };
 };
  
+if(_lockable > 1) then {
+
+					_combinationDisplay = "";
+
+					switch (_lockable) do {
+
+						case 2: { // 2 lockbox
+							_combination_1 = (floor(random 3)) + 100; // 100=red,101=green,102=blue
+							_combination_2 = floor(random 10);
+							_combination_3 = floor(random 10);
+							_combination = format["%1%2%3",_combination_1,_combination_2,_combination_3];
+							dayz_combination = _combination;
+							if (_combination_1 == 100) then {
+								_combination_1_Display = "Red";
+							};
+							if (_combination_1 == 101) then {
+								_combination_1_Display = "Green";
+							};
+							if (_combination_1 == 102) then {
+								_combination_1_Display = "Blue";
+							};
+							_combinationDisplay = format["%1%2%3",_combination_1_Display,_combination_2,_combination_3];
+						};
+
+						case 3: { // 3 combolock
+							_combination_1 = floor(random 10);
+							_combination_2 = floor(random 10);
+							_combination_3 = floor(random 10);
+							_combination = format["%1%2%3",_combination_1,_combination_2,_combination_3];
+							dayz_combination = _combination;
+							_combinationDisplay = _combination;
+						};
+
+						case 4: { // 4 safe
+							_combination_1 = floor(random 10);
+							_combination_2 = floor(random 10);
+							_combination_3 = floor(random 10);
+							_combination_4 = floor(random 10);
+							_combination = format["%1%2%3%4",_combination_1,_combination_2,_combination_3,_combination_4];
+							dayz_combination = _combination;
+							_combinationDisplay = _combination;
+						};
+					};
+
+					_tmpbuilt setVariable ["CharacterID",_combination,true];
+
+
+					PVDZE_obj_Publish = [_combination,_tmpbuilt,[_dir,_location],_classname];
+					publicVariableServer "PVDZE_obj_Publish";
+
+					cutText [format[(localize "str_epoch_player_140"),_combinationDisplay,_text], "PLAIN DOWN", 5];
+
+
+				} else {
+					_tmpbuilt setVariable ["CharacterID",_combination,true];
+					
+					_combinationDisplay = "";
+					
+					if(_classname == "krepost") then {
+							_combination_1 = floor(random 10);
+							_combination_2 = floor(random 10);
+							_combination_3 = floor(random 10);
+							_combination_4 = floor(random 10);
+							_combination = format["%1%2%3%4",_combination_1,_combination_2,_combination_3,_combination_4];
+							dayz_combination = _combination;
+							_combinationDisplay = _combination;
+							diag_log format["Publish Other DEBUG: STRONGHOLD CODE: %1 _tmpbuilt: %2 [_dir,_location]: %3 _classname: %4",_combination,_tmpbuilt,[_dir,_location],_classname];
+							PVDZE_obj_Publish = [_combination,_tmpbuilt,[_dir,_location],_classname];
+							publicVariableServer "PVDZE_obj_Publish";
+							cutText [format[(localize "str_epoch_player_140"),_combinationDisplay,_text], "PLAIN DOWN", 5];
+					};
+};
+
 player playActionNow "Medic";
 [player,"repair",0,false,10] call dayz_zombieSpeak;
 [player,10,true,(getPosATL player)] spawn player_alertZombies;
@@ -458,6 +537,11 @@ if (_isPole) then {
 //_activatingPlayer = player;
  
 switch (_type) do {
+	case 'SH' : {
+		player removeMagazine "ItemObsidian";
+		owner_SH set [count owner_SH, _charID];
+		publicVariable "owner_SH";
+	};
 	case 'B1' : {
 		player removeMagazine "ItemRuby";
 		owner_B1 set [count owner_B1, _charID];
@@ -532,5 +616,5 @@ DZE_ActionInProgress = false;
  DZE_ActionInProgress = false;
  } else {
  closeDialog 1;
- cutText[format["You need %1 briefcases gold to build this house!",(_price+1)],"PLAIN DOWN"];
+ cutText[format["You need %1 briefcases gold to build this!",(_price+1)],"PLAIN DOWN"];
  };

@@ -66,6 +66,6 @@ DZE_CLICK_ACTIONS = [
 	["ItemRuby","Build Bandit Level 1 House","['B1'] execVM 'custom\originsbuild.sqf';","true"],
 	["ItemRuby","Build Bandit Level 2 House","['B2'] execVM 'custom\originsbuild.sqf';","true"],
 	["ItemRuby","Build Bandit Level 3 House","['B3'] execVM 'custom\originsbuild.sqf';","true"],
-	["ItemObsidian","Build Stronghold","spawn player_buildStronghold;","true"]
+	["ItemObsidian","Build Stronghold","['SH'] execVM 'custom\originsbuild.sqf';","true"]
 	
 ];                                               
