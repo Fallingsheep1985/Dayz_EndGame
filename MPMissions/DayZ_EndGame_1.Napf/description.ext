@@ -547,6 +547,24 @@ class CfgSounds
 		sound[]={sounds\siren.ogg,0.9,1};
 		titles[] = {};
 	};
+	class DoorCreak
+    {
+		name="DoorCreak";
+		sound[]={sounds\doorCreak.ogg, 0.1, 1};
+		titles[] = {};
+    };
+	class metalGates
+    {
+		name="metalGates";
+		sound[]={sounds\metalGates.ogg, 0.1, 1};
+		titles[] = {};	
+    };
+	class stronghold
+	{
+		name = "stronghold";
+		sound[] = {sounds\vrata_sound.ogg,0.1,1};
+		titles[] = {};
+    };
 };
 //DZGM
 #include "scripts\dzgm\groupManagement.hpp"
