@@ -675,8 +675,13 @@ if(BurnTentsScript)then{
 					_combi = player addAction [format[localize "STR_EPOCH_ACTIONS_OPEN",_text], "\z\addons\dayz_code\actions\vault_unlock.sqf",_cursorTarget, 0, false, true, "",""];
 					s_player_combi set [count s_player_combi,_combi];
 				} else {
-					_combi = player addAction [format[localize "STR_EPOCH_ACTIONS_UNLOCK",_text], "\z\addons\dayz_code\actions\vault_combination_1.sqf",_cursorTarget, 0, false, true, "",""];
-					s_player_combi set [count s_player_combi,_combi];
+					if (_hasHotwireKit) then {
+						_combi = player addAction [format[ "Crack Vault"],"scripts\crack_vault.sqf",_cursorTarget, 2, true, true, "", ""];
+						s_player_combi set [count s_player_combi,_combi];
+					}else{
+						_combi = player addAction [format[localize "STR_EPOCH_ACTIONS_UNLOCK",_text], "\z\addons\dayz_code\actions\vault_combination_1.sqf",_cursorTarget, 0, false, true, "",""];
+						s_player_combi set [count s_player_combi,_combi];
+					};
 				};
 				s_player_unlockvault = 1;
 			} else {
@@ -684,10 +689,6 @@ if(BurnTentsScript)then{
 					_combi = player addAction [localize "STR_EPOCH_ACTIONS_RECOMBO", "\z\addons\dayz_code\actions\vault_combination_1.sqf",_cursorTarget, 0, false, true, "",""];
 					s_player_combi set [count s_player_combi,_combi];
 					s_player_unlockvault = 1;
-				};
-				if (_hasHotwireKit) then {
-					_combi = player addAction [format[ "Crack Vault"],"scripts\crack_vault.sqf",_cursorTarget, 2, true, true, "", ""];
-					s_player_combi set [count s_player_combi,_combi];
 				};
 			};
 		};
