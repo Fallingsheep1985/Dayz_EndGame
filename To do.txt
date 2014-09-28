@@ -23,8 +23,9 @@ clean up SQL dump (remove char data and object data)
 
 add skins from BB_OA_MERCS PBO
 safe crack fix
-stronghold fix
+Stronghold sleep script fix
+Stronghold scripts fix
 test new skins
-
+change it so you can upgrade hero/bandit houses
 
 
