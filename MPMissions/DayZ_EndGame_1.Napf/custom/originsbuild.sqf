@@ -510,7 +510,9 @@ if(_lockable > 1) then {
 							_combination_2 = floor(random 10);
 							_combination_3 = floor(random 10);
 							_combination_4 = floor(random 10);
-							_combination = format["%1%2%3%4",_combination_1,_combination_2,_combination_3,_combination_4];
+							_combination_5 = floor(random 10);
+							_combination_6 = floor(random 10);
+							_combination = format["%1%2%3%4%5%6",_combination_1,_combination_2,_combination_3,_combination_4,_combination_5,_combination_6];
 							dayz_combination = _combination;
 							_combinationDisplay = _combination;
 							diag_log format["Publish Other DEBUG: STRONGHOLD CODE: %1 _tmpbuilt: %2 [_dir,_location]: %3 _classname: %4",_combination,_tmpbuilt,[_dir,_location],_classname];
