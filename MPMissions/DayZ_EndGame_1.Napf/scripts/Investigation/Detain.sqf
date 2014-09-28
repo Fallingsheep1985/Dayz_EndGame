@@ -3,9 +3,12 @@ _dist = player distance _newCiv;
 _isMan = _newCiv isKindOf "Man";
 _isAlive = alive _newCiv;
 detach _newCiv;    // Just incase
+_magazinesPlayer = magazines player;
+
+_hasScrap = "ItemGeneric" in _magazinesPlayer;
 
 /////////////////////////////////////////////////////////////////////////////////////
-if(_dist < 10 && _isMan && _isAlive && canbuild) then {
+if(_dist < 10 && _isMan && _isAlive && canbuild && _hasScrap) then {
     // removing required...
     player removeMagazine"equip_cable_tie";
 
