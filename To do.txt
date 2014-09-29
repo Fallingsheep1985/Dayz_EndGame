@@ -1,31 +1,45 @@
-
-    make trader prices higher
-    remove silver and use only gold currency
-    AI add military stuff
-    Add restriction to using Tanks/Jets/Choppers
-	trader city's actually in city's and at logical places
-    increase the zombie threat
-    remove vehicles that don't fit the apocalyptic feel
-    make locked items breakable/Pick-able
-    make it so you can break into locked cars
-	add new loot to loot tables and traders
-    completely new traders and trade locations
-    new vehicles to dynamic spawns
-    add new locations to map
-    move scripts to client from mission file
-    add features to new items
-	
+make trader prices higher
+AI add military stuff
+Add restriction to using Tanks/Jets/Choppers
+trader city's actually in city's and at logical places
+remove vehicles that don't fit the apocalyptic feel
+make locked items breakable/Pick-able
+add new loot to loot tables and traders
+completely new traders and trade locations
+new vehicles to dynamic spawns
+add new locations to map
+move scripts to client from mission file
+add features to new items
 Redo/Balance loot tables loot tables (everything is rare :P)
 balance/change vehicle prices at traders
 lower high end vehicle spawns to 0 (chance of 1 still spawning)
 clean up SQL dump (remove char data and object data)
-
-
 add skins from BB_OA_MERCS PBO
-safe crack fix
 Stronghold sleep script fix
 Stronghold scripts fix
-test new skins
-change it so you can upgrade hero/bandit houses
+Hero/bandit houses upgradable
+Hero/bandit houses need materials to be built
+Origins buildings need blue prints to be built
+Add new weapons
+Test new skins
+Test new vehicles
+Ensure all vehicles can be rearmed
+Fix any RPT errors that pop up
+Re do traders (not a priority at this stage)
+Finish new city area
+Redo existing citys/towns with new buildings
+Move MPMission code to Client (dayz_code) for quicker mission loading
+Fix vault crack script
+Build script to crack locked doors/buildings
+License system for vehicles
+Redo trader prices for ALL items
+Add origins buildings in to plotpole system
+Overhaul zombies (new zed models, do more damage, etc)
+remove silver and use gold only
+Fix some addon load errors (cant load blah.paa, cant load texture, etc )
+Redo admin tools into a GUI instead of scroll menu
+Test Single Currency
+Update Vectorbuild/adminbuild/snappro
+Add plotpole4life
 
 
