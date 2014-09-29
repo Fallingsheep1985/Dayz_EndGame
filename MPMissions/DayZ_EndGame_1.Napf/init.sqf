@@ -24,16 +24,19 @@ enableRadio false;
 enableSentences false;
 
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
+DZE_AsReMix_PLAYER_HUD = true; //Open Custom 	AsReMix Player HUD
 
 //Load in compiled functions
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)
 call compile preprocessFileLineNumbers "scripts\JAEM\variables.sqf";
+call compile preprocessFileLineNumbers "init\variables.sqf";
 progressLoadingScreen 0.1;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\publicEH.sqf";	
 progressLoadingScreen 0.2;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\medical\setup_functions_med.sqf";	//Functions used by CLIENT for medical
 progressLoadingScreen 0.4;
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";				//Compile regular functions
+call compile preprocessFileLineNumbers "init\compiles.sqf";
 progressLoadingScreen 0.5;
 call compile preprocessFileLineNumbers "scripts\Buildables\Crafting_Compiles.sqf"; //Alchemy compiles
 progressLoadingScreen 0.6;
@@ -50,6 +53,7 @@ if (isServer) then {
 	_nil = [] execVM "\z\addons\dayz_server\missions\DayZ_Endgame_1.Napf\mission.sqf";
 	_serverMonitor = execVM "\z\addons\dayz_code\system\server_monitor.sqf";
 };
+
 
 
 //anti arrest trader
@@ -207,6 +211,18 @@ call espawn;
 		player spawn herospawn;
 	};
 };
+
+// Zupa - SC
+    execVM "gold\init.sqf";
+	execVM "gold\addbankmarkers.sqf";
+     // my debug
+    if (!isDedicated) then {
+        if (DZE_AsReMix_PLAYER_HUD) then {
+            execVM "addons\playerhud\playerHud.sqf"//AsReMix Player HUD
+        };
+    };
+// END Zupa - SC
+
 //wait before admin script is active
 sleep 15;
 if(adminScript)then{

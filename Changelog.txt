@@ -47,3 +47,6 @@ ADDED - fuel tanks now have a limited amount of fuel in them
 REMOVED - auto refuel
 REMOVED - Bell 206 (caused RPT Spam)
 
+0.0.1.0
+ADDED - Single currency banking system
+

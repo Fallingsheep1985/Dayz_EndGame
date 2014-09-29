@@ -562,7 +562,9 @@ _Build = canbuild;
 	// Study Body
 	if (_player_studybody) then {
 		if (s_player_studybody < 0) then {
-			s_player_studybody = player addAction [localize "str_action_studybody", "\z\addons\dayz_code\actions\study_body.sqf",_cursorTarget, 0, false, true, "",""];
+			//Check wallet -  SINGLE CURRENCY
+			s_player_studybody = player addAction [("<t color=""#FF0000"">"+("Check Wallet") + "</t>"), "gold\check_wallet.sqf",_cursorTarget, 0, false, true, "",""];
+			//s_player_studybody = player addAction [localize "str_action_studybody", "\z\addons\dayz_code\actions\study_body.sqf",_cursorTarget, 0, false, true, "",""];
 		};
 	} else {
 		player removeAction s_player_studybody;
@@ -696,7 +698,31 @@ if(BurnTentsScript)then{
 		{player removeAction _x} count s_player_combi;s_player_combi = [];
 		s_player_unlockvault = -1;
 	};
+//SINGLE CURRENCY
 
+//banking FROM HERE
+
+	if(_typeOfCursorTarget in DZE_UnLockedStorage and (player distance _cursorTarget < 3)) then {
+		if (s_bank_dialog < 0) then {
+				s_bank_dialog = player addAction ["Online Banking", "gold\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
+	} else {
+     	player removeAction s_bank_dialog;
+		s_bank_dialog = -1;
+	};
+
+	// banking atm
+
+	if(_typeOfCursorTarget in DZE_ATM  and (player distance _cursorTarget < 3)) then {
+		if (s_bank_dialog2 < 0) then {
+			s_bank_dialog2 = player addAction ["Bank ATM", "gold\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_bank_dialog2;
+		s_bank_dialog2 = -1;
+	};
+	
+	
 	//Allow owner to pack vault
 	if(_typeOfCursorTarget in DZE_UnLockedStorage && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
 
@@ -726,6 +752,57 @@ if(BurnTentsScript)then{
 		player removeAction s_player_information;
 		s_player_information = -1;
 	};
+	
+//SINGLE CURRENCY
+if (_isMan and _isAlive and !_isZombie and !_isAnimal and !(_traderType in serverTraders)) then {
+    if (s_givemoney_dialog < 0) then {
+        s_givemoney_dialog = player addAction [format["Give Money to %1", (name _cursorTarget)], "gold\give_player_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+    };
+} else {
+    player removeAction s_givemoney_dialog;
+    s_givemoney_dialog = -1;
+};
+//SMELT GOLD/COINS
+if (isNil "SmeltingInProgress") then {
+		SmeltingInProgress = false;
+	};
+
+	_player_money = player getVariable["cashMoney",0];
+	// Smelt gold coins
+	if (inflamed _cursorTarget and (_player_money > SmeltingGoldBarsToCoinsRate) and !SmeltingInProgress) then {
+		if (s_smelt_coins < 0) then {
+			if (_player_money > 10000) then {
+				s_smelt_coins = player addAction [format["Smelt %1 %2 into a 10oz Gold Bar", (SmeltingGoldBarsToCoinsRate * 10), CurrencyName], "gold\player_smeltcoins.sqf","ItemGoldBar10oz", 3, true, true, "", ""];
+			} else {
+				s_smelt_coins = player addAction [format["Smelt %1 %2 into a Gold Bar", SmeltingGoldBarsToCoinsRate, CurrencyName], "gold\player_smeltcoins.sqf","ItemGoldBar", 3, true, true, "", ""];
+			};
+		};
+	} else {
+		player removeAction s_smelt_coins;
+		s_smelt_coins = -1;
+	};
+
+	_hasGoldBars = "ItemGoldBar" in _magazinesPlayer;
+	// Smelt bars into coins
+	if (inflamed _cursorTarget and (_hasGoldBars) and !SmeltingInProgress) then {
+		if (s_smelt_bars < 0) then {
+			s_smelt_bars = player addAction [format["Smelt a Gold Bar into %1 %2", SmeltingGoldBarsToCoinsRate, CurrencyName], "gold\player_smeltbars.sqf","ItemGoldBar", 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_smelt_bars;
+		s_smelt_bars = -1;
+	};
+	
+	_has10ozGoldBars = "ItemGoldBar10oz" in _magazinesPlayer;
+	// Smelt bars into coins
+	if (inflamed _cursorTarget and (_has10ozGoldBars) and !SmeltingInProgress) then {
+		if (s_smelt_10bars < 0) then {
+			s_smelt_10bars = player addAction [format["Smelt a 10oz Gold Bar into %1 %2", (SmeltingGoldBarsToCoinsRate * 10), CurrencyName], "gold\player_smeltbars.sqf","ItemGoldBar10oz", 3, true, true, "", ""];
+		};
+	} else {
+		player removeAction s_smelt_10bars;
+		s_smelt_10bars = -1;
+	}; 
 	
 	//Fuel Pump
 	if(_typeOfCursorTarget in dayz_fuelpumparray) then {	
@@ -1131,6 +1208,22 @@ if(RobBankScript)then{
 	s_player_fuelauto = -1;
 	player removeAction s_player_fuelauto2;
 	s_player_fuelauto2 = -1;
+	//Single currency
+	player removeAction s_givemoney_dialog;
+	s_givemoney_dialog = -1;
+	player removeAction s_bank_dialog;
+	s_bank_dialog = -1;
+	player removeAction s_bank_dialog2;
+	s_bank_dialog2 = -1;
+	//Smelt gold/coins
+	 player removeAction s_smelt_coins;
+	s_smelt_coins = -1;
+	player removeAction s_smelt_bars;
+	s_smelt_bars = -1;
+	player removeAction s_smelt_10bars;
+	s_smelt_10bars = -1;
+	
+	
 	//####----####----####---- Base Building 1.3 Start ----####----####----####
 	player removeAction s_player_getTargetUID;
 	s_player_getTargetUID = -1;

@@ -5,6 +5,7 @@ private ["_characterID","_playerObj","_playerID","_dummy","_worldspace","_state"
 _characterID = _this select 0;
 _playerObj = _this select 1;
 _playerID = getPlayerUID _playerObj;
+_playerName = name _playerObj;
 
 if (isNull _playerObj) exitWith {
 	diag_log ("SETUP INIT FAILED: Exiting, player object null: " + str(_playerObj));
@@ -33,7 +34,10 @@ if ( _playerID != _dummy ) then {
 _worldspace = 	[];
 
 _state = 		[];
-
+//Soul start: SC Edit >>> initialize variables in main scope (helps avoiding scope issues within the file and avoids undeclared variable errors in rpt, aswell they server as default values if anything goes wrong)
+_cashMoney = 0;
+_bankMoney = 0;
+//Soul end: SC Edit
 //Do Connection Attempt
 _doLoop = 0;
 while {_doLoop < 5} do {
@@ -60,6 +64,9 @@ _state =		_primary select 3;
 _worldspace = 	_primary select 4;
 _humanity =		_primary select 5;
 _lastinstance =	_primary select 6;
+//Soul start: SC Edit >>> loading player cash into variable / overwriting default 0 value with returned value.
+_cashMoney = 	_primary select 7;
+//Soul end: SC Edit
 
 //Set position
 _randomSpot = false;
@@ -140,6 +147,9 @@ if (count _stats > 0) then {
 	_playerObj setVariable["humanKills",(_stats select 2),true];
 	_playerObj setVariable["banditKills",(_stats select 3),true];
 	_playerObj addScore (_stats select 1);
+	_playerObj setVariable ["moneychanged",0,true];	
+	_playerObj setVariable ["bankchanged",0,true];	
+	_playerObj setVariable["AsReMixhud", true,true];
 	
 	//Save Score
 	_score = score _playerObj;
@@ -164,15 +174,27 @@ if (count _stats > 0) then {
 	_playerObj setVariable["humanKills",0,true];
 	_playerObj setVariable["banditKills",0,true];
 	_playerObj setVariable["headShots",0,true];
+	_playerObj setVariable ["friendlies",[],true];
+	_playerObj setVariable["AsReMixhud", true,true];
 	
 	//record for Server JIP checks
-	_playerObj setVariable["zombieKills_CHK",0];
+	_playerObj setVariable["zombieKills_CHK",0,true];
 	_playerObj setVariable["humanKills_CHK",0,true];
 	_playerObj setVariable["banditKills_CHK",0,true];
-	_playerObj setVariable["headShots_CHK",0];
+	_playerObj setVariable["headShots_CHK",0,true];
 };
 
+// ------------ SOUL - Single Currency - Get Bank Value ----------------
+_key2 = format["CHILD:298:%1:",_playerID];
+_primary2 = _key2 call server_hiveReadWrite;
+if(count _primary2 > 0) then {
+	if((_primary2 select 0) != "ERROR") then {
+		_bankMoney = _primary2 select 1;	//Overwriting default 0 value with returned value.
+	};
+};
+// ------------ SOUL - Single Currency - Get Bank Value ----------------
 if (_randomSpot) then {
+private["_counter","_position","_isNear","_isZero","_mkr"];
 	if (!isDedicated) then {
 		endLoadingScreen;
 	};
@@ -195,6 +217,10 @@ _playerObj setVariable["humanity_CHK",_humanity];
 //_playerObj setVariable["worldspace",_worldspace,true];
 //_playerObj setVariable["state",_state,true];
 _playerObj setVariable["lastPos",getPosATL _playerObj];
+//Soul start: SC Edit >>> assigning player new variable for cashmoney and bankMoney
+_playerObj setVariable ["cashMoney",_cashMoney,true];	//Needed on all clients so we transmit global
+_playerObj setVariable ["bankMoney",_bankMoney,true];	//To reduce the ammount of global transmitted variables we might have to look into pvc methods to assign variables only on the client where it is needed.
+//Soul end: SC Edit
 
 dayzPlayerLogin2 = [_worldspace,_state,_randomSpot];
 

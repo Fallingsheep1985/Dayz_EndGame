@@ -42,8 +42,12 @@ server_maintainArea = 			compile preprocessFileLineNumbers "\z\addons\dayz_serve
 //plot pole fix
 server_changePlotsOwner =		compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_changePlotsOwner.sqf"; 
 
+
 /* PVS/PVC - Skaronator */
 server_sendToClient =			compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_sendToClient.sqf";
+
+//SINGLE CURRENCY
+#include "\z\addons\dayz_server\bankzones\bankinit.sqf"
 
 //onPlayerConnected 			{[_uid,_name] call server_onPlayerConnect;};
 onPlayerDisconnected 		{[_uid,_name] call server_onPlayerDisconnect;};
