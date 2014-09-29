@@ -717,11 +717,16 @@ if(BurnTentsScript)then{
 		if (s_bank_dialog2 < 0) then {
 			s_bank_dialog2 = player addAction ["Bank ATM", "gold\bank_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
 		};
+		if (s_bank_dialog3 < 0) then {
+			s_bank_dialog3 = player addAction ["Transfer Money", "gold\transfer\transfer_dialog.sqf",_cursorTarget, 3, true, true, "", ""];
+		};
 	} else {
 		player removeAction s_bank_dialog2;
 		s_bank_dialog2 = -1;
+		player removeAction s_bank_dialog3;
+		s_bank_dialog3 = -1;
 	};
-	
+
 	
 	//Allow owner to pack vault
 	if(_typeOfCursorTarget in DZE_UnLockedStorage && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
@@ -1215,6 +1220,8 @@ if(RobBankScript)then{
 	s_bank_dialog = -1;
 	player removeAction s_bank_dialog2;
 	s_bank_dialog2 = -1;
+	player removeAction s_bank_dialog3;
+	s_bank_dialog3 = -1;
 	//Smelt gold/coins
 	 player removeAction s_smelt_coins;
 	s_smelt_coins = -1;

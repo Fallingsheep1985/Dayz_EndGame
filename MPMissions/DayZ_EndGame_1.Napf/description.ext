@@ -593,3 +593,4 @@ class CfgSounds
 
 //Single Currency admintools
 #include "admintools\tools\Currency\currency_dialog.hpp"
+#include "gold\transfer\transfer_dialog.hpp"
