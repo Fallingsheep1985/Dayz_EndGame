@@ -13,41 +13,49 @@ class Custom_Buildables {
 		requiredtools[] = {};
 		requiredmaterials[] ={};
 		requireplot = 1;
+		cost = 0;
 	};
 	class DefaultAmethyst:Default {
 		offset[]={0,3,1};	
 		requiredtools[] = {"ItemToolbox"};
-		requiredmaterials[] ={"ItemAmethyst","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemAmethyst"};
+		cost = 20000;
 	};	
 	class DefaultCitrine:Default {
 		offset[]={0,2,1};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemCitrine","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemCitrine"};
+		cost = 20000;
 	};	
 	class DefaultEmerald:Default {
 		offset[]={0,3,1};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemEmerald","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemEmerald"};
+		cost = 20000;
 	};	
 	class DefaultObsidian:Default {
 		offset[]={0,3,1};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemObsidian","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemObsidian"};
+		cost = 20000;
 	};	
 	class DefaultRuby:Default {
 		offset[]={0,3,1};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemRuby","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemRuby"};
+		cost = 20000;
 	};		
 	class DefaultSapphire:Default {
 		offset[]={0,5,4};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemSapphire","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemSapphire"};
+		cost = 20000;
 	};	
 	class DefaultTopaz:Default {
 		offset[]={0,10,3};
 		requiredtools[] = {"ItemToolbox"};		
-		requiredmaterials[] ={"ItemTopaz","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemTopaz"};
+		cost = 20000;
 	};
 	class DefaultFlag:Default {
 		offset[]={0,5,4};
@@ -102,7 +110,8 @@ class Custom_Buildables {
 	class DefaultLightbulbs:Default {
 		offset[]={0,2,1};
 		requiredtools[] = {"ItemToolbox"};
-		requiredmaterials[] ={"ItemLightBulb","ItemGoldBar10oz","ItemGoldBar10oz"};
+		requiredmaterials[] ={"ItemLightBulb"}; // gold
+		cost = 10000;
 	};
 	class DefaultLightPoles:Default {
 		offset[]={0,3,5};
@@ -1136,4 +1145,4 @@ class Custom_Buildables {
 	};
 		
  };
-};	
+};
