@@ -1,32 +1,29 @@
+/*  
+Author : AsReMixhud 
+Edited By : Peter Beer
+*/
+
 disableSerialization;
 
-// player setVariable["AsReMixhud", true];//Variable Show/Hide HUD Support for control player hud
-
-AsReMixhud_Control = true; // player getVariable["AsReMixhud",true];
-
+AsReMixhud_Control = true;
 
 while {true} do
 {
-    1000 cutRsc ["AsReMixhud","PLAIN"];
-    _wpui = uiNameSpace getVariable "AsReMixhud";
+
+	1000 cutRsc ["AsReMixhud","PLAIN"];
+
+	_wpui = uiNameSpace getVariable "AsReMixhud";
     _vitals = _wpui displayCtrl 4900;
-	
-	_thePlayer = player;
-	
-	AsReMixhud_zombieKills 	= _thePlayer getVariable["zombieKills",0];
-	AsReMixhud_headshots 		= _thePlayer getVariable["headShots",0];
-	AsReMixhud_killsH 		= _thePlayer getVariable["humanKills",0];
-	_cashMoney 		= _thePlayer getVariable["cashMoney",0];
-    _bankMoney 		=  _thePlayer getVariable["bankMoney",0];
-	AsReMixhud_killsB 		= _thePlayer getVariable["banditKills",0];
-	AsReMixhud_humanity 		= _thePlayer getVariable["humanity",0];
-	AsReMixhud_zombies 		= "";
-	AsReMixhud_zombiesAlive   = "";
-	AsReMixhud_blood			=  "";
-	AsReMixhud_pid			= "";
-	AsReMixhud_puid			= "";
-    AsReMixhud_hmnicon 		= "";
-	AsReMixhud_svrname		= "servertitle";
+	_Player = player;
+
+	ZombieKills 		= 		_Player getVariable["zombieKills",0];
+	Money 		        = 		_Player getVariable["cashMoney",0];
+	Hero_Kills 		= 		_Player getVariable["humanKills",0];
+    Bank_Balance 		= 		_Player getVariable["bankMoney",0];
+	Bandit_Kills 		= 		_Player getVariable["banditKills",0];
+	Humanity 		    = 		_Player getVariable["humanity",0];
+	Blood 		        = 		_Player getVariable["USEC_BloodQty",12000];
+	Fps 		        = 		(round diag_fps);
 
 	_stime = 0;
 	if(serverTime > 36000)then{_stime = time;}else{_stime = serverTime;};
@@ -38,30 +35,36 @@ while {true} do
 	_hours = call  _hours;
 	_minutes = floor(_stime/60);
 	_minutes2 = ((_minutes - (_hours*60)) min 60) max 0;if (_minutes2 < 10) then {_minutes2 = format ['0%1',_minutes2];};
-    	
-	_vitals ctrlSetStructuredText parseText format ["
-		<t size='0.9'> %2 %5 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_humanity.paa'/>  <br/> 
-		<t size='0.9'> %3 </t><img size='0.8' align='right' image='custom\playerhud\icons\dollars.paa'/>   <br/>
-		<t size='0.9'> %13 </t><img size='0.8' align='right' image='custom\playerhud\icons\equip_safe_CA.paa'/>   <br/>
-		<t size='0.9'> %10 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_killh.paa'/>  <br/> 
-		<t size='0.9'> %9 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_killb.paa'/>  <br/>
-		<t size='0.9'> %4 </t><img size='0.8' align='right' image='custom\playerhud\icons\As_zkill.paa'/>  <br/>	
-	<t size='0.8' align='right'>%11h %12min UPTIME</t><br/>",
-	AsReMixhud_blood,   //1
-	AsReMixhud_humanity,//2
-	_cashMoney,//3
-	AsReMixhud_zombiekills,//4
-	AsReMixhud_hmnicon,//5
-	name player,//6
-	AsReMixhud_zombiesAlive,//7
-	AsReMixhud_zombies,//8
-	AsReMixhud_killsB,//9
-	AsReMixhud_killsH,//10
-	_hours,//11
-	_minutes2,//12
-	_bankMoney//13
-	];
+
+	if(Humanity >= 5000) then { Humanity_Icon = "<img size='0.9' image='addons\playerhud\icons\HeroHumanity.paa'/>"; };
+	if((Humanity >= 200) && (Humanity <= 4999)) then { Humanity_Icon = "<img size='0.9' image='addons\playerhud\icons\CivHumanity.paa'/>"; };
+	if(Humanity <= 199) then { Humanity_Icon = "<img size='0.9' image='addons\playerhud\icons\BanditHumanity.paa'/>"; };
+
+	_vitals ctrlSetStructuredText parseText format 
+["
+	<t size='0.8' align='right'>~~~~~ Stats ~~~~~</t><br/>
+	<t size='0.9'> %1 </t><img size='0.9' align='right' image='addons\playerhud\icons\Health.paa'/><br/> 
+	<t size='0.9'> %2 %3 </t><br/> 
+	<t size='0.9'> £%4 </t><img size='0.9' align='right' image='addons\playerhud\icons\Money.paa'/><br/>
+	<t size='0.9'> £%5 </t><img size='0.9' align='right' image='addons\playerhud\icons\Bank.paa'/><br/>
+	<t size='0.9'> %6 </t><img size='0.9' align='right' image='addons\playerhud\icons\HeroKills.paa'/><br/> 
+	<t size='0.9'> %7 </t><img size='0.9' align='right' image='addons\playerhud\icons\BanditKills.paa'/><br/>
+	<t size='0.9'> %8 </t><img size='0.9' align='right' image='addons\playerhud\icons\ZombieKills.paa'/><br/>
+	<t size='0.9'> %9h %10min </t><img size='0.9' align='right' image='addons\playerhud\icons\Uptime.paa'/><br/>
+	<t size='0.9'> %11 </t><img size='0.9' align='right' image='addons\playerhud\icons\Fps.paa'/><br/>
+	<t size='0.8' align='right'>~~~~~~~~~~~~~~~~~</t><br/>",
+	Blood,
+	[Humanity] call BIS_fnc_numberText,
+	Humanity_Icon,
+	[Money] call BIS_fnc_numberText,
+	[Bank_Balance] call BIS_fnc_numberText,
+	Hero_Kills,
+	Bandit_Kills,
+	Zombiekills,
+	_hours,
+	_minutes2,
+	Fps
+];
 	_vitals ctrlCommit 0;
-        
-    sleep 2;
+    sleep 1.5;
 };
