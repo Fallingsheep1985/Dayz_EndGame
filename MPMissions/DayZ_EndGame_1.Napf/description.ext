@@ -586,6 +586,10 @@ class CfgSounds
 //Alchemy Building
 #include "scripts\Buildables\MT_Defines.hpp"
 #include "scripts\Buildables\Crafting_Dialogs.hpp"
+//single currency
 #include "gold\common.hpp"
 #include "gold\bank_dialog.hpp"
 #include "gold\give_player_dialog.hpp"
+
+//Single Currency admintools
+#include "admintools\tools\Currency\currency_dialog.hpp"

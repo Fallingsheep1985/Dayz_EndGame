@@ -17,6 +17,7 @@ _EXECscript7 = 'player execVM "'+_pathtosheep+'%1"';
 _EXECscript8 = 'player execVM "'+_pathtomaterials+'%1"';
 _EXECscript9 = 'player execVM "'+_pathtobuildkits+'%1"';
 _EXECscript10 = 'player execVM "'+_pathtogems+'%1"';
+[] execVM _pathtotools+"Currency\currency_functions.sqf";
 
 if ((getPlayerUID player) in AdminList) then { // Admins
 	epochmenustart = [
@@ -25,6 +26,7 @@ if ((getPlayerUID player) in AdminList) then { // Admins
 		["Admin Menu >>", [], "#USER:AdminMenu", -5, [["expression", ""]], "1", "1"],
 		["Admin Build Menu", [], "#USER:AdminBuildMenu", -5, [["expression", ""]], "1", "1"],
 		["Sheeps Menu >>", [], "#USER:SheepsMenu", -5, [["expression", ""]], "1", "1"],
+		["Currency", [],"", -5, [["expression", format[_EXECscript1,"Currency\currency.sqf"]]], "1", "1"],
 		["Vehicle Menu >>",[],"#USER:VehicleMenu",-5,[["expression",""]],"1","1"],
 		["Build Menu >>",[],"#USER:BuildMenu",-5,[["expression",""]],"1","1"],			
 		["Crate Menu >>",[],"#USER:CrateMenuLocal",-5,[["expression",""]],"1","1"],
