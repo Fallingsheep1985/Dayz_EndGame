@@ -12,6 +12,8 @@ if (_unit getVariable ["CanGivePistol",true]) then {
 	_magazine = getArray (configFile >> "CfgWeapons" >> _pistol >> "magazines") select 0;
 	_unit addMagazine _magazine;	
 	_unit addWeapon _pistol;
+		_cash = round(random 20) * 1000; 
+	_unit setVariable["CashMoney",_cash ,true];
 	if (DZAI_debugLevel > 1) then {
 		_loot set [count _loot,_pistol];
 		_loot set [count _loot,_magazine];

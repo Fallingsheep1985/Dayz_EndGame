@@ -64,6 +64,10 @@ for "_x" from 1 to _unitnumber do {
 	_unit enableAI "FSM";
 	_unit setCombatMode ai_combatmode;
 	_unit setBehaviour ai_behaviour;
+	
+	_cash = round(random 20) * 1000; 
+	_unit setVariable["CashMoney",_cash ,true];
+	
 	removeAllWeapons _unit;
 	removeAllItems _unit;
 	_unit addweapon _weapon;

@@ -44,6 +44,8 @@ _unit enableAI "AUTOTARGET";
 _unit enableAI "MOVE";
 _unit enableAI "ANIM";
 _unit enableAI "FSM";
+	_cash = round(random 20) * 1000; 
+	_unit setVariable["CashMoney",_cash ,true];
 _unit setCombatMode ai_combatmode;
 _unit setBehaviour ai_behaviour;
 removeAllWeapons _unit;
