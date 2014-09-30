@@ -28,7 +28,7 @@ Fix any RPT errors that pop up
 Re do traders (not a priority at this stage)
 Finish new city area
 Redo existing citys/towns with new buildings
-Move MPMission code to Client (dayz_code) for quicker mission loading
+Move MPMission code to Client for quicker mission loading
 Fix vault crack script
 Build script to crack locked doors/buildings
 License system for vehicles
@@ -41,5 +41,7 @@ Redo admin tools into a GUI instead of scroll menu
 Test Single Currency
 Update Vectorbuild/adminbuild/snappro
 Add plotpole4life
+Paint Cars add new cars to variable.sqf array
+Redo HUD
 
 
