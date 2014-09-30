@@ -3,6 +3,8 @@
 //Server Name
 server_name = "Dayz EndGame";
 
+//Kill Messages
+KILLMSGScript = true;
 //Admintools
 AdminScript = true;
 //CAGN Safezones

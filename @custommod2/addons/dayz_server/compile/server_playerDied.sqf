@@ -1,4 +1,4 @@
-private ["_characterID","_minutes","_newObject","_playerID","_infected","_victim","_victimName","_killer","_killerName","_weapon","_distance","_message","_loc_message","_key","_death_record"];
+private ["_characterID","_minutes","_newObject","_playerID","_infected","_victim","_victimName","_killer","_killerName","_weapon","_distance","_message","_loc_message","_key","_death_record","_pic","_kill_txt"];
 //[unit, weapon, muzzle, mode, ammo, magazine, projectile]
 _characterID = 	_this select 0;
 _minutes =		_this select 1;
@@ -35,7 +35,14 @@ if ((typeName _killer) != "STRING") then
 	};
 
 	diag_log _loc_message;
+	_pic = gettext(configFile >> 'cfgWeapons' >> (currentWeapon _killer) >> 'picture');
+	_kill_txt = format ["<t align='left' size='0.9'>%1 </t>",_killerName,_pic,_victimName,(ceil _distance)];
+	_kill_txt = _kill_txt + format ["<img size='1.0' align='left' image='%2'/>",_killerName,_pic,_victimName,(ceil _distance)];
+	_kill_txt = _kill_txt + format ["<t align='left' size='0.9'> %3 </t>",_killerName,_pic,_victimName,(ceil _distance)];
+	_kill_txt = _kill_txt + format ["<t align='left' size='0.9'>[%4m]</t>",_killerName,_pic,_victimName,(ceil _distance)];
 
+	customkillMessage = [_kill_txt];
+	publicVariable "customkillMessage";
 	if(DZE_DeathMsgGlobal) then {
 		[nil, nil, rspawn, [_killer, _message], { (_this select 0) globalChat (_this select 1) }] call RE;
 	};

@@ -74,7 +74,9 @@ if (!isDedicated) then {
 	if(DZGMScript)then{
 		execVM "scripts\dzgm\init.sqf";
 	};
-	
+	if(KILLMSGScript)then{
+		execVM "scripts\kill_msg.sqf";
+	};
 	//anti Hack
 	 //execVM "\z\addons\dayz_code\system\antihack.sqf"; //moved admin check into anti hack
 	

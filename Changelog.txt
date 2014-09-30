@@ -56,3 +56,4 @@ ADDED - Advanced alchemy building uses coins
 ADDED - Single currency admin tools
 ADDED - Can transfer coins to other players
 ADDED - Souls HUD (temp will be merged into new HUD/DEBUG :P )
+ADDED - Can craft from storage (no need to take out items)
