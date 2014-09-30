@@ -86,6 +86,13 @@ if (!isDedicated) then {
 		//Community Safezones
 		 execVM "scripts\CAGN\initiate.sqf";	
 	};
+	
+	//PAINT
+	VehicleColourPaint =			compile preprocessFileLineNumbers "Paint\vehicleColourPaint.sqf";
+	VehicleColourUpdate =			compile preprocessFileLineNumbers "Paint\VehicleColourUpdate.sqf";
+	VehicleColourUpdate2 =			compile preprocessFileLineNumbers "Paint\VehicleColourUpdate2.sqf";
+	player_paint =				compile preprocessFileLineNumbers "Paint\player_paint.sqf";
+	
 };
 if(ServerWelcomeCreditsScript)then{
 	//Welcome Credits
