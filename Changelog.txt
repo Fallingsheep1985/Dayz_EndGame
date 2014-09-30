@@ -49,4 +49,10 @@ REMOVED - Bell 206 (caused RPT Spam)
 
 0.0.1.0
 ADDED - Single currency banking system
-
+ADDED - Evac uses coins
+ADDED - Traders uses coins
+ADDED - AI have chance to have coins on them
+ADDED - Advanced alchemy building uses coins
+ADDED - Single currency admin tools
+ADDED - Can transfer coins to other players
+ADDED - Souls HUD (temp will be merged into new HUD/DEBUG :P )
