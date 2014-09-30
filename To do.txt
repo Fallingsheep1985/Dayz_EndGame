@@ -42,6 +42,7 @@ Test Single Currency
 Update Vectorbuild/adminbuild/snappro
 Add plotpole4life
 Paint Cars add new cars to variable.sqf array
-Redo HUD
+Redo/test new HUD
+Test Plotpole for life
 
 
