@@ -16,6 +16,7 @@ server_onPlayerDisconnect = 	compile preprocessFileLineNumbers "\z\addons\dayz_s
 server_updateObject =			compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_updateObject.sqf";
 server_playerDied =				compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_playerDied.sqf";
 server_publishObj = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_publishObject.sqf";
+server_publishFullObject = 		compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_publishFullObject.sqf";
 server_deleteObj =				compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_deleteObj.sqf";
 server_swapObject =				compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_swapObject.sqf"; 
 server_publishVeh = 			compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_publishVehicle.sqf";
@@ -988,7 +989,7 @@ server_spawnCleanAnimals = {
 };
 
 server_logUnlockLockEvent = {
-	private["_player", "_obj", "_objectID", "_objectUID", "_statusText", "_status"];
+	private["_player", "_obj", "_objectID", "_objectUID", "_statusText", "_status","_PUID"];
 	_player = _this select 0;
 	_obj = _this select 1;
 	_status = _this select 2;
@@ -1000,7 +1001,8 @@ server_logUnlockLockEvent = {
 			[_obj, "gear"] call server_updateObject;
 			_statusText = "LOCKED";
 		};
-		diag_log format["SAFE %5: ID:%1 UID:%2 BY %3(%4)", _objectID, _objectUID, (name _player), (getPlayerUID _player), _statusText];
+_PUID = [_player] call FNC_GetPlayerUID;
+		diag_log format["SAFE %5: ID:%1 UID:%2 BY %3(%4)", _objectID, _objectUID, (name _player), _PUID, _statusText];
 	};
 };
 //Sector FNG inland

@@ -2,7 +2,7 @@
 	DayZ Base Building Upgrades
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
-private ["_location","_dir","_classname","_missing","_text","_proceed","_num_removed","_object","_missingQty","_itemIn","_countIn","_qty","_removed","_removed_total","_tobe_removed_total","_objectID","_objectUID","_temp_removed_array","_textMissing","_newclassname","_requirements","_obj","_upgrade","_lockable","_combination_1","_combination_2","_combination_3","_combination","_objectCharacterID","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_distance","_needText","_findNearestPoles","_findNearestPole","_IsNearPlot"];
+private ["_location","_dir","_classname","_missing","_text","_proceed","_num_removed","_object","_missingQty","_itemIn","_countIn","_qty","_removed","_removed_total","_tobe_removed_total","_objectID","_objectUID","_temp_removed_array","_textMissing","_newclassname","_requirements","_obj","_upgrade","_lockable","_combination_1","_combination_2","_combination_3","_combination","_objectCharacterID","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_distance","_needText","_findNearestPoles","_findNearestPole","_IsNearPlot","_playerUID"];
 
 if(DZE_ActionInProgress) exitWith { cutText [(localize "str_epoch_player_52") , "PLAIN DOWN"]; };
 DZE_ActionInProgress = true;
@@ -36,12 +36,17 @@ if(_IsNearPlot == 0) then {
 	_nearestPole = _findNearestPole select 0;
 
 	// Find owner 
-	_ownerID = _nearestPole getVariable["CharacterID","0"];
+	_ownerID = _nearestPole getVariable["ownerPUID","0"];
+	if (DZE_APlotforLife) then {
+		_playerUID = [player] call FNC_GetPlayerUID;
+	}else{
+		_playerUID = dayz_characterID;
+	};
 
 	// diag_log format["DEBUG BUILDING: %1 = %2", dayz_characterID, _ownerID];
 
 	// check if friendly to owner
-	if(dayz_characterID == _ownerID) then {
+	if(_playerUID == _ownerID) then {
 		_canBuildOnPlot = true;		
 	} else {
 		_friendlies		= player getVariable ["friendlyTo",[]];
@@ -141,6 +146,7 @@ if ((count _upgrade) > 0) then {
 			
 			// Current charID
 			_objectCharacterID 	= _obj getVariable ["CharacterID","0"];
+			_ownerID = _obj getVariable["ownerPUID","0"];
 
 			_classname = _newclassname;
 			
@@ -156,6 +162,8 @@ if ((count _upgrade) > 0) then {
 			// Set location
 			_object setPosATL _location;
 
+// Set Owner.
+			_object setVariable ["ownerPUID",_ownerID,true];
 			if (_lockable == 3) then {
 
 				_combination_1 = floor(random 10);
@@ -170,6 +178,7 @@ if ((count _upgrade) > 0) then {
 				cutText [format[(localize "str_epoch_player_159"),_text], "PLAIN DOWN", 5];
 			};
 
+			_playerUID = [player] call FNC_GetPlayerUID;
 			PVDZE_obj_Swap = [_objectCharacterID,_object,[_dir,_location,_vector],_classname,_obj,player];
 			publicVariableServer "PVDZE_obj_Swap";
 

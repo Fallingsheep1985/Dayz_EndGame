@@ -141,6 +141,11 @@ DZE_PlayerZed = false; // should players have chance of becoming a ZOMBIE when t
 DZE_LootSpawnTimer = 15;// in minutes
 DZE_MissionLootTable = true; //Custom Loot Tables
 DZE_selfTransfuse = true; //Self blood bag
+DZE_AsReMix_PLAYER_HUD = true; //Open Custom 	AsReMix Player HUD
+//Plotpole for life
+DZE_PlotOwnership = true;
+DZE_APlotforLife = true;
+DZE_modularBuild = true;
 //Config based traders
 DZE_ConfigTrader = true;
 //Vector Build

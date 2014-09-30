@@ -24,7 +24,7 @@ enableRadio false;
 enableSentences false;
 
 EpochEvents = [["any","any","any","any",30,"crash_spawner"],["any","any","any","any",0,"crash_spawner"],["any","any","any","any",15,"supply_drop"]];
-DZE_AsReMix_PLAYER_HUD = true; //Open Custom 	AsReMix Player HUD
+
 
 //Load in compiled functions
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\variables.sqf";				//Initilize the Variables (IMPORTANT: Must happen very early)

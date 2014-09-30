@@ -3,7 +3,7 @@
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
 private ["_helperColor","_objectHelper","_objectHelperDir","_objectHelperPos","_canDo",
-"_location","_dir","_classname","_item","_hasrequireditem","_missing","_hastoolweapon","_cancel","_reason","_started","_finished","_animState","_isMedic","_dis","_sfx","_hasbuilditem","_tmpbuilt","_onLadder","_isWater","_require","_text","_offset","_IsNearPlot","_isOk","_location1","_location2","_counter","_limit","_proceed","_num_removed","_position","_object","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_findNearestPoles","_findNearestPole","_distance","_classnametmp","_ghost","_isPole","_needText","_lockable","_zheightchanged","_rotate","_combination_1","_combination_2","_combination_3","_combination_4","_combination","_combination_1_Display","_combinationDisplay","_zheightdirection","_abort","_isNear","_need","_needNear","_vehicle","_inVehicle","_requireplot","_objHDiff","_isLandFireDZ","_isTankTrap"];
+"_location","_dir","_classname","_item","_hasrequireditem","_missing","_hastoolweapon","_cancel","_reason","_started","_finished","_animState","_isMedic","_dis","_sfx","_hasbuilditem","_tmpbuilt","_onLadder","_isWater","_require","_text","_offset","_IsNearPlot","_isOk","_location1","_location2","_counter","_limit","_proceed","_num_removed","_position","_object","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_findNearestPoles","_findNearestPole","_distance","_classnametmp","_ghost","_isPole","_needText","_lockable","_zheightchanged","_rotate","_combination_1","_combination_2","_combination_3","_combination_4","_combination","_combination_1_Display","_combinationDisplay","_zheightdirection","_abort","_isNear","_need","_needNear","_vehicle","_inVehicle","_requireplot","_objHDiff","_isLandFireDZ","_isTankTrap","_playerID", "_playerUID","_ownerID"];
 
 DZE_BuildVector = [[0,0,0],[0,0,0]];
 
@@ -23,6 +23,12 @@ _canBuildOnPlot = false;
 _vehicle = vehicle player;
 _inVehicle = (_vehicle != player);
 
+_playerUID = [player] call FNC_GetPlayerUID;
+if (DZE_APlotforLife) then {
+	_playerID = [player] call FNC_GetPlayerUID;
+}else{
+	_playerID = dayz_characterID;
+};
 //snap vars -- temporary fix for errors so variables.sqf can be skipped
 if (isNil "snapProVariables") then {
 	if (isNil "DZE_snapExtraRange") then {
@@ -97,7 +103,7 @@ DZE_Z_ctrl = false;
 DZE_5 = false;
 DZE_4 = false;
 DZE_6 = false;
-DZE_F = false;
+
 
 DZE_cancelBuilding = false;
 
@@ -220,12 +226,12 @@ if(_IsNearPlot == 0) then {
 	_nearestPole = _findNearestPole select 0;
 
 	// Find owner
-	_ownerID = _nearestPole getVariable ["CharacterID","0"];
+	_ownerID = _nearestPole getVariable ["ownerPUID","0"];
 
 	// diag_log format["DEBUG BUILDING: %1 = %2", dayz_characterID, _ownerID];
 
 	// check if friendly to owner
-	if(dayz_characterID == _ownerID) then {  //Keep ownership
+	if(_playerID == _ownerID) then {  //Keep ownership
 		// owner can build anything within his plot except other plots
 		if(!_isPole) then {
 			_canBuildOnPlot = true;
@@ -692,6 +698,7 @@ if (_hasrequireditem) then {
 
 				} else {
 					_tmpbuilt setVariable ["CharacterID",dayz_characterID,true];
+					_tmpbuilt setVariable ["ownerPUID",_playerID,true];
 
 					// fire?
 					if(_tmpbuilt isKindOf "Land_Fire_DZ") then {
