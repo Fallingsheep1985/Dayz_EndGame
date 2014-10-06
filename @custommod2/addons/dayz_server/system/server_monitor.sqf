@@ -94,7 +94,7 @@ if (isServer && isNil "sm_done") then {
 		};
 		diag_log ("HIVE: got " + str(_bQty) + " Epoch Objects and " + str(_vQty) + " Vehicles");
 	};
-	
+
 // # NOW SPAWN OBJECTS #
 	_totalvehicles = 0;
 		PVDZE_EvacChopperFields = [];
@@ -110,12 +110,8 @@ if (isServer && isNil "sm_done") then {
 		_damage = 		_x select 8;
 		
 		_dir = 0;
-		_vector = [[0,0,0],[0,0,0]];
-		_vecExists = false;
-		
-		_pos = [0,0,0];
-		_wsDone = false;
-//switch spawned objects
+
+			//switch spawned objects
 		switch(_type) do {
 			case "Uroven1DrevenaBudka" 	: { owner_B1 set [count owner_B1, _ownerID]; };
 			case "Uroven2KladaDomek" 	: { owner_B2 set [count owner_B2, _ownerID]; };
@@ -139,29 +135,21 @@ if (isServer && isNil "sm_done") then {
 	publicVariable "owner_PG";
 	publicVariable "owner_SH";
 	diag_log (format["HOUSE SERVER: Owners Are: B1 %1 B2 %2 B3 %3 H1 %4 H2 %5 H3 %6 SG %7 LG %8 PG %9 SH &10", owner_B1, owner_B2, owner_B3, owner_H1, owner_H2, owner_H3, owner_SG, owner_LG, owner_PG, owner_SH]);
-    if (count _worldspace >= 2) then
-        {
-            if(count _worldspace == 3) then{
-                _vector = _worldspace select 2;
-                if(typename _vector == "ARRAY")then{
-                    if(count _vector == 2)then{
-                        if(((count (_vector select 0)) == 3) && ((count (_vector select 1)) == 3))then{
-                            _vecExists = true;
-                        };
-                    };
-
-                };
-
-            };
-
-            _dir = _worldspace select 0;
-            if (count (_worldspace select 1) == 3) then {
-                _pos = _worldspace select 1;
-                _wsDone = true;
-            }
-        };			
-
-
+		
+		_pos = [0,0,0];
+		_wsDone = false;
+		if (count _worldspace >= 2) then
+		{
+			if ((typeName (_worldspace select 0)) == "STRING") then {
+				_worldspace set [0, call compile (_worldspace select 0)];
+				_worldspace set [1, call compile (_worldspace select 1)];
+			};
+			_dir = _worldspace select 0;
+			if (count (_worldspace select 1) == 3) then {
+				_pos = _worldspace select 1;
+				_wsDone = true;
+			}
+		};	
 		
 		if (!_wsDone) then {
 			if (count _worldspace >= 1) then { _dir = _worldspace select 0; };
@@ -170,7 +158,63 @@ if (isServer && isNil "sm_done") then {
 			diag_log ("MOVED OBJ: " + str(_idKey) + " of class " + _type + " to pos: " + str(_pos));
 		};
 		
-
+		_vector = [[0,0,0],[0,0,0]];
+		_vecExists = false;
+		_ownerPUID = "0";
+		if (count _worldspace >= 3) then{
+			if(count _worldspace == 3) then{
+					if(typename (_worldspace select 2) == "STRING")then{
+						_ownerPUID = _worldspace select 2;
+					}else{
+						 if(typename (_worldspace select 2) == "ARRAY")then{
+							_vector = _worldspace select 2;
+							if(count _vector == 2)then{
+								if(((count (_vector select 0)) == 3) && ((count (_vector select 1)) == 3))then{
+									_vecExists = true;
+								};
+							};
+						};					
+					};
+					
+			}else{
+				//Was not 3 elements, so check if 4 or more
+				if(count _worldspace == 4) then{
+					if(typename (_worldspace select 3) == "STRING")then{
+						_ownerPUID = _worldspace select 3;
+					}else{
+						if(typename (_worldspace select 2) == "STRING")then{
+							_ownerPUID = _worldspace select 2;
+						};
+					};
+			
+			
+					if(typename (_worldspace select 2) == "ARRAY")then{
+						_vector = _worldspace select 2;
+						if(count _vector == 2)then{
+							if(((count (_vector select 0)) == 3) && ((count (_vector select 1)) == 3))then{
+								_vecExists = true;
+							};
+						};
+					}else{
+						if(typename (_worldspace select 3) == "ARRAY")then{
+							_vector = _worldspace select 3;
+							if(count _vector == 2)then{
+								if(((count (_vector select 0)) == 3) && ((count (_vector select 1)) == 3))then{
+									_vecExists = true;
+								};
+							};
+						};
+					};
+					
+				}else{
+					//More than 3 or 4 elements found
+					//Might add a search for the vector, ownerPUID will equal 0
+				};
+			};
+		};
+		   	   
+		// diag_log format["Server_monitor: [ObjectID = %1]  [ClassID = %2] [_ownerPUID = %3]", _idKey, _type, _ownerPUID];
+		
 		if (_damage < 1) then {
 			//diag_log format["OBJ: %1 - %2", _idKey,_type];
 			
@@ -178,7 +222,8 @@ if (isServer && isNil "sm_done") then {
 			_object = createVehicle [_type, _pos, [], 0, "CAN_COLLIDE"];
 			_object setVariable ["lastUpdate",time];
 			_object setVariable ["ObjectID", _idKey, true];
-
+			_object setVariable ["OwnerPUID", _ownerPUID, true];
+			
 			_lockable = 0;
 			if(isNumber (configFile >> "CfgVehicles" >> _type >> "lockable")) then {
 				_lockable = getNumber(configFile >> "CfgVehicles" >> _type >> "lockable");
@@ -222,9 +267,6 @@ if (isServer && isNil "sm_done") then {
 			
 			_object setposATL _pos;
 			_object setDamage _damage;
-			if ((typeOf _object) == "HeliHRescue") then {
-				PVDZE_EvacChopperFields set [count PVDZE_EvacChopperFields, _object];
-			};
 			
 			if ((typeOf _object) in dayz_allowedObjects) then {
 				if (DZE_GodModeBase) then {
@@ -291,31 +333,13 @@ if (isServer && isNil "sm_done") then {
 			};	
 			
 			if (_object isKindOf "AllVehicles") then {
-			private ["_colour","_colour2","_clrinit","_clrinit2"];
 				{
 					_selection = _x select 0;
 					_dam = _x select 1;
 					if (_selection in dayZ_explosiveParts && _dam > 0.8) then {_dam = 0.8};
 					[_object,_selection,_dam] call object_setFixServer;
 				} count _hitpoints;
-				
-				if(count _worldspace >= 4) then{	
-						if (((typeName(_worldspace select 2)) == "STRING") and ((typeName(_worldspace select 3)) == "STRING")) then {
-						_colour = _worldspace select 2;
-						_colour2 = _worldspace select 3;
-									
-						if (_colour != "0") then {
-							_object setVariable ["Colour",_colour,true];
-							_clrinit = format ["#(argb,8,8,3)color(%1)",_colour];
-							_object setVehicleInit "this setObjectTexture [0,"+str _clrinit+"];";
-						};
-						if (_colour2 != "0") then {			
-							_object setVariable ["Colour2",_colour2,true];
-							_clrinit2 = format ["#(argb,8,8,3)color(%1)",_colour2];
-							_object setVehicleInit "this setObjectTexture [1,"+str _clrinit2+"];";
-						};
-					};
-				};
+
 				_object setFuel _fuel;
 
 				if (!((typeOf _object) in dayz_allowedObjects)) then {
@@ -325,8 +349,6 @@ if (isServer && isNil "sm_done") then {
 					
 					if(_ownerID != "0" && !(_object isKindOf "Bicycle")) then {
 						_object setvehiclelock "locked";
-						_object setVariable ["MF_Tow_Cannot_Tow",true,true];
-						_object setVariable ["BTC_Cannot_Lift",true,true];
 					};
 					
 					_totalvehicles = _totalvehicles + 1;
@@ -340,7 +362,7 @@ if (isServer && isNil "sm_done") then {
 			PVDZE_serverObjectMonitor set [count PVDZE_serverObjectMonitor,_object];
 		};
 	} count (_BuildingQueue + _objectQueue);
-	// # END SPAWN OBJECTS #
+	// # END SPAWN OBJECTS # 
 
 	// preload server traders menu data into cache
 	if !(DZE_ConfigTrader) then {
