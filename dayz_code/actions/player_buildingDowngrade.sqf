@@ -2,7 +2,7 @@
 	DayZ Base Building Upgrades
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
-private ["_location","_dir","_classname","_text","_object","_objectID","_objectUID","_newclassname","_refund","_obj","_upgrade","_objectCharacterID","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_distance","_needText","_findNearestPoles","_findNearestPole","_IsNearPlot","_i","_invResult","_itemOut","_countOut","_abortInvAdd","_addedItems","_playerUID"];
+private ["_location","_dir","_classname","_text","_object","_objectID","_objectUID","_newclassname","_refund","_obj","_upgrade","_objectCharacterID","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_distance","_needText","_findNearestPoles","_findNearestPole","_IsNearPlot","_i","_invResult","_itemOut","_countOut","_abortInvAdd","_addedItems"];
 
 if(DZE_ActionInProgress) exitWith { cutText [(localize "str_epoch_player_48") , "PLAIN DOWN"]; };
 DZE_ActionInProgress = true;
@@ -13,11 +13,6 @@ s_player_downgrade_build = 1;
 _distance = 30;
 _needText = localize "str_epoch_player_246";
 
-if (DZE_APlotforLife) then {
-	_playerUID = [player] call FNC_GetPlayerUID;
-}else{
-	_playerUID = dayz_characterID;
-};
 // check for near plot
 _findNearestPoles = nearestObjects [(vehicle player), ["Plastic_Pole_EP1_DZ"], _distance];
 _findNearestPole = [];
@@ -40,12 +35,12 @@ if(_IsNearPlot == 0) then {
 	_nearestPole = _findNearestPole select 0;
 
 	// Find owner
-	_ownerID = _nearestPole getVariable["ownerPUID","0"];
+	_ownerID = _nearestPole getVariable["CharacterID","0"];
 
 	// diag_log format["DEBUG BUILDING: %1 = %2", dayz_characterID, _ownerID];
 
 	// check if friendly to owner
-	if(_playerUID == _ownerID) then {
+	if(dayz_characterID == _ownerID) then {
 		_canBuildOnPlot = true;
 	} else {
 		_friendlies		= player getVariable ["friendlyTo",[]];
@@ -64,7 +59,6 @@ _obj = _this select 3;
 
 // Current charID
 _objectCharacterID 	= _obj getVariable ["CharacterID","0"];
-_ownerID = _obj getVariable["ownerPUID","0"];
 
 if(DZE_Lock_Door != _objectCharacterID) exitWith {  DZE_ActionInProgress = false; cutText [(localize "str_epoch_player_49") , "PLAIN DOWN"]; };
 
@@ -152,7 +146,6 @@ if ((count _upgrade) > 0) then {
 
 		cutText [format[(localize "str_epoch_player_142"),_text], "PLAIN DOWN", 5];
 
-		_playerUID = [player] call FNC_GetPlayerUID;
 		PVDZE_obj_Swap = [_objectCharacterID,_object,[_dir,_location,_vector],_classname,_obj,player];
 		publicVariableServer "PVDZE_obj_Swap";
 

@@ -309,17 +309,10 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	_hasKnife = 	"ItemKnife" in _itemsPlayer;
 	_hasToolbox = 	"ItemToolbox" in _itemsPlayer;
 	_hasETool = "ItemEtool" in _itemsPlayer;
-	if (DZE_APlotforLife) then {
-		_playerUID = [player] call FNC_GetPlayerUID;
-	}else{
-		_playerUID = dayz_characterID;
-	};
-
 
 	_isMan = _cursorTarget isKindOf "Man";
 	_traderType = _typeOfCursorTarget;
-	_ownerID = _cursorTarget getVariable ["ownerPUID","0"];
-	_characterID = _cursorTarget getVariable ["CharacterID","0"];
+	_ownerID = _cursorTarget getVariable ["CharacterID","0"];	
 	
 	_isAnimal = _cursorTarget isKindOf "Animal";
 	_isDog =  (_cursorTarget isKindOf "DZ_Pastor" || _cursorTarget isKindOf "DZ_Fin");
@@ -367,40 +360,12 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		  	s_player_maintain_area = player addAction [format["<t color='#ff0000'>%1</t>",localize "STR_EPOCH_ACTIONS_MAINTAREA"], "\z\addons\dayz_code\actions\maintain_area.sqf", "maintain", 5, false];
 		 	s_player_maintain_area_preview = player addAction [format["<t color='#ff0000'>%1</t>",localize "STR_EPOCH_ACTIONS_MAINTPREV"], "\z\addons\dayz_code\actions\maintain_area.sqf", "preview", 5, false];
 		 };
-
-		 _plotDistance = (DZE_PlotPole select 0);
-		_PlotsmarkersNear = count (nearestObjects [_cursorTarget, ["Land_coneLight"], _PlotDistance]);
-
-		if (s_player_plot_boundary_on < 0) then {
-			If (_PlotsmarkersNear == 0 ) then{
-				s_player_plot_boundary_on = player addAction ["Show plot boundary", "Custom\A_Plot_for_Life\Action\object_showPlotRadius.sqf", "", 1, false];
-			};
-		 };	
-		 if (s_player_plot_boundary_off < 0) then {
-			If (_PlotsmarkersNear > 0 ) then{
-				s_player_plot_boundary_off = player addAction ["Remove plot boundary", "Custom\A_Plot_for_Life\Action\object_removePlotRadius.sqf", "", 1, false];
-			};
-		};
-		if (s_player_plot_take_ownership < 0) then {
-			if (DZE_APlotforLife) then {
-				_isowner = [player, _cursorTarget] call FNC_check_owner;
-				If (( _isowner select 0 )) then{
-					s_player_plot_take_ownership = player addAction ["Take plot items ownership", "Custom\A_Plot_for_Life\Action\plot_take_ownership.sqf", "", 1, false];
-				};
-			};
-		};
 	 } else {
-   		player removeAction s_player_maintain_area;
-   		s_player_maintain_area = -1;
-   		player removeAction s_player_maintain_area_preview;
-   		s_player_maintain_area_preview = -1;
-		player removeAction s_player_plot_boundary_on;
-		s_player_plot_boundary_on = -1;
-		player removeAction s_player_plot_boundary_off;
-		s_player_plot_boundary_off = -1;
-		player removeAction s_player_plot_take_ownership;
-		s_player_plot_take_ownership = -1;
-	};
+    		player removeAction s_player_maintain_area;
+    		s_player_maintain_area = -1;
+    		player removeAction s_player_maintain_area_preview;
+    		s_player_maintain_area_preview = -1;
+	 };
 
 	// CURSOR TARGET ALIVE
 	if(_isAlive) then {
@@ -413,31 +378,29 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 		};
 		
 		//Allow owners to delete modulars
-		if(_isModular && (_playerUID == _ownerID)) then {
-            if(_hasToolbox && "ItemCrowbar" in _itemsPlayer) then {
-				// diag_log text "fn_selfactions remove: [can remove modular item]";
-                _player_deleteBuild = true;
-            };
-         };
+			   if(_isModular and (dayz_characterID == _ownerID)) then {
+                        if(_hasToolbox && "ItemCrowbar" in _itemsPlayer) then {
+                                _player_deleteBuild = true;
+                        };
+                };
 		//Allow owners to delete modular doors without locks
-		
-		if(_isModularDoor && (_playerUID == _ownerID)) then {
-            if(_hasToolbox && "ItemCrowbar" in _itemsPlayer) then {
-				_player_deleteBuild = true;
-            };		
-		 };	
+				if(_isModularDoor && (dayz_characterID == _ownerID)) then {
+                        if(_hasToolbox && "ItemCrowbar" in _itemsPlayer) then {
+                                _player_deleteBuild = true;
+                        };		
+				};	
 		// CURSOR TARGET VEHICLE
 		if(_isVehicle) then {
 			
 			//flip vehicle small vehicles by your self && all other vehicles with help nearby
 			if (!(canmove _cursorTarget) && (player distance _cursorTarget >= 0) && (count (crew _cursorTarget))== 0 && ((vectorUp _cursorTarget) select 2) < 0.5) then {
-				if(_isVehicletype) then {
+				if(_isVehicle) then {
 					_player_flipveh = true;	
 				};
 			};
 
 
-			if(!_isMan && _characterID != "0" && !(_cursorTarget isKindOf "Bicycle")) then {
+			if(!_isMan && _ownerID != "0" && !(_cursorTarget isKindOf "Bicycle")) then {
 				_player_lockUnlock_crtl = true;
 			};
 
@@ -458,8 +421,8 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 	// Allow Owner to lock && unlock vehicle  
 	if(_player_lockUnlock_crtl) then {
 		if (s_player_lockUnlock_crtl < 0) then {
-			_hasKey = _characterID in _temp_keys;
-			_oldOwner = (_characterID == dayz_playerUID);
+			_hasKey = _ownerID in _temp_keys;
+			_oldOwner = (_ownerID == dayz_playerUID);
 			if(locked _cursorTarget) then {
 				if(_hasKey || _oldOwner) then {
 					_Unlock = player addAction [format[localize "STR_EPOCH_ACTIONS_UNLOCK",_text], "\z\addons\dayz_code\actions\unlock_veh.sqf",[_cursorTarget,(_temp_keys_names select (parseNumber _ownerID))], 2, true, true, "", ""];
@@ -682,7 +645,7 @@ if(BuryHumanScript)then{
 	
 	//Packing my tent
 	if(_isTent && (player distance _cursorTarget < 3)) then {
-		if (_ownerID == _playerUID) then {
+		if (_ownerID == dayz_characterID) then {
 			if (s_player_packtent < 0) then {
 				s_player_packtent = player addAction [localize "str_actions_self_07", "\z\addons\dayz_code\actions\tent_pack.sqf",_cursorTarget, 0, false, true, "",""];
 			};
@@ -711,11 +674,11 @@ if(BurnTentsScript)then{
 
 	//Allow owner to unlock vault
 
-	if((_typeOfCursorTarget in DZE_LockableStorage) && _characterID != "0" && (player distance _cursorTarget < 3)) then {
+	if((_typeOfCursorTarget in DZE_LockableStorage) && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
 		if (s_player_unlockvault < 0) then {
 			if(_typeOfCursorTarget in DZE_LockedStorage) then {
 			//Crack Vault
-				if (_characterID == dayz_combination || _ownerID == _playerUID) then {
+				if (_ownerID == dayz_combination || _ownerID == dayz_playerUID) then {
 					_combi = player addAction [format[localize "STR_EPOCH_ACTIONS_OPEN",_text], "\z\addons\dayz_code\actions\vault_unlock.sqf",_cursorTarget, 0, false, true, "",""];
 					s_player_combi set [count s_player_combi,_combi];
 				} else {
@@ -729,7 +692,7 @@ if(BurnTentsScript)then{
 				s_player_combi set [count s_player_combi,_combi];
 				s_player_unlockvault = 1;
 			} else {
-				if (_characterID != dayz_combination && _ownerID != dayz_playerUID) then {
+				if (_ownerID != dayz_combination && _ownerID != dayz_playerUID) then {
 					_combi = player addAction [localize "STR_EPOCH_ACTIONS_RECOMBO", "\z\addons\dayz_code\actions\vault_combination_1.sqf",_cursorTarget, 0, false, true, "",""];
 					s_player_combi set [count s_player_combi,_combi];
 					s_player_unlockvault = 1;
@@ -771,14 +734,14 @@ if(BurnTentsScript)then{
 
 	
 	//Allow owner to pack vault
-	if(_typeOfCursorTarget in DZE_UnLockedStorage && _characterID != "0" && (player distance _cursorTarget < 3)) then {
+	if(_typeOfCursorTarget in DZE_UnLockedStorage && _ownerID != "0" && (player distance _cursorTarget < 3)) then {
 
 		if (s_player_lockvault < 0) then {
-			if(_characterID == dayz_combination || _ownerID == dayz_playerUID) then {
+			if(_ownerID == dayz_combination || _ownerID == dayz_playerUID) then {
 				s_player_lockvault = player addAction [format[localize "STR_EPOCH_ACTIONS_LOCK",_text], "\z\addons\dayz_code\actions\vault_lock.sqf",_cursorTarget, 0, false, true, "",""];
 			};
 		};
-		if (s_player_packvault < 0 && (_characterID == dayz_combination || _ownerID == dayz_playerUID)) then {
+		if (s_player_packvault < 0 && (_ownerID == dayz_combination || _ownerID == dayz_playerUID)) then {
 			s_player_packvault = player addAction [format["<t color='#ff0000'>%1</t>",(format[localize "STR_EPOCH_ACTIONS_PACK",_text])], "\z\addons\dayz_code\actions\vault_pack.sqf",_cursorTarget, 0, false, true, "",""];
 		};
 	} else {
@@ -993,7 +956,7 @@ if(TowingScript)then{
 
 if(TentHealScript)then{
     //Sleep
-	if(_isTent && _ownerID == _playerUID) then {
+	if(_isTent and _ownerID ==  dayz_characterID) then {
 		if ((s_player_sleep < 0) and (player distance _cursorTarget < 3)) then {
 			s_player_sleep = player addAction [localize "str_actions_self_sleep", "\z\addons\dayz_code\actions\player_sleep.sqf",_cursorTarget, 0, false, true, "",""];
 		};
@@ -1103,7 +1066,7 @@ if(NOSScript)then{
 	if(dayz_tameDogs) then {
 		
 		//Dog
-		if (_isDog && _isAlive && (_hasRawMeat) && _characterID == "0" && player getVariable ["dogID", 0] == 0) then {
+		if (_isDog && _isAlive && (_hasRawMeat) && _ownerID == "0" && player getVariable ["dogID", 0] == 0) then {
 			if (s_player_tamedog < 0) then {
 				s_player_tamedog = player addAction [localize "str_actions_tamedog", "\z\addons\dayz_code\actions\tame_dog.sqf", _cursorTarget, 1, false, true, "", ""];
 			};
@@ -1111,7 +1074,7 @@ if(NOSScript)then{
 			player removeAction s_player_tamedog;
 			s_player_tamedog = -1;
 		};
-		if (_isDog && _characterID == dayz_characterID && _isAlive) then {
+		if (_isDog && _ownerID == dayz_characterID && _isAlive) then {
 			_dogHandle = player getVariable ["dogID", 0];
 			if (s_player_feeddog < 0 && _hasRawMeat) then {
 				s_player_feeddog = player addAction [localize "str_actions_feeddog","\z\addons\dayz_code\actions\dog\feed.sqf",[_dogHandle,0], 0, false, true,"",""];
@@ -1191,16 +1154,6 @@ if(RobBankScript)then{
 	s_player_SurrenderedGear = -1;
 
 	//Others
-    player removeAction s_player_maintain_area;
-    s_player_maintain_area = -1;
-    player removeAction s_player_maintain_area_preview;
-    s_player_maintain_area_preview = -1;
-	player removeAction s_player_plot_boundary_on;
-	s_player_plot_boundary_on = -1;
-	player removeAction s_player_plot_boundary_off;
-	s_player_plot_boundary_off = -1;
-	player removeAction s_player_plot_take_ownership;
-	s_player_plot_take_ownership = -1;
 	player removeAction s_player_forceSave;
 	s_player_forceSave = -1;
 	player removeAction s_player_flipveh;
@@ -1336,9 +1289,9 @@ if(RobBankScript)then{
 _dogHandle = player getVariable ["dogID", 0];
 if (_dogHandle > 0) then {
 	_dog = _dogHandle getFSMVariable "_dog";
-	_characterID = "0";
-	if (!isNull cursorTarget) then { _characterID = cursorTarget getVariable ["CharacterID","0"]; };
-	if (_canDo && !_inVehicle && alive _dog && _characterID != dayz_characterID) then {
+	_ownerID = "0";
+	if (!isNull cursorTarget) then { _ownerID = cursorTarget getVariable ["CharacterID","0"]; };
+	if (_canDo && !_inVehicle && alive _dog && _ownerID != dayz_characterID) then {
 		if (s_player_movedog < 0) then {
 			s_player_movedog = player addAction [localize "str_actions_movedog", "\z\addons\dayz_code\actions\dog\move.sqf", player getVariable ["dogID", 0], 1, false, true, "", ""];
 		};

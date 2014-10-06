@@ -29,12 +29,6 @@
 "PVDZE_serverObjectMonitor" addPublicVariableEventHandler {PVDZE_serverObjectMonitor = dayz_safety};
 /* PVS/PVC - Skaronator */
 "PVCDZE_vehSH" 			addPublicVariableEventHandler {(_this select 1) call vehicle_handleDamage}; // set damage to vehicle part
-"PVDZE_Server_Simulation" addPublicVariableEventHandler {
-	_agent = ((_this select 1) select 0);
-	_control = ((_this select 1) select 1);
-
-	_agent enableSimulation _control;
-};
 //Server only
 if (isServer) then {
 	/* PVS/PVC - Skaronator */
@@ -49,7 +43,6 @@ if (isServer) then {
 	"PVDZE_plr_Died"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerDied};
 	"PVDZE_plr_Save"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerSync;};
 	"PVDZE_obj_Publish"		addPublicVariableEventHandler {(_this select 1) call server_publishObj};
-	"PVDZE_fullobj_Publish"		addPublicVariableEventHandler {(_this select 1) call server_publishFullObject};	
 	"PVDZE_veh_Update"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_updateObject};
 	"PVDZE_plr_Characters"	addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerCharacters};
 	"PVDZE_plr_Login"		addPublicVariableEventHandler {_id = (_this select 1) spawn server_playerLogin};
@@ -71,7 +64,6 @@ if (isServer) then {
 	"PVDZE_plr_TradeMenu"	addPublicVariableEventHandler {(_this select 1) spawn server_traders};
 	"PVDZE_plr_DeathB"		addPublicVariableEventHandler {(_this select 1) spawn server_deaths};
 	"PVDZE_obj_getlocalVars" addPublicVariableEventHandler {(_this select 1) spawn server_getLocalObjVars};
-	"PVDZE_log_lockUnlock" addPublicVariableEventHandler {(_this select 1) spawn server_logUnlockLockEvent};
 	"PVDZE_obj_setlocalVars" addPublicVariableEventHandler {(_this select 1) spawn server_setLocalObjVars};
 	"admin_Log" addPublicVariableEventHandler {_logadmin = _this select 1;diag_log format["Client To Server: %1",_logadmin];};
 };

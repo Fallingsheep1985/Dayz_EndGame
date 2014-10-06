@@ -1,7 +1,5 @@
 disableSerialization;
-if (isNil "DayZ_UseSteamID") then {
-	DayZ_UseSteamID = true;
-};
+
 
 //-----------------------------------Currency & Banking Configs ---------------------------------//
 CurrencyName = "Zupa Coins"; // name of your currency
