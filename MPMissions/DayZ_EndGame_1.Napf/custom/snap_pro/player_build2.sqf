@@ -2,15 +2,18 @@
 	DayZ Base Building
 	Made for DayZ Epoch please ask permission to use/edit/distrubute email vbawol@veteranbastards.com.
 */
+/*
+Snap Build Pro w/Admin Fast Build+Upgrade + A Plot For Life
+
+Edited by KamikazeXeX from XeXGaming www.xexgaming.com
+Date: 27/8/14
+SnapBuildPro v1.4
+*/
 private ["_helperColor","_objectHelper","_objectHelperDir","_objectHelperPos","_canDo", "_pos", "_cnt",
 "_location","_dir","_classname","_item","_hasRequiredTools","_missingT","_missingB","_hasrequireditem","_missing","_hastoolweapon","_cancel","_reason","_started","_finished","_animState","_isMedic","_dis","_sfx","_hasbuilditem","_tmpbuilt","_onLadder","_isWater","_require","_text","_offset","_IsNearPlot","_isOk","_location1","_location2","_counter","_limit","_proceed","_num_removed","_position","_object","_canBuildOnPlot","_friendlies","_nearestPole","_ownerID","_findNearestPoles","_findNearestPole","_distance","_classnametmp","_ghost","_isPole","_needText","_lockable","_zheightchanged","_rotate","_combination_1","_combination_2","_combination_3","_combination_4","_combination","_combination_1_Display","_combinationDisplay","_zheightdirection","_abort","_isNear","_need","_needNear","_vehicle","_inVehicle","_requireplot","_objHupDiff","_objHDiff","_isLandFireDZ","_isTankTrap","_isNear2","_typeIsString","_isBuildAdmin","_needBuildItem","_hasbuilditems","_itemIn","_countIn","_qty","_missingQty","_textMissing","_removed","_tobe_removed_total","_removed_total","_ownerPUID","_playerUID"];
 
-DZE_BuildVector = [[0,0,0],[0,0,0]];
-
-
 if(DZE_ActionInProgress) exitWith { cutText [(localize "str_epoch_player_40") , "PLAIN DOWN"]; };
 DZE_ActionInProgress = true;
-
 
 //snap vars -- temporary fix for errors so variables.sqf can be skipped
 if (isNil "snapProVariables") then {
@@ -30,22 +33,28 @@ if (isNil "snapProVariables") then {
 };
 // snap vars
 
-
-// disallow building if too many objects are found within 30m
-if((count ((getPosATL player) nearObjects ["All",30])) >= DZE_BuildingLimit) exitWith {DZE_ActionInProgress = false; cutText [(localize "str_epoch_player_41"), "PLAIN DOWN"];};
-
+// disallow building if too many objects are found within (30m by default) add DZE_checkNearbyRadius = 30; to your init.sqf to change
+_pos = [player] call FNC_GetPos;
+_cnt = count (_pos nearObjects ["All",DZE_checkNearbyRadius]); 
+ if (_cnt >= DZE_BuildingLimit) exitWith { //end script if too many objects nearby
+ 	DZE_ActionInProgress = false;
+ 	cutText [(localize "str_epoch_player_41"), "PLAIN DOWN"];
+};
 _onLadder =		(getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState player) >> "onLadder")) == 1;
 _isWater = 		dayz_isSwimming;
 _cancel = false;
 _reason = "";
 _canBuildOnPlot = false;
 
+_isBuildAdmin = (getPlayerUID player) in WG_adminBuild;
+
 _vehicle = vehicle player;
 _inVehicle = (_vehicle != player);
 _playerUID = getPlayerUID player;
-_isBuildAdmin = (getPlayerUID player) in AdminList;
-helperDetach = false; 
+
+helperDetach = false;
 _canDo = (!r_drag_sqf and !r_player_unconscious);
+
 _vector = [];
 fnc_SetPitchBankYaw = { 
     private ["_object","_rotations","_aroundX","_aroundY","_aroundZ","_dirX","_dirY","_dirZ","_upX","_upY","_upZ","_dir","_up","_dirXTemp",
@@ -112,6 +121,7 @@ if (_onLadder) exitWith {DZE_ActionInProgress = false; cutText [localize "str_pl
 if (player getVariable["combattimeout", 0] >= time) exitWith {DZE_ActionInProgress = false; cutText [(localize "str_epoch_player_43"), "PLAIN DOWN"];};
 
 _typeIsString = ((typeName _this) == "STRING");
+//diag_log format["Type is STRING: %1",_typeIsString];
 if (_typeIsString) then {
 	_item =	_this;
 };
@@ -121,49 +131,50 @@ if (!_typeIsString) then {
 
 // Need Near Requirements
 _abort = false;
+
 _reason = "";
 
 if (_typeIsString) then {
-_needNear = 	getArray (configFile >> "CfgMagazines" >> _item >> "ItemActions" >> "Build" >> "neednearby");
+	_needNear = 	getArray (configFile >> "CfgMagazines" >> _item >> "ItemActions" >> "Build" >> "neednearby");
 
-{
-	switch(_x) do{
-		case "fire":
-		{
-			_distance = 3;
-			_isNear = {inflamed _x} count (getPosATL player nearObjects _distance);
-			if(_isNear == 0) then {
-				_abort = true;
-				_reason = "fire";
+	{
+		switch(_x) do{
+			case "fire":
+			{
+				_distance = 3;
+				_isNear = {inflamed _x} count (getPosATL player nearObjects _distance);
+				if(_isNear == 0) then {
+					_abort = true;
+					_reason = "fire";
+				};
+			};
+			case "workshop":
+			{
+				_distance = 3;
+				_isNear = count (nearestObjects [player, ["Wooden_shed_DZ","WoodShack_DZ","WorkBench_DZ"], _distance]);
+				if(_isNear == 0) then {
+					_abort = true;
+					_reason = "workshop";
+				};
+			};
+			case "fueltank":
+			{
+				_distance = 30;
+				_isNear = count (nearestObjects [player, dayz_fuelsources, _distance]);
+				if(_isNear == 0) then {
+					_abort = true;
+					_reason = "fuel tank";
+				};
 			};
 		};
-		case "workshop":
-		{
-			_distance = 3;
-			_isNear = count (nearestObjects [player, ["Wooden_shed_DZ","WoodShack_DZ","WorkBench_DZ"], _distance]);
-			if(_isNear == 0) then {
-				_abort = true;
-				_reason = "workshop";
-			};
-		};
-		case "fueltank":
-		{
-			_distance = 30;
-			_isNear = count (nearestObjects [player, dayz_fuelsources, _distance]);
-			if(_isNear == 0) then {
-				_abort = true;
-				_reason = "fuel tank";
-			};
-		};
+	} forEach _needNear;
+	
+	if(_abort) exitWith {
+		cutText [format[(localize "str_epoch_player_135"),_reason,_distance], "PLAIN DOWN"];
+		DZE_ActionInProgress = false;
 	};
-} forEach _needNear;
-
-
-if(_abort) exitWith {
-	cutText [format[(localize "str_epoch_player_135"),_reason,_distance], "PLAIN DOWN"];
-	DZE_ActionInProgress = false;
 };
-};
+
 if (_typeIsString) then {
 	_classname = 	getText (configFile >> "CfgMagazines" >> _item >> "ItemActions" >> "Build" >> "create");
 	_classnametmp = _classname;
@@ -174,11 +185,6 @@ if (!_typeIsString) then {
 	_classnametmp = _classname;
 	_require = _this select 1;
 };
-};
-
-_classname = 	getText (configFile >> "CfgMagazines" >> _item >> "ItemActions" >> "Build" >> "create");
-_classnametmp = _classname;
-_require =  getArray (configFile >> "cfgMagazines" >> _this >> "ItemActions" >> "Build" >> "require");
 _text = 		getText (configFile >> "CfgVehicles" >> _classname >> "displayName");
 _ghost = getText (configFile >> "CfgVehicles" >> _classname >> "ghostpreview");
 
@@ -229,7 +235,7 @@ _findNearestPole = [];
 
 _IsNearPlot = count (_findNearestPole);
 
-// If item is plot pole && another one exists within 45m
+// If item is plot pole and another one exists within 45m
 if(_isPole && _IsNearPlot > 0) exitWith {  DZE_ActionInProgress = false; cutText [(localize "str_epoch_player_44") , "PLAIN DOWN"]; };
 
 if(_IsNearPlot == 0) then {
@@ -240,12 +246,12 @@ if(_IsNearPlot == 0) then {
 	};
 
 } else {
-	// Since there are plots nearby we check for ownership && then for friend status
-
-	// check nearby plots ownership && then for friend status
+	// Since there are plots nearby we check for ownership and then for friend status
+	
+	// check nearby plots ownership and then for friend status
 	_nearestPole = _findNearestPole select 0;
 
-	// Find owner
+	// Find owner 
 	_ownerID = _nearestPole getVariable ["ownerPUID","0"];
 
 	diag_log format["Player_build start: [PlayerUID = %1]  [OwnerID = %2]", _playerUID, _ownerID];
@@ -253,6 +259,7 @@ if(_IsNearPlot == 0) then {
 	// check if friendly to owner
 	if(_playerUID == _ownerID) then {  //Keep ownership
 		// owner can build anything within his plot except other plots
+		diag_log text "Player is owner";
 		if(!_isPole) then {
 			_canBuildOnPlot = true;
 		};
@@ -269,8 +276,9 @@ if(_IsNearPlot == 0) then {
 	};
 };
 
-// _message
+//Item Check
 if(!_canBuildOnPlot) exitWith {  DZE_ActionInProgress = false; cutText [format[(localize "STR_EPOCH_PLAYER_135"),_needText,_distance] , "PLAIN DOWN"]; };
+
 _missingT = "";
 _missingB = "";
 _hasRequiredTools = true;
@@ -299,7 +307,6 @@ if (!_isBuildAdmin) then {
 // Message If missing
 if (!_hasRequiredTools) exitWith {DZE_ActionInProgress = false; cutText [format[(localize "str_epoch_player_137"),_missingT] , "PLAIN DOWN"];};
 
-
 if (!_typeIsString && !_hasbuilditem) exitWith {DZE_ActionInProgress = false; cutText [format[(localize "str_epoch_player_146"),_missingQty, _missingB], "PLAIN DOWN"];};
 if (_typeIsString && !_hasbuilditem) exitWith {DZE_ActionInProgress = false; cutText [format[(localize "str_player_31"),_text,"build"] , "PLAIN DOWN"]; };
 //Proceed after item check
@@ -308,7 +315,7 @@ if (_hasRequiredTools && _hasbuilditem) then {
 	_isOk = true;
 
 	// get inital players position
-	_location1 = getPosATL player;
+	_location1 = [player] call FNC_GetPos;
 	_dir = getDir player;
 
 	// if ghost preview available use that instead
@@ -316,26 +323,21 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		_classname = _ghost;
 	};
 
-
-	
 	_object = createVehicle [_classname, _location, [], 0, "CAN_COLLIDE"];
-	_object setDir 0;
 	//Build gizmo
 	_objectHelper = "Sign_sphere10cm_EP1" createVehicle _location;
 	_helperColor = "#(argb,8,8,3)color(0,0,0,0,ca)";
 	_objectHelper setobjecttexture [0,_helperColor];
 	_objectHelper attachTo [player,_offset];
 	_object attachTo [_objectHelper,[0,0,0]];
-	_position = getPosATL _objectHelper;
+	_position = [_objectHelper] call FNC_GetPos;
 	
-	//cutText [(localize "str_epoch_player_45"), "PLAIN DOWN"];
-
 	_objHDiff = 0;
 
 	if (isClass (missionConfigFile >> "SnapBuilding" >> _classname)) then {	
 		["","","",["Init",_object,_classname,_objectHelper]] spawn snap_build;
 	};
-
+	
 	DZE_updateVec = false;
 	DZE_memDir = getDir _objectHelper;
 	DZE_memForBack = 0;
@@ -351,6 +353,7 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		s_player_setVectors45 = player addaction ["Increment by 45 degrees","custom\snap_pro\player_vectorChange.sqf","45"];
 		s_player_setVectors90 = player addaction ["Increment by 90 degrees","custom\snap_pro\player_vectorChange.sqf","90"];
 	};
+	
 	
 	while {_isOk} do {
 
@@ -391,24 +394,14 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		if (DZE_4) then {
 			_rotate = true;
 			DZE_4 = false;
-			if (helperDetach) then {
-				_dir = -45;
-				DZE_memDir = DZE_memDir - 45;
-			} else {
-				_dir = 180;
-				DZE_memDir = 180;
-			};
+			_dir = -45;
+			DZE_memDir = DZE_memDir - 45;
 		};
 		if (DZE_6) then {
 			_rotate = true;
 			DZE_6 = false;
-			if (helperDetach) then {
-				_dir = 45;
-				DZE_memDir = DZE_memDir + 45;
-			} else {
-				_dir = 0;
-				DZE_memDir = 0;
-			};
+			_dir = 45;
+			DZE_memDir = DZE_memDir + 45;
 		};
 		
 		if(DZE_updateVec) then{
@@ -416,21 +409,18 @@ if (_hasRequiredTools && _hasbuilditem) then {
 			DZE_updateVec = false;
 		};
 		
-		if (DZE_F and _canDo) then {
-		
+		if (DZE_F and _canDo) then {	
 			if (helperDetach) then {
 				_objectHelper attachTo [player];
 				DZE_memDir = DZE_memDir-(getDir player);
 				helperDetach = false;
 				[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
-			} else {		
-				_objectHelperPos = getPosATL _objectHelper;
-				detach _objectHelper;			
+			} else {
+				_objectHelperDir = getDir _objectHelper;
+				detach _objectHelper;
 				DZE_memDir = getDir _objectHelper;
 				[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
-				_objectHelper setPosATL _objectHelperPos;
-
-
+				[_objectHelper]	call FNC_GetSetPos;
 				_objectHelper setVelocity [0,0,0]; //fix sliding glitch
 				helperDetach = true;
 			};
@@ -440,13 +430,14 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		if(_rotate) then {
 			[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
 		};
-
+		
 		if(_zheightchanged) then {
 			if (!helperDetach) then {
-			detach _objectHelper;
+				detach _objectHelper;
+				_objectHelperDir = getDir _objectHelper;
 			};
 
-			_position = getPosATL _objectHelper;
+			_position = [_objectHelper] call FNC_GetPos;
 
 			if(_zheightdirection == "up") then {
 				_position set [2,((_position select 2)+0.1)];
@@ -475,25 +466,19 @@ if (_hasRequiredTools && _hasbuilditem) then {
 				_objHDiff = _objHDiff - 0.01;
 			};
 
-			_objectHelper setDir (getDir _objectHelper);
-
 			if((_isAllowedUnderGround == 0) && ((_position select 2) < 0)) then {
 				_position set [2,0];
 			};
-			
+
 			if (surfaceIsWater _position) then {
 				_objectHelper setPosASL _position;
 			} else {
 				_objectHelper setPosATL _position;
 			};
-			
-			_objectHelper setPosATL _position;
-
-			//diag_log format["DEBUG Change BUILDING POS: %1", _position];
 
 			if (!helperDetach) then {
-				_objectHelper attachTo [player];
-				_objectHelper setDir _objectHelperDir-(getDir player);
+			_objectHelper attachTo [player];
+			_objectHelper setDir _objectHelperDir-(getDir player);
 			};
 			
 			[_objectHelper,[DZE_memForBack,DZE_memLeftRight,DZE_memDir]] call fnc_SetPitchBankYaw;
@@ -501,15 +486,15 @@ if (_hasRequiredTools && _hasbuilditem) then {
 
 		sleep 0.5;
 
-		_location2 = getPosATL player;
-		_objectHelperPos = getPosATL _objectHelper;
+		_location2 = [player] call FNC_GetPos;
+		_objectHelperPos = [_objectHelper] call FNC_GetPos;
+
 		if(DZE_5) exitWith {
 			_isOk = false;
-			detach _object;			
+			_position = [_object] call FNC_GetPos;
+			detach _object;
 			_dir = getDir _object;
 			_vector = [(vectorDir _object),(vectorUp _object)];	
-			_position = getPosATL _object;
-			//diag_log format["DEBUG BUILDING POS: %1", _position];
 			deleteVehicle _object;
 			detach _objectHelper;
 			deleteVehicle _objectHelper;
@@ -524,6 +509,7 @@ if (_hasRequiredTools && _hasbuilditem) then {
 			detach _objectHelper;
 			deleteVehicle _objectHelper;
 		};
+		
 		if(_location1 distance _objectHelperPos > 10) exitWith {
 			_isOk = false;
 			_cancel = true;
@@ -576,6 +562,8 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		player removeAction s_player_setVectors45;
 		player removeAction s_player_setVectors90;
 	};	
+	
+	
 	//No building on roads unless toggled
 	if (!DZE_BuildOnRoads) then {
 		if (isOnRoad _position) then { _cancel = true; _reason = "Cannot build on a road."; };
@@ -592,15 +580,15 @@ if (_hasRequiredTools && _hasbuilditem) then {
 		_tmpbuilt = createVehicle [_classname, _location, [], 0, "CAN_COLLIDE"];
 
 		_tmpbuilt setdir _dir;
-		
-		
+
 		// Get position based on object
 		_location = _position;
 
 		if((_isAllowedUnderGround == 0) && ((_location select 2) < 0)) then {
 			_location set [2,0];
 		};
-_buildOffset = [0,0,0];
+	
+		_buildOffset = [0,0,0];
 		_vUp = _vector select 1;
 		switch (_classname) do {
 			case "MetalFloor_DZ": { _buildOffset = [(_vUp select 0) * .148, (_vUp select 1) * .148,0]; };
@@ -618,12 +606,11 @@ _buildOffset = [0,0,0];
 		} else {
 			_tmpbuilt setPosATL _location;
 		};
+
 		_tmpbuilt setVectorDirAndUp _vector;
-		_tmpbuilt setPosATL _location;
 		
-
 		cutText [format[(localize "str_epoch_player_138"),_text], "PLAIN DOWN"];
-
+		
 		_limit = 3;
 
 		if (DZE_StaticConstructionCount > 0) then {
@@ -637,22 +624,22 @@ _buildOffset = [0,0,0];
 		_isOk = true;
 		_proceed = false;
 		_counter = 0;
-
+		
 		while {_isOk && !_isBuildAdmin} do {
 
 			[10,10] call dayz_HungerThirst;
 			player playActionNow "Medic";
-
+			
 			_dis=20;
 			_sfx = "repair";
 			[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
 			[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
-
+	
 			r_interrupt = false;
 			r_doLoop = true;
 			_started = false;
 			_finished = false;
-
+	
 			while {r_doLoop} do {
 				_animState = animationState player;
 				_isMedic = ["medic",_animState] call fnc_inString;
@@ -689,13 +676,12 @@ _buildOffset = [0,0,0];
 				_isOk = false;
 				_proceed = true;
 			};
-
 		};
-
 		if (_isBuildAdmin) then {
 			_isOk = false;
 			_proceed = true;
 		};
+		
 		if (_proceed) then {
 		//diag_log "Proceed OK";
 			_tobe_removed_total = 0;
@@ -718,7 +704,6 @@ _buildOffset = [0,0,0];
 						{					
 							if( (_removed < _countIn) && ((_x == _itemIn) || configName(inheritsFrom(configFile >> "cfgMagazines" >> _x)) == _itemIn)) then {
 								_num_removed = ([player,_x] call BIS_fnc_invRemove);
-
 								_removed = _removed + _num_removed;
 								_removed_total = _removed_total + _num_removed;
 								if(_num_removed >= 1) then {
@@ -736,23 +721,25 @@ _buildOffset = [0,0,0];
 			if((_tobe_removed_total == _removed_total) && (_removed_total >= 1)) then {
 				//diag_log "Removed Item OK";
 				cutText [format[localize "str_build_01",_text], "PLAIN DOWN"];
+
 				if (_isPole) then {
 					[] spawn player_plotPreview;
 				};
-
+				
 				_tmpbuilt setVariable ["OEMPos",_location,true];
 
 				if(_lockable > 1) then {
-
+					//diag_log "Is Lockable OK";
 					_combinationDisplay = "";
 
 					switch (_lockable) do {
-
+						
 						case 2: { // 2 lockbox
 							_combination_1 = (floor(random 3)) + 100; // 100=red,101=green,102=blue
 							_combination_2 = floor(random 10);
 							_combination_3 = floor(random 10);
 							_combination = format["%1%2%3",_combination_1,_combination_2,_combination_3];
+							
 							dayz_combination = _combination;
 							if (_combination_1 == 100) then {
 								_combination_1_Display = "Red";
@@ -765,7 +752,7 @@ _buildOffset = [0,0,0];
 							};
 							_combinationDisplay = format["%1%2%3",_combination_1_Display,_combination_2,_combination_3];
 						};
-
+						
 						case 3: { // 3 combolock
 							_combination_1 = floor(random 10);
 							_combination_2 = floor(random 10);
@@ -774,7 +761,7 @@ _buildOffset = [0,0,0];
 							dayz_combination = _combination;
 							_combinationDisplay = _combination;
 						};
-
+						
 						case 4: { // 4 safe
 							_combination_1 = floor(random 10);
 							_combination_2 = floor(random 10);
@@ -787,19 +774,22 @@ _buildOffset = [0,0,0];
 					};
 
 					_tmpbuilt setVariable ["CharacterID",_combination,true];
-
+					
 					_tmpbuilt setVariable ["ownerPUID",_playerUID,true];
 
+						
 					PVDZE_obj_Publish = [_combination,_tmpbuilt,[_dir,_location,_vector,_playerUID],_classname];
 					//diag_log "Publish Lockable";
 					publicVariableServer "PVDZE_obj_Publish";
 
+				
 					cutText [format[(localize "str_epoch_player_140"),_combinationDisplay,_text], "PLAIN DOWN", 5];
-
+					
 
 				} else {
 					_tmpbuilt setVariable ["CharacterID",dayz_characterID,true];
-
+					
+					_tmpbuilt setVariable ["ownerPUID",_playerUID,true];
 					// fire?
 					if(_tmpbuilt isKindOf "Land_Fire_DZ") then {
 						_tmpbuilt spawn player_fireMonitor;
@@ -807,13 +797,14 @@ _buildOffset = [0,0,0];
 						PVDZE_obj_Publish = [dayz_characterID,_tmpbuilt,[_dir,_location,_vector,_playerUID],_classname];
 						publicVariableServer "PVDZE_obj_Publish";
 					};
+					
 				};
 			} else {
 				deleteVehicle _tmpbuilt;
 				cutText [(localize "str_epoch_player_46") , "PLAIN DOWN"];
 				{
 					[player,_x] call BIS_fnc_invAdd;
-				} forEach _temp_removed_array;	
+				} forEach _temp_removed_array;				
 			};
 
 		} else {
@@ -824,7 +815,6 @@ _buildOffset = [0,0,0];
 			};
 
 			deleteVehicle _tmpbuilt;
-
 			cutText [(localize "str_epoch_player_46") , "PLAIN DOWN"];
 		};
 
